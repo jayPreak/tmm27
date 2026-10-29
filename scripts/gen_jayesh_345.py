@@ -83,7 +83,7 @@ W4(1,"Rebuild","Restart on four runs a week. HRV is a little below baseline, so 
  2:[done(wo("w1-wed","Done: 6k easy",6.1,48,"Zone 2","Already completed (Oct 28).","endurance"))],
  4:[easy("w1-fri",6)],6:[long("w1-sun",14)]})
 W4(2,"Rebuild","Four runs a week, first light quality",False,{
- 1:[q("w2-tue","Fartlek 8x1min",7,45,"Zone 2 + 5b","2 km easy WU\n8x1 min brisk @ ~4:50/km / 1 min easy jog\n2 km easy CD","vo2max")],
+ 1:[q("w2-tue","Fartlek 8x200m",6.8,42,"Zone 2 + 5b","2 km easy WU\n8x(200 m brisk @ 4:45-4:55/km, about 1 min / 150 m easy jog)\n2 km easy CD","vo2max")],
  2:[easy("w2-wed",6)],4:[mp("w2-fri",3)],6:[long("w2-sun",16)]})
 W4(3,"Base","First threshold session",False,{
  1:[thr("w3-tue",3,8,120)],2:[easy("w3-wed",7,True)],4:[mp("w3-fri",5)],6:[long("w3-sun",18)]})

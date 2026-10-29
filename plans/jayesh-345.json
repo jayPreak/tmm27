@@ -388,12 +388,12 @@
        "id": "w2-tue",
        "sport": "run",
        "type": "vo2max",
-       "name": "Fartlek 8x1min",
+       "name": "Fartlek 8x200m",
        "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
-       "durationMinutes": 45,
-       "distanceMeters": 7000,
+       "durationMinutes": 42,
+       "distanceMeters": 6800,
        "primaryZone": "Zone 2 + 5b",
-       "humanReadable": "2 km easy WU\n8x1 min brisk @ ~4:50/km / 1 min easy jog\n2 km easy CD",
+       "humanReadable": "2 km easy WU\n8x(200 m brisk @ 4:45-4:55/km, about 1 min / 150 m easy jog)\n2 km easy CD",
        "completed": false
       }
      ]
@@ -487,7 +487,7 @@
      "run": {
       "sessions": 4,
       "hours": 3.8,
-      "km": 36.0
+      "km": 35.8
      }
     }
    }
