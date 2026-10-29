@@ -1,0 +1,444 @@
+<style>
+/* Plan switcher + per-plan sections */
+.switcher { display: flex; flex-wrap: wrap; gap: var(--s2); border-bottom: 1px solid var(--line); padding-bottom: var(--s4); }
+.tab {
+  display: grid; gap: 2px; text-align: left; min-height: 56px; padding: var(--s2) var(--s4);
+  border: 1px solid var(--line); background: transparent; border-radius: var(--radius); cursor: pointer;
+  transition: transform 120ms ease-out, border-color 120ms ease-out;
+}
+.tab:hover { border-color: var(--ink); }
+.tab:active { transform: scale(0.98); }
+.tab b { font-family: var(--font-display); font-weight: 800; font-size: var(--t-xl); line-height: 1; text-transform: uppercase; }
+.tab span { font-size: var(--t-xs); color: var(--muted); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tab[aria-selected="true"] span { color: var(--bg); opacity: 0.8; }
+.kind { font-family: var(--font-body); display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: var(--radius); border: 1px solid currentColor; color: var(--cobalt); margin-left: var(--s2); vertical-align: 2px; }
+.kind.personal { color: var(--on-signal); background: var(--signal); border-color: var(--signal); }
+.snap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px solid var(--ink); }
+.snap .fact:nth-child(odd), .snap .fact:nth-child(even) { padding: var(--s4) var(--s4) var(--s4) 0; border-left: 0; }
+.snap .fact:not(:nth-child(3n+1)) { padding-left: var(--s4); border-left: 1px solid var(--line); }
+.snap .fact dd { font-size: var(--t-xl); }
+.snap-note { margin-top: var(--s4); font-size: var(--t-sm); color: var(--muted); max-width: 70ch; }
+.reqs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 3px solid var(--ink); }
+.reqs li { padding: var(--s4) var(--s4) var(--s4) 0; border-bottom: 1px solid var(--line); display: grid; gap: var(--s1); }
+.reqs li:nth-child(even) { padding-left: var(--s4); border-left: 1px solid var(--line); }
+.reqs b { font-family: var(--font-display); font-weight: 600; font-size: var(--t-xl); line-height: 1.05; }
+.reqs span { font-size: var(--t-sm); color: var(--muted); }
+@media (max-width: 860px) { .snap { grid-template-columns: repeat(2, minmax(0, 1fr)); } .snap .fact:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; } .snap .fact:nth-child(even) { padding-left: var(--s4); border-left: 1px solid var(--line); } }
+@media (max-width: 560px) { .reqs { grid-template-columns: minmax(0, 1fr); } .reqs li:nth-child(even) { padding-left: 0; border-left: 0; } .tab { flex: 1 1 140px; } }
+</style>
+
+<div class="wrap">
+  <nav class="switcher" role="tablist" aria-label="Choose a plan" id="switcher"></nav>
+
+  <header class="hero">
+    <div>
+      <p class="race-name" id="raceName">Tata Mumbai Marathon <span>Sunday 17 January 2027</span></p>
+      <h1 class="goal" id="goal">3:45</h1>
+      <div class="goal-sub" id="goalSub"></div>
+    </div>
+    <dl class="facts" id="facts"></dl>
+  </header>
+
+  <section aria-labelledby="whoTitle" id="whoSection">
+    <div class="sec-head">
+      <h2 id="whoTitle">Who this plan is for</h2>
+      <p id="whoIntro"></p>
+    </div>
+    <div id="whoBody"></div>
+  </section>
+
+  <section aria-labelledby="profileTitle">
+    <div class="sec-head">
+      <h2 id="profileTitle">Twelve weeks of running</h2>
+      <p>Weekly running distance. Select a week to see its sessions.</p>
+    </div>
+    <div class="profile">
+      <div class="axis num" aria-hidden="true" id="axis"></div>
+      <div>
+        <div class="plot" id="plot">
+          <div class="bars" id="bars" role="group" aria-label="Weeks"></div>
+        </div>
+        <div class="x num" id="xlabels" aria-hidden="true"></div>
+        <div class="phases" id="phases" aria-hidden="true"></div>
+        <div class="legend">
+          <span><i class="l-train"></i>Training km</span>
+          <span><i class="l-rec"></i>Easier week</span>
+          <span><i class="l-race"></i>Race, 42.2 km</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="week" aria-labelledby="weekTitle" id="weekPanel">
+    <div class="week-top">
+      <div class="week-title">
+        <h2 class="wk" id="weekTitle">Week <em>1</em></h2>
+        <span class="dates" id="weekDates"></span>
+        <p class="focus" id="weekFocus"></p>
+      </div>
+      <div class="pager">
+        <button class="btn" id="prevWeek" type="button" aria-label="Previous week">Prev</button>
+        <button class="btn" id="nextWeek" type="button" aria-label="Next week">Next</button>
+      </div>
+      <div class="stats" id="weekStats"></div>
+      <div class="filters" role="group" aria-label="Filter sessions">
+        <button class="chipbtn" type="button" data-filter="all" aria-pressed="true">All sessions</button>
+        <button class="chipbtn" type="button" data-filter="key" aria-pressed="false">Key sessions</button>
+        <button class="chipbtn" type="button" data-filter="todo" aria-pressed="false">Not done yet</button>
+      </div>
+    </div>
+    <div id="weekBody" aria-live="polite">
+      <div aria-hidden="true">
+        <div class="skel"><i class="a"></i><div><i class="b"></i><i class="c"></i></div></div>
+        <div class="skel"><i class="a"></i><div><i class="b"></i><i class="c"></i></div></div>
+        <div class="skel"><i class="a"></i><div><i class="b"></i><i class="c"></i></div></div>
+        <div class="skel"><i class="a"></i><div><i class="b"></i><i class="c"></i></div></div>
+      </div>
+      <p class="rest-note loading-note">Loading the week</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="zonesTitle">
+    <div class="sec-head">
+      <h2 id="zonesTitle">Paces and heart rate</h2>
+      <p id="zonesIntro"></p>
+    </div>
+    <div class="zones" id="zones"></div>
+    <p class="zone-foot" id="zoneFoot"></p>
+  </section>
+
+  <section aria-labelledby="raceTitle">
+    <div class="sec-head">
+      <h2 id="raceTitle">Race day plan</h2>
+      <p>Pace is drawn to scale across the 42.2 km.</p>
+    </div>
+    <div class="race-strip" id="raceStrip"></div>
+    <div class="race-grid" id="raceGrid"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<script id="plan-jayesh" type="application/json">__PLAN_JAYESH__</script>
+<script id="plan-open320" type="application/json">__PLAN_OPEN320__</script>
+<script>
+(function () {
+  "use strict";
+  var RACE_KM = 42.2;
+  var KEY_TYPES = { long: 1, threshold: 1, vo2max: 1, tempo: 1, test: 1, race: 1 };
+  var TYPE_LABEL = { endurance: "Easy", recovery: "Recovery", long: "Long run", threshold: "Threshold", vo2max: "Intervals", tempo: "Marathon pace", test: "Test", race: "Race" };
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var DOW = { Monday: "Mon", Tuesday: "Tue", Wednesday: "Wed", Thursday: "Thu", Friday: "Fri", Saturday: "Sat", Sunday: "Sun" };
+
+  function data(id) { return JSON.parse(document.getElementById(id).textContent); }
+
+  // Each plan's page content. Only "jayesh" is personal and shows COROS data.
+  var FUEL = { h: "Fuel", list: [
+    ["Race morning:", "wake around 3:00. 100-150 g of low-fibre carbs 2.5 to 3 hours before the start."],
+    ["During:", "a gel every 30 minutes, about 60 g of carbs per hour, and 400-700 ml of fluid with electrolytes per hour."],
+    ["Carb load:", "8-10 g per kg per day on Friday and Saturday."]] };
+  var HEAT = { h: "Heat", p: "Above 24°C with high humidity, add 5-10 s/km and race by heart rate. Mumbai warms up quickly after 7 am." };
+  var PLANS = [
+    {
+      key: "jayesh", tab: "Jayesh 3:45", tabSub: "Personal, from COROS", kind: "personal", kindLabel: "COROS-linked",
+      plan: data("plan-jayesh"), maxKm: 80,
+      goal: "3:45", goalAria: "Goal time 3 hours 45 minutes",
+      goalSub: [["Goal pace ", "5:20/km"], ["Stretch ", "3:40", " if the week 8 test allows"], ["Runs ", "Tue, Wed, Fri, Sun"]],
+      facts: [["Plan length", "12", "weeks"], ["Peak week", "67", "km"], ["Longest run", "32", "km"]],
+      who: {
+        title: "Your COROS snapshot",
+        intro: "This plan was built for Jayesh from his COROS watch data. These are the numbers it is based on.",
+        snap: [["VO2max", "54", ""], ["Threshold heart rate", "166", "bpm"], ["Threshold pace", "5:18", "/km"],
+               ["Fitness (CTI)", "74", ""], ["Night HRV baseline", "84", "ms"], ["Recent running", "12-16", "km/wk"]],
+        note: "Snapshot taken 29 Oct 2026. The plan is adjusted from fresh COROS data at each weekly check-in, and the tests in weeks 4 and 8 reset the paces."
+      },
+      zonesIntro: "From the COROS threshold: 166 bpm and 5:18/km. In Gurgaon heat, the heart rate cap wins over pace.",
+      zones: [["Easy and long", "6:10-6:40", "134-147 bpm", "Most of the running. Full conversation."],
+              ["Marathon pace", "5:18-5:26", "150-158 bpm", "Race rhythm. Practise drinking at this pace."],
+              ["Threshold", "5:05-5:15", "158-166 bpm", "Comfortably hard. Short phrases only."],
+              ["Intervals", "4:45-4:55", "167-174 bpm", "Hard reps of 1 to 1.2 km."]],
+      zoneFoot: "The 30-minute tests in weeks 4 and 8 reset these numbers. If threshold pace drops to 5:05/km or faster, race pace moves to 5:13/km for a 3:40.",
+      segs: [["0-5 km", "5:25-5:28", "Settle in. It is crowded, dark and humid."],
+             ["5-30 km", "5:18-5:22", "Hold heart rate at 158 or below. On the Sea Link incline, keep the effort steady and let the pace drop. Halfway around 1:53."],
+             ["30-42.2 km", "Hold or push", "Let heart rate rise. Speed up only if you still feel controlled."]],
+      cards: [FUEL, HEAT, { h: "Taper and lifting", p: "Week 11 drops about 30% of the volume and race week keeps just three short runs. Keep the marathon pace sessions. Lower body lifting stays light in week 11, with no heavy leg work in race week." }],
+      foot: ["Built from Jayesh's COROS data as of 29 Oct 2026. Four runs a week on Tue, Wed, Fri and Sun, around his lifting on Mon, Wed, Fri and Sat.", "Ticking a session as done saves it in this browser only."]
+    },
+    {
+      key: "open-320", tab: "Open 3:20", tabSub: "For any runner", kind: "open", kindLabel: "For anyone",
+      plan: data("plan-open320"), maxKm: 100,
+      goal: "3:20", goalAria: "Goal time 3 hours 20 minutes",
+      goalSub: [["Goal pace ", "4:44/km"], ["Four runs a week, peak ", "82 km"]],
+      facts: [["Plan length", "12", "weeks"], ["Peak week", "82", "km"], ["Longest run", "34", "km"]],
+      who: {
+        title: "Who this plan is for",
+        intro: "A general plan for any runner. It is not built from anyone's watch data, so check you match these before starting.",
+        reqs: [["45-55 km a week", "for at least the last 8 weeks"], ["Long run of 18-20 km", "done comfortably in the last month"],
+               ["Half marathon under 1:36", "or 10 km under 44:30 recently"], ["Four running days", "Tuesday, Wednesday, Friday and Sunday"]],
+        note: "Coming from lower mileage or slower recent races? Aim for 3:30-3:35 and run every pace in the plan 10-15 s/km slower."
+      },
+      zonesIntro: "Paces assume a threshold pace of about 4:28/km. Heart rate is given as a share of your max, since it varies a lot between runners.",
+      zones: [["Easy and long", "5:30-6:00", "65-78% max HR", "Most of the running. Full conversation."],
+              ["Marathon pace", "4:40-4:48", "80-85% max HR", "Race rhythm. Practise drinking at this pace."],
+              ["Threshold", "4:25-4:32", "86-90% max HR", "Comfortably hard. Short phrases only."],
+              ["Intervals", "4:05-4:12", "92-95% max HR", "Hard reps of 800 m to 1.2 km."]],
+      zoneFoot: "The half marathon in week 8 is the check. Under 1:35 supports 3:20. Slower than 1:38 means racing at 3:25-3:30 and easing every pace by about 10 s/km.",
+      segs: [["0-5 km", "4:48-4:50", "Settle in. It is crowded, dark and humid."],
+             ["5-30 km", "4:42-4:46", "Even effort. On the Sea Link incline, keep the effort steady and let the pace drop. Halfway around 1:40."],
+             ["30-42.2 km", "Hold or push", "Speed up only if you still feel controlled."]],
+      cards: [FUEL, HEAT, { h: "Taper", p: "Week 11 drops about 30% of the volume and race week keeps three short runs. Keep the marathon pace sessions so the rhythm stays sharp." }],
+      foot: ["A general plan for any runner targeting 3:20 at the Tata Mumbai Marathon. It does not use anyone's personal data.", "Ticking a session as done saves it in this browser only."]
+    }
+  ];
+
+  function localISO(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function parse(iso) { var p = iso.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  var todayISO = localISO(new Date());
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function $(id) { return document.getElementById(id); }
+
+  var STORE_KEY = "tmm27-done";
+  var doneMap = {};
+  try { doneMap = JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; } catch (e) { doneMap = {}; }
+  function isDone(w) { return Object.prototype.hasOwnProperty.call(doneMap, w.id) ? !!doneMap[w.id] : !!w.completed; }
+  function setDone(id, v) { doneMap[id] = v; try { localStorage.setItem(STORE_KEY, JSON.stringify(doneMap)); } catch (e) {} }
+
+  var P, weeks, sel = 0, thisWeek = -1, filter = "all", ready = false, barBtns = [], xSpans = [];
+
+  // ---------- Switcher ----------
+  var tabs = PLANS.map(function (p, i) {
+    var t = el("button", "tab"); t.type = "button"; t.id = "tab-" + p.key;
+    t.setAttribute("role", "tab"); t.setAttribute("aria-controls", "weekPanel");
+    t.appendChild(el("b", null, p.tab)); t.appendChild(el("span", null, p.tabSub));
+    t.addEventListener("click", function () { openPlan(i, true); });
+    t.addEventListener("keydown", function (e) {
+      var j = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : -1;
+      if (j >= 0 && j < PLANS.length) { e.preventDefault(); openPlan(j, true); tabs[j].focus(); }
+    });
+    $("switcher").appendChild(t);
+    return t;
+  });
+
+  function factEl(label, val, unit, cls) {
+    var f = el("div", "fact" + (cls ? " " + cls : ""));
+    f.appendChild(el("dt", null, label));
+    var dd = el("dd", null, val); if (unit) dd.appendChild(el("small", null, unit));
+    f.appendChild(dd); return f;
+  }
+
+  function openPlan(i, fromUser) {
+    P = PLANS[i]; weeks = P.plan.weeks;
+    tabs.forEach(function (t, j) { t.setAttribute("aria-selected", String(j === i)); t.tabIndex = j === i ? 0 : -1; });
+    if (fromUser) { try { history.replaceState(null, "", "#" + P.key); } catch (e) {} }
+    document.title = P.key === "jayesh" ? "Jayesh 3:45 · Mumbai Marathon" : "Open 3:20 · Mumbai Marathon";
+
+    // Hero
+    var g = $("goal"); g.textContent = P.goal; g.setAttribute("aria-label", P.goalAria);
+    var rn = $("raceName"), oldK = rn.querySelector(".kind"); if (oldK) oldK.remove();
+    rn.appendChild(el("span", "kind " + P.kind, P.kindLabel));
+    var gs = $("goalSub"); gs.textContent = "";
+    P.goalSub.forEach(function (s) { var sp = el("span", null, s[0]); sp.appendChild(el("strong", "num", s[1])); if (s[2]) sp.appendChild(document.createTextNode(s[2])); gs.appendChild(sp); });
+    var fx = $("facts"); fx.textContent = "";
+    var days = Math.round((parse(P.plan.meta.eventDate) - parse(todayISO)) / 86400000);
+    fx.appendChild(factEl("Days to race day", days > 0 ? String(days) : (days === 0 ? "Today" : "Done"), "", "countdown"));
+    P.facts.forEach(function (f) { fx.appendChild(factEl(f[0], f[1], f[2])); });
+
+    // Who / snapshot
+    $("whoTitle").textContent = P.who.title; $("whoIntro").textContent = P.who.intro;
+    var wb = $("whoBody"); wb.textContent = "";
+    if (P.who.snap) {
+      var dl = el("dl", "snap"); P.who.snap.forEach(function (s) { dl.appendChild(factEl(s[0], s[1], s[2])); }); wb.appendChild(dl);
+    } else {
+      var ul = el("ul", "reqs"); P.who.reqs.forEach(function (r) { var li = el("li"); li.appendChild(el("b", null, r[0])); li.appendChild(el("span", null, r[1])); ul.appendChild(li); }); wb.appendChild(ul);
+    }
+    wb.appendChild(el("p", "snap-note", P.who.note));
+
+    // Zones
+    $("zonesIntro").textContent = P.zonesIntro;
+    var z = $("zones"); z.textContent = "";
+    P.zones.forEach(function (r, k) {
+      var d = el("div", "zone" + (k === 1 ? " mp" : ""));
+      d.appendChild(el("h3", null, r[0])); d.appendChild(el("span", "pace", r[1])); d.appendChild(el("span", "hr num", r[2])); d.appendChild(el("p", null, r[3]));
+      z.appendChild(d);
+    });
+    $("zoneFoot").textContent = P.zoneFoot;
+
+    // Race
+    var rs = $("raceStrip"); rs.textContent = "";
+    P.segs.forEach(function (s, k) { var d = el("div", "seg s" + (k + 1)); d.appendChild(el("span", "km num", s[0])); d.appendChild(el("span", "pace", s[1])); d.appendChild(el("p", null, s[2])); rs.appendChild(d); });
+    var rg = $("raceGrid"); rg.textContent = "";
+    P.cards.forEach(function (c) {
+      var d = el("div"); d.appendChild(el("h3", null, c.h));
+      if (c.list) { var u = el("ul"); c.list.forEach(function (it) { var li = el("li"); li.appendChild(el("strong", null, it[0] + " ")); li.appendChild(document.createTextNode(it[1])); u.appendChild(li); }); d.appendChild(u); }
+      else d.appendChild(el("p", null, c.p));
+      rg.appendChild(d);
+    });
+    var ft = $("foot"); ft.textContent = ""; P.foot.forEach(function (t) { ft.appendChild(el("p", null, t)); });
+
+    // Week state
+    var cur = 0;
+    weeks.forEach(function (w, k) { if (todayISO >= w.startDate && todayISO <= w.endDate) cur = k; });
+    if (todayISO > weeks[weeks.length - 1].endDate) cur = weeks.length - 1;
+    thisWeek = (todayISO >= weeks[0].startDate && todayISO <= weeks[weeks.length - 1].endDate) ? cur : -1;
+    sel = cur;
+    buildChart();
+    select(sel);
+  }
+
+  function trainKm(w) { var k = w.summary.bySport.run.km; return w.weekNumber === weeks.length ? k - RACE_KM : k; }
+
+  function buildChart() {
+    var axis = $("axis"), plot = $("plot"), barsEl = $("bars"), xEl = $("xlabels"), phEl = $("phases");
+    axis.textContent = ""; xEl.textContent = ""; barsEl.textContent = ""; phEl.textContent = "";
+    Array.prototype.slice.call(plot.querySelectorAll(".grid-line")).forEach(function (n) { n.remove(); });
+    var MAX = P.maxKm, step = MAX / 4;
+    for (var v = 0; v <= MAX; v += step) {
+      var s = el("span", null, String(v)); s.style.bottom = (v / MAX * 100) + "%"; axis.appendChild(s);
+      if (v > 0) { var gl = el("div", "grid-line"); gl.style.bottom = (v / MAX * 100) + "%"; plot.insertBefore(gl, plot.firstChild); }
+    }
+    barBtns = []; xSpans = [];
+    weeks.forEach(function (w, i) {
+      var total = w.summary.bySport.run.km, tk = trainKm(w), isRace = w.weekNumber === weeks.length;
+      var b = el("button", "bar" + (w.isRecoveryWeek ? " recovery" : "")); b.type = "button";
+      b.setAttribute("aria-label", "Week " + w.weekNumber + ", " + w.phase + ", " + Math.round(total) + " km" + (isRace ? " including the race" : "") + (i === thisWeek ? ", this week" : ""));
+      var fill = el("span", "fill");
+      if (isRace) { var r = el("span", "racepart"); r.style.height = (RACE_KM / MAX * 220) + "px"; fill.appendChild(r); }
+      var t = el("span", "train"); t.style.height = (tk / MAX * 220) + "px"; fill.appendChild(t);
+      var kmLab = el("span", "km num", String(Math.round(total))); kmLab.style.bottom = (total / MAX * 100) + "%";
+      b.appendChild(kmLab); b.appendChild(fill);
+      if (i === thisWeek) { var now = el("span", "now-tag", "Now"); now.style.top = "calc(" + (100 - total / MAX * 100) + "% - 40px)"; b.appendChild(now); }
+      b.addEventListener("click", function () { select(i); });
+      b.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" && i < weeks.length - 1) { e.preventDefault(); select(i + 1); barBtns[i + 1].focus(); }
+        if (e.key === "ArrowLeft" && i > 0) { e.preventDefault(); select(i - 1); barBtns[i - 1].focus(); }
+      });
+      barsEl.appendChild(b); barBtns.push(b);
+      var x = el("span", null, "W" + w.weekNumber); xEl.appendChild(x); xSpans.push(x);
+    });
+    P.plan.phases.forEach(function (p) {
+      var d = el("div", "phase", p.name); d.style.gridColumn = p.startWeek + " / " + (p.endWeek + 1); d.title = p.name + ": " + p.focus; phEl.appendChild(d);
+    });
+  }
+
+  var chips = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  chips.forEach(function (c) { c.addEventListener("click", function () { setFilter(c.getAttribute("data-filter")); }); });
+  function setFilter(f) { filter = f; chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.getAttribute("data-filter") === f)); }); renderWeek(); }
+  $("prevWeek").addEventListener("click", function () { if (sel > 0) select(sel - 1); });
+  $("nextWeek").addEventListener("click", function () { if (sel < weeks.length - 1) select(sel + 1); });
+
+  function select(i) {
+    sel = i;
+    barBtns.forEach(function (b, j) { b.setAttribute("aria-pressed", String(j === i)); });
+    xSpans.forEach(function (s, j) { s.className = j === i ? "sel" : ""; });
+    renderWeek();
+  }
+  function fmtRange(w) {
+    var a = parse(w.startDate), b = parse(w.endDate);
+    return a.getDate() + " " + MONTHS[a.getMonth()] + " to " + b.getDate() + " " + MONTHS[b.getMonth()] + " " + b.getFullYear();
+  }
+  function stat(v, label) { var s = el("div", "stat"); s.appendChild(el("b", null, v)); s.appendChild(el("span", null, label)); return s; }
+
+  function renderWeek() {
+    if (!ready) return;
+    var w = weeks[sel];
+    var title = $("weekTitle"); title.textContent = "Week ";
+    title.appendChild(el("em", null, String(w.weekNumber))); title.appendChild(document.createTextNode(" " + w.phase));
+    $("weekDates").textContent = fmtRange(w) + (sel === thisWeek ? ". This week." : "");
+    $("weekFocus").textContent = w.focus;
+    $("prevWeek").disabled = sel === 0; $("nextWeek").disabled = sel === weeks.length - 1;
+
+    var runs = [];
+    w.days.forEach(function (d) { d.workouts.forEach(function (x) { if (x.sport === "run") runs.push(x); }); });
+    var keyCount = runs.filter(function (x) { return KEY_TYPES[x.type]; }).length;
+    var st = $("weekStats"); st.textContent = "";
+    st.appendChild(stat(String(Math.round(w.summary.bySport.run.km)), "km running"));
+    st.appendChild(stat(String(w.summary.bySport.run.hours).replace(/\.0$/, ""), "hours running"));
+    st.appendChild(stat(String(keyCount), keyCount === 1 ? "key session" : "key sessions"));
+    st.appendChild(stat(runs.filter(isDone).length + "/" + runs.length, "runs done"));
+
+    var body = $("weekBody"); body.textContent = "";
+    var list = el("ol", "days"); list.setAttribute("aria-label", "Days in week " + w.weekNumber);
+    var shown = 0, idx = 0;
+    w.days.forEach(function (d) {
+      var ws = d.workouts.filter(function (x) {
+        if (filter === "all") return true;
+        if (x.sport !== "run" && x.sport !== "bike") return false;
+        if (filter === "key") return !!KEY_TYPES[x.type];
+        return !isDone(x);
+      });
+      if (!ws.length) return;
+      var li = el("li", "day" + (d.date === todayISO ? " today" : ""));
+      var dt = parse(d.date), date = el("div", "date");
+      date.appendChild(el("span", "dow", DOW[d.dayOfWeek] + " " + MONTHS[dt.getMonth()]));
+      date.appendChild(el("span", "dn", String(dt.getDate())));
+      if (d.date === todayISO) date.appendChild(el("span", "today-tag", "Today"));
+      li.appendChild(date);
+      var items = el("div", "items");
+      if (ws.every(function (x) { return x.sport === "rest"; })) {
+        var rn = el("p", "rest-note"); rn.style.setProperty("--i", idx++);
+        rn.appendChild(el("b", null, "No run. ")); rn.appendChild(document.createTextNode(ws[0].description));
+        items.appendChild(rn);
+      }
+      ws.forEach(function (x) { if (x.sport === "rest") return; shown++; items.appendChild(renderWorkout(x, idx++)); });
+      li.appendChild(items); list.appendChild(li);
+    });
+
+    if (!list.children.length || (filter !== "all" && shown === 0)) {
+      var e = el("div", "empty");
+      if (filter === "todo") {
+        e.appendChild(el("h3", null, "Every run this week is done"));
+        e.appendChild(el("p", null, "All " + runs.length + " runs in week " + w.weekNumber + " are ticked off. Check next week or show the full list again."));
+      } else {
+        e.appendChild(el("h3", null, "No key sessions this week"));
+        e.appendChild(el("p", null, "This week is easy running only."));
+      }
+      var b = el("button", "btn", "Show all sessions"); b.type = "button";
+      b.addEventListener("click", function () { setFilter("all"); });
+      e.appendChild(b); body.appendChild(e);
+    } else body.appendChild(list);
+  }
+
+  function renderWorkout(x, i) {
+    var a = el("article", "wo" + (isDone(x) ? " done" : "")); a.style.setProperty("--i", i);
+    var head = el("div", "wo-head");
+    var lab = x.sport === "bike" ? "Optional bike" : (TYPE_LABEL[x.type] || x.type);
+    head.appendChild(el("span", "tag" + (x.type === "race" ? " race" : (KEY_TYPES[x.type] ? " key" : "")), lab));
+    head.appendChild(el("h3", "wo-name", x.name.replace(/^Done: /, "")));
+    a.appendChild(head);
+    var meta = el("div", "wo-meta");
+    if (x.distanceMeters) { var k = el("span"); k.appendChild(el("span", "num", (x.distanceMeters / 1000).toFixed(x.distanceMeters % 1000 ? 1 : 0) + " km")); meta.appendChild(k); }
+    if (x.durationMinutes) { var m = el("span"); m.appendChild(el("span", "num", "~" + x.durationMinutes + " min")); meta.appendChild(m); }
+    if (x.primaryZone) meta.appendChild(el("span", null, x.primaryZone));
+    a.appendChild(meta);
+    var row = el("div", "wo-row");
+    if (x.humanReadable) {
+      var det = el("details"); det.appendChild(el("summary", null, "Session details"));
+      var steps = el("div", "steps"); x.humanReadable.split("\n").forEach(function (line) { steps.appendChild(el("p", null, line)); });
+      det.appendChild(steps); row.appendChild(det);
+    }
+    if (x.sport === "run") {
+      var lbl = el("label", "donebox"), cb = document.createElement("input");
+      cb.type = "checkbox"; cb.id = "done-" + x.id; cb.checked = isDone(x);
+      cb.addEventListener("change", function () { setDone(x.id, cb.checked); a.classList.toggle("done", cb.checked); refreshStats(); });
+      lbl.appendChild(cb); lbl.appendChild(document.createTextNode("Done")); row.appendChild(lbl);
+    }
+    a.appendChild(row);
+    return a;
+  }
+  function refreshStats() {
+    var w = weeks[sel], runs = [];
+    w.days.forEach(function (d) { d.workouts.forEach(function (x) { if (x.sport === "run") runs.push(x); }); });
+    var last = document.querySelector("#weekStats .stat:last-child b");
+    if (last) last.textContent = runs.filter(isDone).length + "/" + runs.length;
+    if (filter === "todo") renderWeek();
+  }
+
+  var start = 0, h = location.hash.replace("#", "");
+  PLANS.forEach(function (p, i) { if (p.key === h) start = i; });
+  openPlan(start, false);
+  $("weekBody").setAttribute("aria-busy", "true");
+  function show() { if (ready) return; ready = true; $("weekBody").removeAttribute("aria-busy"); renderWeek(); }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(show); setTimeout(show, 700); } else show();
+})();
+</script>

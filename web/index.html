@@ -1,0 +1,710 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mumbai Marathon Plans</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Big+Shoulders+Display:wght@600;800&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Layout: race-signage. Hero numerals left, race facts right; weekly km drawn as a course profile; the selected week reads like a split sheet. */
+:root {
+  --bg: #F2F4F8;
+  --surface: #FAFBFD;
+  --ink: #0E1A33;
+  --muted: #4A5873;
+  --line: #D3DAE5;
+  --cobalt: #1F4FD1;
+  --cobalt-soft: #DCE4F8;
+  --signal: #E2500C;
+  --on-signal: #0E1A33;
+  --hatch: #B9C7EA;
+
+  --font-display: "Big Shoulders Display", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --font-body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 72px;
+  --radius: 2px;
+  --t-xs: 0.75rem; --t-sm: 0.875rem; --t-md: 1rem; --t-lg: 1.25rem; --t-xl: 1.75rem; --t-2xl: 2.5rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0A1120; --surface: #101A2D; --ink: #E7ECF5; --muted: #9AA8C0; --line: #233150;
+    --cobalt: #7096FF; --cobalt-soft: #19284A; --signal: #FF7638; --on-signal: #0A1120; --hatch: #2C3E68;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0A1120; --surface: #101A2D; --ink: #E7ECF5; --muted: #9AA8C0; --line: #233150;
+  --cobalt: #7096FF; --cobalt-soft: #19284A; --signal: #FF7638; --on-signal: #0A1120; --hatch: #2C3E68;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: var(--t-md); line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: 1120px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: var(--s6) var(--s8);
+  display: grid; gap: var(--s8);
+}
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+button { font: inherit; color: inherit; }
+
+/* ---------- Hero ---------- */
+.hero { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: var(--s7); align-items: end; }
+.race-name { font-weight: 700; font-size: var(--t-lg); }
+.race-name span { color: var(--muted); font-weight: 400; }
+.goal {
+  font-family: var(--font-display); font-weight: 800;
+  font-size: clamp(6rem, 22vw, 13rem); line-height: 0.82;
+  color: var(--cobalt); margin-top: var(--s4);
+  font-variant-numeric: tabular-nums;
+}
+.goal-sub { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin-top: var(--s4); color: var(--muted); }
+.goal-sub strong { color: var(--ink); }
+.facts { display: grid; grid-template-columns: 1fr 1fr; border-top: 3px solid var(--ink); }
+.fact { padding: var(--s4) 0; border-bottom: 1px solid var(--line); display: grid; gap: var(--s1); }
+.fact:nth-child(odd) { padding-right: var(--s4); }
+.fact:nth-child(even) { padding-left: var(--s4); border-left: 1px solid var(--line); }
+.fact dt { font-size: var(--t-sm); color: var(--muted); }
+.fact dd { margin: 0; font-family: var(--font-display); font-weight: 600; font-size: var(--t-2xl); line-height: 1; font-variant-numeric: tabular-nums; }
+.fact dd small { font-family: var(--font-body); font-size: var(--t-sm); font-weight: 400; color: var(--muted); margin-left: var(--s1); }
+.fact.countdown dd { color: var(--signal); }
+
+/* ---------- Section heads ---------- */
+.sec-head { display: grid; gap: var(--s2); margin-bottom: var(--s5); max-width: 65ch; }
+.sec-head h2 { font-family: var(--font-display); font-weight: 800; font-size: var(--t-2xl); line-height: 1; text-transform: uppercase; }
+.sec-head p { color: var(--muted); }
+
+/* ---------- Profile chart ---------- */
+.profile { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: var(--s2); }
+.axis { position: relative; height: 220px; }
+.axis span { position: absolute; right: 0; transform: translateY(50%); font-size: var(--t-xs); color: var(--muted); }
+.plot { position: relative; height: 220px; border-bottom: 2px solid var(--ink); }
+.grid-line { position: absolute; left: 0; right: 0; border-top: 1px dashed var(--line); }
+.bars { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(3px, 1vw, 10px); align-items: end; }
+.bar {
+  position: relative; height: 100%; padding: 0; border: 0; background: transparent; cursor: pointer;
+  display: flex; flex-direction: column; justify-content: flex-end; border-radius: var(--radius);
+}
+.bar .fill { display: flex; flex-direction: column; justify-content: flex-end; transition: transform 140ms ease-out; transform-origin: bottom; }
+.bar .train { background: var(--cobalt-soft); border-top: 3px solid var(--cobalt); }
+.bar.recovery .train { background: repeating-linear-gradient(135deg, var(--cobalt-soft) 0 5px, var(--hatch) 5px 7px); }
+.bar .racepart { background: var(--signal); }
+.bar[aria-pressed="true"] .train { background: var(--cobalt); }
+.bar:hover .fill { transform: translateY(-3px); }
+.bar:active .fill { transform: scale(0.98); }
+.bar .km { position: absolute; left: 0; right: 0; text-align: center; font-size: var(--t-xs); color: var(--muted); transform: translateY(-120%); pointer-events: none; }
+.bar[aria-pressed="true"] .km { color: var(--ink); font-weight: 500; }
+.now-tag { position: absolute; left: 50%; top: 0; transform: translate(-50%, -100%); font-size: 10px; font-weight: 700; color: var(--on-signal); background: var(--signal); padding: 1px 5px; border-radius: var(--radius); white-space: nowrap; }
+.x { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(3px, 1vw, 10px); margin-top: var(--s2); }
+.x span { text-align: center; font-size: var(--t-xs); color: var(--muted); }
+.x span.sel { color: var(--ink); font-weight: 700; }
+.phases { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(3px, 1vw, 10px); margin-top: var(--s3); }
+.phase { border-top: 2px solid var(--muted); padding-top: var(--s1); font-size: var(--t-xs); color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.legend { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s5); margin-top: var(--s4); font-size: var(--t-sm); color: var(--muted); }
+.legend i { display: inline-block; width: 14px; height: 10px; margin-right: var(--s2); vertical-align: -1px; border-radius: var(--radius); }
+.legend .l-train { background: var(--cobalt-soft); border-top: 3px solid var(--cobalt); }
+.legend .l-rec { background: repeating-linear-gradient(135deg, var(--cobalt-soft) 0 5px, var(--hatch) 5px 7px); }
+.legend .l-race { background: var(--signal); }
+
+/* ---------- Week sheet ---------- */
+.week { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.week-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: var(--s4) var(--s5); padding: var(--s5); border-bottom: 1px solid var(--line); align-items: start; }
+.week-title { display: grid; gap: var(--s1); min-width: 0; }
+.week-title .wk { font-family: var(--font-display); font-weight: 800; font-size: clamp(2.25rem, 7vw, 3.5rem); line-height: 0.9; text-transform: uppercase; }
+.week-title .wk em { font-style: normal; color: var(--cobalt); }
+.week-title .dates { color: var(--muted); }
+.week-title .focus { margin-top: var(--s2); max-width: 60ch; }
+.pager { display: flex; gap: var(--s2); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s2);
+  min-height: 40px; padding: 0 var(--s4); border: 1px solid var(--line); background: var(--bg);
+  border-radius: var(--radius); cursor: pointer; font-size: var(--t-sm); font-weight: 700; white-space: nowrap;
+  transition: transform 120ms ease-out, border-color 120ms ease-out;
+}
+.btn:hover { border-color: var(--ink); }
+.btn:active { transform: scale(0.98); }
+.btn[disabled] { opacity: 0.4; cursor: not-allowed; }
+.btn[disabled]:hover { border-color: var(--line); }
+.stats { display: flex; flex-wrap: wrap; gap: var(--s5); grid-column: 1 / -1; }
+.stat { display: grid; }
+.stat b { font-family: var(--font-display); font-weight: 600; font-size: var(--t-xl); line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: var(--t-xs); color: var(--muted); }
+.filters { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--s2); }
+.chipbtn {
+  min-height: 36px; padding: 0 var(--s3); border: 1px solid var(--line); background: transparent; border-radius: var(--radius);
+  cursor: pointer; font-size: var(--t-sm); transition: transform 120ms ease-out;
+}
+.chipbtn:hover { border-color: var(--ink); }
+.chipbtn:active { transform: scale(0.98); }
+.chipbtn[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+
+.days { list-style: none; margin: 0; padding: 0; }
+.day { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: var(--s4); padding: var(--s4) var(--s5); }
+.day + .day { border-top: 1px solid var(--line); }
+.day.today { background: var(--cobalt-soft); }
+.date { display: grid; align-content: start; line-height: 1.1; }
+.date .dow { font-size: var(--t-xs); color: var(--muted); }
+.date .dn { font-family: var(--font-display); font-weight: 800; font-size: var(--t-2xl); line-height: 1; font-variant-numeric: tabular-nums; }
+.date .today-tag { margin-top: var(--s1); font-size: 10px; font-weight: 700; color: var(--on-signal); background: var(--signal); padding: 1px 5px; border-radius: var(--radius); justify-self: start; }
+.items { display: grid; gap: var(--s3); min-width: 0; }
+.wo { display: grid; gap: var(--s2); min-width: 0; }
+.wo-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s2) var(--s3); }
+.tag {
+  font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: var(--radius);
+  border: 1px solid currentColor; color: var(--muted); white-space: nowrap;
+}
+.tag.key { color: var(--cobalt); }
+.tag.race { background: var(--signal); color: var(--on-signal); border-color: var(--signal); }
+.wo-name { font-weight: 700; font-size: var(--t-lg); line-height: 1.25; }
+.wo.done .wo-name { text-decoration: line-through; text-decoration-color: var(--muted); color: var(--muted); }
+.wo-meta { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s4); font-size: var(--t-sm); color: var(--muted); }
+.wo-meta .num { color: var(--ink); }
+.wo-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2) var(--s4); }
+details summary { cursor: pointer; font-size: var(--t-sm); font-weight: 700; color: var(--cobalt); list-style: none; display: inline-flex; align-items: center; min-height: 32px; border-radius: var(--radius); }
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: "+"; font-family: var(--font-data); margin-right: var(--s2); }
+details[open] summary::before { content: "\2212"; }
+details summary:hover { text-decoration: underline; text-underline-offset: 3px; }
+.steps { margin: var(--s2) 0 0; padding: var(--s3) var(--s4); border-left: 3px solid var(--cobalt); background: var(--bg); display: grid; gap: var(--s2); max-width: 70ch; font-size: var(--t-sm); }
+.donebox { display: inline-flex; align-items: center; gap: var(--s2); font-size: var(--t-sm); cursor: pointer; min-height: 32px; }
+.donebox input { width: 18px; height: 18px; accent-color: var(--cobalt); margin: 0; cursor: pointer; }
+.rest-note { color: var(--muted); font-size: var(--t-sm); padding-top: var(--s2); }
+.loading-note { padding: var(--s4) var(--s5); }
+.rest-note b { color: var(--ink); font-weight: 700; }
+
+.empty { padding: var(--s7) var(--s5); display: grid; justify-items: start; gap: var(--s3); }
+.empty h3 { font-family: var(--font-display); font-weight: 800; font-size: var(--t-xl); text-transform: uppercase; }
+.empty p { color: var(--muted); max-width: 52ch; }
+
+.skel { padding: var(--s4) var(--s5); display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: var(--s4); }
+.skel + .skel { border-top: 1px solid var(--line); }
+.skel i { display: block; background: var(--line); border-radius: var(--radius); height: 14px; }
+.skel .a { height: 34px; width: 44px; }
+.skel .b { width: 60%; height: 18px; margin-bottom: var(--s2); }
+.skel .c { width: 40%; }
+@media (prefers-reduced-motion: no-preference) {
+  .skel i { animation: pulse 1s ease-in-out infinite alternate; }
+  .wo, .rest-note { animation: rise 180ms ease-out both; animation-delay: calc(var(--i, 0) * 18ms); }
+}
+@keyframes pulse { from { opacity: 1; } to { opacity: 0.45; } }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ---------- Zones ---------- */
+.zones { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 3px solid var(--ink); }
+.zone { padding: var(--s4) var(--s4) var(--s4) 0; display: grid; gap: var(--s1); align-content: start; }
+.zone + .zone { padding-left: var(--s4); border-left: 1px solid var(--line); }
+.zone h3 { font-size: var(--t-md); font-weight: 700; }
+.zone .pace { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.75rem, 4vw, 2.5rem); line-height: 1; font-variant-numeric: tabular-nums; }
+.zone.mp .pace { color: var(--cobalt); }
+.zone .hr { font-size: var(--t-sm); }
+.zone p { font-size: var(--t-sm); color: var(--muted); margin-top: var(--s2); }
+.zone-foot { margin-top: var(--s4); font-size: var(--t-sm); color: var(--muted); max-width: 70ch; }
+
+/* ---------- Race ---------- */
+.race-strip { display: flex; border: 2px solid var(--ink); border-radius: var(--radius); overflow: hidden; }
+.seg { padding: var(--s3); display: grid; gap: var(--s1); min-width: 0; align-content: start; }
+.seg + .seg { border-left: 2px solid var(--ink); }
+.seg .km { font-size: var(--t-xs); color: var(--muted); }
+.seg .pace { font-family: var(--font-display); font-weight: 800; font-size: var(--t-xl); line-height: 1; font-variant-numeric: tabular-nums; }
+.seg p { font-size: var(--t-sm); }
+.seg.s1 { flex: 5; }
+.seg.s2 { flex: 25; background: var(--cobalt-soft); }
+.seg.s3 { flex: 12.2; }
+.race-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s6); margin-top: var(--s6); }
+.race-grid h3 { font-size: var(--t-lg); margin-bottom: var(--s2); }
+.race-grid p, .race-grid li { font-size: var(--t-sm); color: var(--muted); }
+.race-grid ul { margin: 0; padding-left: var(--s4); display: grid; gap: var(--s2); }
+.race-grid strong { color: var(--ink); }
+
+footer { border-top: 1px solid var(--line); padding-top: var(--s4); font-size: var(--t-sm); color: var(--muted); display: grid; gap: var(--s2); max-width: 75ch; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: var(--s6); }
+  .zones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .zone:nth-child(3) { padding-left: 0; border-left: 0; }
+  .zone:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .race-grid { grid-template-columns: minmax(0, 1fr); gap: var(--s5); }
+}
+@media (max-width: 560px) {
+  .wrap { gap: var(--s7); padding-block: var(--s5) var(--s7); }
+  .week-top { grid-template-columns: minmax(0, 1fr); padding: var(--s4); }
+  .pager { order: -1; }
+  .day { grid-template-columns: 52px minmax(0, 1fr); gap: var(--s3); padding: var(--s4); }
+  .skel { grid-template-columns: 52px minmax(0, 1fr); padding: var(--s4); }
+  .phase { font-size: 10px; }
+  .x span, .bar .km { font-size: 10px; }
+  .bar .km { display: none; }
+  .bar[aria-pressed="true"] .km { display: block; }
+  .race-strip { flex-direction: column; }
+  .seg + .seg { border-left: 0; border-top: 2px solid var(--ink); }
+  .zones { grid-template-columns: minmax(0, 1fr); }
+  .zone, .zone + .zone { padding-left: 0; border-left: 0; }
+  .zone + .zone { border-top: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+</style>
+</head>
+<body>
+<style>
+/* Plan switcher + per-plan sections */
+.switcher { display: flex; flex-wrap: wrap; gap: var(--s2); border-bottom: 1px solid var(--line); padding-bottom: var(--s4); }
+.tab {
+  display: grid; gap: 2px; text-align: left; min-height: 56px; padding: var(--s2) var(--s4);
+  border: 1px solid var(--line); background: transparent; border-radius: var(--radius); cursor: pointer;
+  transition: transform 120ms ease-out, border-color 120ms ease-out;
+}
+.tab:hover { border-color: var(--ink); }
+.tab:active { transform: scale(0.98); }
+.tab b { font-family: var(--font-display); font-weight: 800; font-size: var(--t-xl); line-height: 1; text-transform: uppercase; }
+.tab span { font-size: var(--t-xs); color: var(--muted); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.tab[aria-selected="true"] span { color: var(--bg); opacity: 0.8; }
+.kind { font-family: var(--font-body); display: inline-flex; align-items: center; font-size: 11px; font-weight: 700; padding: 2px 6px; border-radius: var(--radius); border: 1px solid currentColor; color: var(--cobalt); margin-left: var(--s2); vertical-align: 2px; }
+.kind.personal { color: var(--on-signal); background: var(--signal); border-color: var(--signal); }
+.snap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 3px solid var(--ink); }
+.snap .fact:nth-child(odd), .snap .fact:nth-child(even) { padding: var(--s4) var(--s4) var(--s4) 0; border-left: 0; }
+.snap .fact:not(:nth-child(3n+1)) { padding-left: var(--s4); border-left: 1px solid var(--line); }
+.snap .fact dd { font-size: var(--t-xl); }
+.snap-note { margin-top: var(--s4); font-size: var(--t-sm); color: var(--muted); max-width: 70ch; }
+.reqs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 3px solid var(--ink); }
+.reqs li { padding: var(--s4) var(--s4) var(--s4) 0; border-bottom: 1px solid var(--line); display: grid; gap: var(--s1); }
+.reqs li:nth-child(even) { padding-left: var(--s4); border-left: 1px solid var(--line); }
+.reqs b { font-family: var(--font-display); font-weight: 600; font-size: var(--t-xl); line-height: 1.05; }
+.reqs span { font-size: var(--t-sm); color: var(--muted); }
+@media (max-width: 860px) { .snap { grid-template-columns: repeat(2, minmax(0, 1fr)); } .snap .fact:not(:nth-child(3n+1)) { padding-left: 0; border-left: 0; } .snap .fact:nth-child(even) { padding-left: var(--s4); border-left: 1px solid var(--line); } }
+@media (max-width: 560px) { .reqs { grid-template-columns: minmax(0, 1fr); } .reqs li:nth-child(even) { padding-left: 0; border-left: 0; } .tab { flex: 1 1 140px; } }
+</style>
+
+<div class="wrap">
+  <nav class="switcher" role="tablist" aria-label="Choose a plan" id="switcher"></nav>
+
+  <header class="hero">
+    <div>
+      <p class="race-name" id="raceName">Tata Mumbai Marathon <span>Sunday 17 January 2027</span></p>
+      <h1 class="goal" id="goal">3:45</h1>
+      <div class="goal-sub" id="goalSub"></div>
+    </div>
+    <dl class="facts" id="facts"></dl>
+  </header>
+
+  <section aria-labelledby="whoTitle" id="whoSection">
+    <div class="sec-head">
+      <h2 id="whoTitle">Who this plan is for</h2>
+      <p id="whoIntro"></p>
+    </div>
+    <div id="whoBody"></div>
+  </section>
+
+  <section aria-labelledby="profileTitle">
+    <div class="sec-head">
+      <h2 id="profileTitle">Twelve weeks of running</h2>
+      <p>Weekly running distance. Select a week to see its sessions.</p>
+    </div>
+    <div class="profile">
+      <div class="axis num" aria-hidden="true" id="axis"></div>
+      <div>
+        <div class="plot" id="plot">
+          <div class="bars" id="bars" role="group" aria-label="Weeks"></div>
+        </div>
+        <div class="x num" id="xlabels" aria-hidden="true"></div>
+        <div class="phases" id="phases" aria-hidden="true"></div>
+        <div class="legend">
+          <span><i class="l-train"></i>Training km</span>
+          <span><i class="l-rec"></i>Easier week</span>
+          <span><i class="l-race"></i>Race, 42.2 km</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="week" aria-labelledby="weekTitle" id="weekPanel">
+    <div class="week-top">
+      <div class="week-title">
+        <h2 class="wk" id="weekTitle">Week <em>1</em></h2>
+        <span class="dates" id="weekDates"></span>
+        <p class="focus" id="weekFocus"></p>
+      </div>
+      <div class="pager">
+        <button class="btn" id="prevWeek" type="button" aria-label="Previous week">Prev</button>
+        <button class="btn" id="nextWeek" type="button" aria-label="Next week">Next</button>
+      </div>
+      <div class="stats" id="weekStats"></div>
+      <div class="filters" role="group" aria-label="Filter sessions">
+        <button class="chipbtn" type="button" data-filter="all" aria-pressed="true">All sessions</button>
+        <button class="chipbtn" type="button" data-filter="key" aria-pressed="false">Key sessions</button>
+        <button class="chipbtn" type="button" data-filter="todo" aria-pressed="false">Not done yet</button>
+      </div>
+    </div>
+    <div id="weekBody" aria-live="polite">
+      <div aria-hidden="true">
+        <div class="skel"><i class="a"></i><div><i class="b"></i><i class="c"></i></div></div>
+        <div class="skel"><i class="a"></i><div><i class="b"></i><i class="c"></i></div></div>
+        <div class="skel"><i class="a"></i><div><i class="b"></i><i class="c"></i></div></div>
+        <div class="skel"><i class="a"></i><div><i class="b"></i><i class="c"></i></div></div>
+      </div>
+      <p class="rest-note loading-note">Loading the week</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="zonesTitle">
+    <div class="sec-head">
+      <h2 id="zonesTitle">Paces and heart rate</h2>
+      <p id="zonesIntro"></p>
+    </div>
+    <div class="zones" id="zones"></div>
+    <p class="zone-foot" id="zoneFoot"></p>
+  </section>
+
+  <section aria-labelledby="raceTitle">
+    <div class="sec-head">
+      <h2 id="raceTitle">Race day plan</h2>
+      <p>Pace is drawn to scale across the 42.2 km.</p>
+    </div>
+    <div class="race-strip" id="raceStrip"></div>
+    <div class="race-grid" id="raceGrid"></div>
+  </section>
+
+  <footer id="foot"></footer>
+</div>
+
+<script id="plan-jayesh" type="application/json">{"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata Mumbai Marathon 2027","eventDate":"2027-01-17","planStartDate":"2026-10-26","planEndDate":"2027-01-17","createdAt":"2026-10-29T00:00:00Z","updatedAt":"2026-10-29T00:00:00Z","totalWeeks":12,"generatedBy":"Claude Coach (coros-coach)"},"preferences":{"swim":"meters","bike":"kilometers","run":"kilometers","firstDayOfWeek":"monday"},"assessment":{"foundation":{"raceHistory":["Leh/Ladakh marathon Sep 2026 (42.5 km, 6:01, altitude)","Gurgaon triathlon Oct 2026"],"peakTrainingLoad":9,"foundationLevel":"intermediate","yearsInSport":2},"currentForm":{"weeklyVolume":{"total":7,"run":1.5,"bike":1,"swim":0.7},"longestSessions":{"run":12.7,"bike":15},"consistency":3},"strengths":[{"sport":"run","evidence":"Marathon finished Sep 2026; 50-60 km weeks in Aug/Sep; VO2max 54"},{"sport":"strength","evidence":"4-5 lifting sessions/wk consistently"}],"limiters":[{"sport":"run","evidence":"Last 3 wks only 12-16 km/wk; LT pace 5:18/km is slower than sub-3:30 MP (4:58)"}],"constraints":["4 runs/wk: Tue, Wed, Fri, Sun","Heavy lifting Mon (press) / Wed (bench) / Fri (squat) / Sat (deadlift), deload every 4th wk","Pool access ending, no swim","Gurgaon heat/pollution: HR caps over pace","Goal revised: sub-3:30 → 3:45 (stretch 3:40)"]},"zones":{"run":{"hr":{"lthr":166,"zones":[{"zone":1,"name":"Recovery","percentLow":0,"percentHigh":81,"hrLow":0,"hrHigh":134},{"zone":2,"name":"Aerobic","percentLow":81,"percentHigh":89,"hrLow":134,"hrHigh":148},{"zone":3,"name":"Tempo","percentLow":90,"percentHigh":93,"hrLow":149,"hrHigh":154},{"zone":4,"name":"Sub-threshold","percentLow":94,"percentHigh":99,"hrLow":156,"hrHigh":164},{"zone":5,"name":"Threshold (5a)","percentLow":100,"percentHigh":102,"hrLow":166,"hrHigh":169},{"zone":6,"name":"VO2max (5b)","percentLow":103,"percentHigh":106,"hrLow":171,"hrHigh":176}]},"pace":{"thresholdPace":"5:18/km","easy":"6:10-6:40/km","marathon":"5:18-5:26/km","threshold":"5:05-5:15/km","interval":"4:45-4:55/km"}}},"phases":[{"name":"Rebuild","startWeek":1,"endWeek":2,"focus":"Restore 5 runs/wk after 3 low weeks","weeklyHoursRange":{"low":2.5,"high":4},"keyWorkouts":["Long run 14-16k"],"physiologicalGoals":["Re-establish frequency","Tendon/joint re-loading"]},{"name":"Base","startWeek":3,"endWeek":4,"focus":"Aerobic volume + threshold","weeklyHoursRange":{"low":4,"high":5},"keyWorkouts":["3x8min T","Long 18k","30-min LT test"],"physiologicalGoals":["Raise LT pace","Aerobic base"]},{"name":"Build","startWeek":5,"endWeek":8,"focus":"Marathon-specific: MP volume, intervals, long-run fuelling","weeklyHoursRange":{"low":4.5,"high":6.5},"keyWorkouts":["MP 6-8k","Long 20-25k w/ MP","LT retest wk 8"],"physiologicalGoals":["MP economy","Glycogen sparing","Gut training"]},{"name":"Peak","startWeek":9,"endWeek":10,"focus":"Highest volume + race simulation","weeklyHoursRange":{"low":7,"high":7.5},"keyWorkouts":["MP 10k","32k w/ 3x5k MP"],"physiologicalGoals":["Fatigue resistance at MP"]},{"name":"Taper","startWeek":11,"endWeek":12,"focus":"Shed fatigue, keep sharpness","weeklyHoursRange":{"low":3,"high":5},"keyWorkouts":["MP 8k","MP sharpener"],"physiologicalGoals":["Supercompensation"]}],"weeks":[{"weekNumber":1,"startDate":"2026-10-26","endDate":"2026-11-01","phase":"Rebuild","focus":"Restart on four runs a week. HRV is a little below baseline, so keep it easy","targetHours":3.7,"isRecoveryWeek":false,"days":[{"date":"2026-10-26","dayOfWeek":"Monday","workouts":[{"id":"w1-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Done: strength.","completed":false}]},{"date":"2026-10-27","dayOfWeek":"Tuesday","workouts":[{"id":"w1-tue","sport":"run","type":"endurance","name":"Done: 6.5k incl 1k reps","description":"endurance","durationMinutes":46,"distanceMeters":6600,"primaryZone":"mixed","humanReadable":"Already completed (Oct 27).","completed":true}]},{"date":"2026-10-28","dayOfWeek":"Wednesday","workouts":[{"id":"w1-wed","sport":"run","type":"endurance","name":"Done: 6k easy","description":"endurance","durationMinutes":48,"distanceMeters":6100,"primaryZone":"Zone 2","humanReadable":"Already completed (Oct 28).","completed":true}]},{"date":"2026-10-29","dayOfWeek":"Thursday","workouts":[{"id":"w1-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-10-30","dayOfWeek":"Friday","workouts":[{"id":"w1-fri","sport":"run","type":"endurance","name":"Easy 6k","description":"Aerobic volume. Conversational.","durationMinutes":38,"distanceMeters":6000,"primaryZone":"Zone 2","humanReadable":"6 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2026-10-31","dayOfWeek":"Saturday","workouts":[{"id":"w1-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-11-01","dayOfWeek":"Sunday","workouts":[{"id":"w1-sun","sport":"run","type":"long","name":"Long run 14k","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":90,"distanceMeters":14000,"primaryZone":"Zone 2","humanReadable":"14 km total. Steady easy @ 6:10-6:40/km, HR 134-147 bpm","completed":false}]}],"summary":{"totalHours":3.7,"bySport":{"run":{"sessions":4,"hours":3.7,"km":32.7}}}},{"weekNumber":2,"startDate":"2026-11-02","endDate":"2026-11-08","phase":"Rebuild","focus":"Four runs a week, first light quality","targetHours":3.8,"isRecoveryWeek":false,"days":[{"date":"2026-11-02","dayOfWeek":"Monday","workouts":[{"id":"w2-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-11-03","dayOfWeek":"Tuesday","workouts":[{"id":"w2-tue","sport":"run","type":"vo2max","name":"Fartlek 8x1min","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":45,"distanceMeters":7000,"primaryZone":"Zone 2 + 5b","humanReadable":"2 km easy WU\n8x1 min brisk @ ~4:50/km / 1 min easy jog\n2 km easy CD","completed":false}]},{"date":"2026-11-04","dayOfWeek":"Wednesday","workouts":[{"id":"w2-wed","sport":"run","type":"endurance","name":"Easy 6k","description":"Aerobic volume. Conversational.","durationMinutes":38,"distanceMeters":6000,"primaryZone":"Zone 2","humanReadable":"6 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2026-11-05","dayOfWeek":"Thursday","workouts":[{"id":"w2-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-11-06","dayOfWeek":"Friday","workouts":[{"id":"w2-fri","sport":"run","type":"tempo","name":"Marathon pace 3k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":42,"distanceMeters":7000,"primaryZone":"MP (Z3)","humanReadable":"2 km easy WU\n3 km @ MP, 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD","completed":false}]},{"date":"2026-11-07","dayOfWeek":"Saturday","workouts":[{"id":"w2-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-11-08","dayOfWeek":"Sunday","workouts":[{"id":"w2-sun","sport":"run","type":"long","name":"Long run 16k","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":103,"distanceMeters":16000,"primaryZone":"Zone 2","humanReadable":"16 km total. Steady easy @ 6:10-6:40/km, HR 134-147 bpm","completed":false}]}],"summary":{"totalHours":3.8,"bySport":{"run":{"sessions":4,"hours":3.8,"km":36.0}}}},{"weekNumber":3,"startDate":"2026-11-09","endDate":"2026-11-15","phase":"Base","focus":"First threshold session","targetHours":4.5,"isRecoveryWeek":false,"days":[{"date":"2026-11-09","dayOfWeek":"Monday","workouts":[{"id":"w3-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-11-10","dayOfWeek":"Tuesday","workouts":[{"id":"w3-tue","sport":"run","type":"threshold","name":"Threshold 3x8min","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":54,"distanceMeters":9200,"primaryZone":"Zone 4-5a","humanReadable":"2 km easy WU + 4 strides\n3x8 min @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD","completed":false}]},{"date":"2026-11-11","dayOfWeek":"Wednesday","workouts":[{"id":"w3-wed","sport":"run","type":"endurance","name":"Easy 7k + strides","description":"Aerobic volume. Conversational.","durationMinutes":48,"distanceMeters":7000,"primaryZone":"Zone 2","humanReadable":"7 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk","completed":false}]},{"date":"2026-11-12","dayOfWeek":"Thursday","workouts":[{"id":"w3-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-11-13","dayOfWeek":"Friday","workouts":[{"id":"w3-fri","sport":"run","type":"tempo","name":"Marathon pace 5k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":52,"distanceMeters":9000,"primaryZone":"MP (Z3)","humanReadable":"2 km easy WU\n5 km @ MP, 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD","completed":false}]},{"date":"2026-11-14","dayOfWeek":"Saturday","workouts":[{"id":"w3-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-11-15","dayOfWeek":"Sunday","workouts":[{"id":"w3-sun","sport":"run","type":"long","name":"Long run 18k","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":116,"distanceMeters":18000,"primaryZone":"Zone 2","humanReadable":"18 km total. Steady easy @ 6:10-6:40/km, HR 134-147 bpm\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)","completed":false}]}],"summary":{"totalHours":4.5,"bySport":{"run":{"sessions":4,"hours":4.5,"km":43.2}}}},{"weekNumber":4,"startDate":"2026-11-16","endDate":"2026-11-22","phase":"Base","focus":"Easier week with a threshold test. Line up your strength deload","targetHours":3.9,"isRecoveryWeek":true,"days":[{"date":"2026-11-16","dayOfWeek":"Monday","workouts":[{"id":"w4-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-11-17","dayOfWeek":"Tuesday","workouts":[{"id":"w4-tue","sport":"run","type":"test","name":"30-min threshold test","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":70,"distanceMeters":9000,"primaryZone":"Test","humanReadable":"2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD","completed":false}]},{"date":"2026-11-18","dayOfWeek":"Wednesday","workouts":[{"id":"w4-wed","sport":"run","type":"endurance","name":"Easy 6k","description":"Aerobic volume. Conversational.","durationMinutes":38,"distanceMeters":6000,"primaryZone":"Zone 2","humanReadable":"6 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2026-11-19","dayOfWeek":"Thursday","workouts":[{"id":"w4-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-11-20","dayOfWeek":"Friday","workouts":[{"id":"w4-fri","sport":"run","type":"endurance","name":"Easy 6k + strides","description":"Aerobic volume. Conversational.","durationMinutes":42,"distanceMeters":6000,"primaryZone":"Zone 2","humanReadable":"6 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk","completed":false}]},{"date":"2026-11-21","dayOfWeek":"Saturday","workouts":[{"id":"w4-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-11-22","dayOfWeek":"Sunday","workouts":[{"id":"w4-sun","sport":"run","type":"long","name":"Long run 13k","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":83,"distanceMeters":13000,"primaryZone":"Zone 2","humanReadable":"13 km total. Steady easy @ 6:10-6:40/km, HR 134-147 bpm","completed":false}]}],"summary":{"totalHours":3.9,"bySport":{"run":{"sessions":4,"hours":3.9,"km":34.0}}}},{"weekNumber":5,"startDate":"2026-11-23","endDate":"2026-11-29","phase":"Build","focus":"Marathon-specific work begins","targetHours":5.1,"isRecoveryWeek":false,"days":[{"date":"2026-11-23","dayOfWeek":"Monday","workouts":[{"id":"w5-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-11-24","dayOfWeek":"Tuesday","workouts":[{"id":"w5-tue","sport":"run","type":"vo2max","name":"Intervals 5x1000m","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":60,"distanceMeters":10500,"primaryZone":"Zone 5b","humanReadable":"2 km easy WU + 4 strides\n5x1000 m @ 4:45-4:55/km (HR 167-174 bpm by end of rep), 2 min easy jog between\n2 km easy CD","completed":false}]},{"date":"2026-11-25","dayOfWeek":"Wednesday","workouts":[{"id":"w5-wed","sport":"run","type":"endurance","name":"Easy 8k","description":"Aerobic volume. Conversational.","durationMinutes":51,"distanceMeters":8000,"primaryZone":"Zone 2","humanReadable":"8 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2026-11-26","dayOfWeek":"Thursday","workouts":[{"id":"w5-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-11-27","dayOfWeek":"Friday","workouts":[{"id":"w5-fri","sport":"run","type":"tempo","name":"Marathon pace 6k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":58,"distanceMeters":10000,"primaryZone":"MP (Z3)","humanReadable":"2 km easy WU\n6 km @ MP, 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD","completed":false}]},{"date":"2026-11-28","dayOfWeek":"Saturday","workouts":[{"id":"w5-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-11-29","dayOfWeek":"Sunday","workouts":[{"id":"w5-sun","sport":"run","type":"long","name":"Long run 21k","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":135,"distanceMeters":21000,"primaryZone":"Zone 2","humanReadable":"21 km total. Steady easy @ 6:10-6:40/km, HR 134-147 bpm\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)","completed":false}]}],"summary":{"totalHours":5.1,"bySport":{"run":{"sessions":4,"hours":5.1,"km":49.5}}}},{"weekNumber":6,"startDate":"2026-11-30","endDate":"2026-12-06","phase":"Build","focus":"Threshold and longer marathon pace","targetHours":5.7,"isRecoveryWeek":false,"days":[{"date":"2026-11-30","dayOfWeek":"Monday","workouts":[{"id":"w6-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-12-01","dayOfWeek":"Tuesday","workouts":[{"id":"w6-tue","sport":"run","type":"threshold","name":"Threshold 4x1.6km","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":63,"distanceMeters":11300,"primaryZone":"Zone 4-5a","humanReadable":"2 km easy WU + 4 strides\n4x1.6 km @ T 5:05-5:15/km (HR 158-166 bpm), 90s easy jog between\n2 km easy CD","completed":false}]},{"date":"2026-12-02","dayOfWeek":"Wednesday","workouts":[{"id":"w6-wed","sport":"run","type":"endurance","name":"Easy 8k + strides","description":"Aerobic volume. Conversational.","durationMinutes":54,"distanceMeters":8000,"primaryZone":"Zone 2","humanReadable":"8 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk","completed":false}]},{"date":"2026-12-03","dayOfWeek":"Thursday","workouts":[{"id":"w6-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-12-04","dayOfWeek":"Friday","workouts":[{"id":"w6-fri","sport":"run","type":"tempo","name":"Marathon pace 8k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":69,"distanceMeters":12000,"primaryZone":"MP (Z3)","humanReadable":"2 km easy WU\n8 km @ MP, 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD","completed":false}]},{"date":"2026-12-05","dayOfWeek":"Saturday","workouts":[{"id":"w6-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-12-06","dayOfWeek":"Sunday","workouts":[{"id":"w6-sun","sport":"run","type":"long","name":"Long run 24k","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":154,"distanceMeters":24000,"primaryZone":"Zone 2","humanReadable":"24 km total. Steady easy @ 6:10-6:40/km, HR 134-147 bpm\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)","completed":false}]}],"summary":{"totalHours":5.7,"bySport":{"run":{"sessions":4,"hours":5.7,"km":55.3}}}},{"weekNumber":7,"startDate":"2026-12-07","endDate":"2026-12-13","phase":"Build","focus":"First long run with a marathon pace finish","targetHours":6.0,"isRecoveryWeek":false,"days":[{"date":"2026-12-07","dayOfWeek":"Monday","workouts":[{"id":"w7-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-12-08","dayOfWeek":"Tuesday","workouts":[{"id":"w7-tue","sport":"run","type":"vo2max","name":"Intervals 6x1000m","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":67,"distanceMeters":11800,"primaryZone":"Zone 5b","humanReadable":"2 km easy WU + 4 strides\n6x1000 m @ 4:45-4:55/km (HR 167-174 bpm by end of rep), 2 min easy jog between\n2 km easy CD","completed":false}]},{"date":"2026-12-09","dayOfWeek":"Wednesday","workouts":[{"id":"w7-wed","sport":"run","type":"endurance","name":"Easy 9k","description":"Aerobic volume. Conversational.","durationMinutes":58,"distanceMeters":9000,"primaryZone":"Zone 2","humanReadable":"9 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2026-12-10","dayOfWeek":"Thursday","workouts":[{"id":"w7-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-12-11","dayOfWeek":"Friday","workouts":[{"id":"w7-fri","sport":"run","type":"tempo","name":"Marathon pace 8k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":75,"distanceMeters":13000,"primaryZone":"MP (Z3)","humanReadable":"2 km easy WU\n2x4 km @ MP w/ 1 km easy float between, 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD","completed":false}]},{"date":"2026-12-12","dayOfWeek":"Saturday","workouts":[{"id":"w7-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-12-13","dayOfWeek":"Sunday","workouts":[{"id":"w7-sun","sport":"run","type":"long","name":"Long run 26k w/ 6k MP","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":161,"distanceMeters":26000,"primaryZone":"Zone 2 + MP","humanReadable":"26 km total. First 18 km easy @ 6:10-6:40/km (HR ≤147) → 6 km @ MP 5:18-5:26/km (HR 150-158 bpm) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)","completed":false}]}],"summary":{"totalHours":6.0,"bySport":{"run":{"sessions":4,"hours":6.0,"km":59.8}}}},{"weekNumber":8,"startDate":"2026-12-14","endDate":"2026-12-20","phase":"Build","focus":"Easier week with a retest that sets the goal (3:45 or 3:40)","targetHours":4.3,"isRecoveryWeek":true,"days":[{"date":"2026-12-14","dayOfWeek":"Monday","workouts":[{"id":"w8-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-12-15","dayOfWeek":"Tuesday","workouts":[{"id":"w8-tue","sport":"run","type":"test","name":"30-min threshold test","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":70,"distanceMeters":9000,"primaryZone":"Test","humanReadable":"2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD","completed":false}]},{"date":"2026-12-16","dayOfWeek":"Wednesday","workouts":[{"id":"w8-wed","sport":"run","type":"endurance","name":"Easy 7k","description":"Aerobic volume. Conversational.","durationMinutes":45,"distanceMeters":7000,"primaryZone":"Zone 2","humanReadable":"7 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2026-12-17","dayOfWeek":"Thursday","workouts":[{"id":"w8-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-12-18","dayOfWeek":"Friday","workouts":[{"id":"w8-fri","sport":"run","type":"endurance","name":"Easy 7k + strides","description":"Aerobic volume. Conversational.","durationMinutes":48,"distanceMeters":7000,"primaryZone":"Zone 2","humanReadable":"7 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk","completed":false}]},{"date":"2026-12-19","dayOfWeek":"Saturday","workouts":[{"id":"w8-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-12-20","dayOfWeek":"Sunday","workouts":[{"id":"w8-sun","sport":"run","type":"long","name":"Long run 16k w/ 5k MP","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":97,"distanceMeters":16000,"primaryZone":"Zone 2 + MP","humanReadable":"16 km total. First 9 km easy @ 6:10-6:40/km (HR ≤147) → 5 km @ MP 5:18-5:26/km (HR 150-158 bpm) → 2 km easy","completed":false}]}],"summary":{"totalHours":4.3,"bySport":{"run":{"sessions":4,"hours":4.3,"km":39.0}}}},{"weekNumber":9,"startDate":"2026-12-21","endDate":"2026-12-27","phase":"Peak","focus":"Biggest volume","targetHours":6.7,"isRecoveryWeek":false,"days":[{"date":"2026-12-21","dayOfWeek":"Monday","workouts":[{"id":"w9-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-12-22","dayOfWeek":"Tuesday","workouts":[{"id":"w9-tue","sport":"run","type":"threshold","name":"Threshold 3x3km","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":76,"distanceMeters":13600,"primaryZone":"Zone 4-5a","humanReadable":"2 km easy WU + 4 strides\n3x3 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD","completed":false}]},{"date":"2026-12-23","dayOfWeek":"Wednesday","workouts":[{"id":"w9-wed","sport":"run","type":"endurance","name":"Easy 10k","description":"Aerobic volume. Conversational.","durationMinutes":64,"distanceMeters":10000,"primaryZone":"Zone 2","humanReadable":"10 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2026-12-24","dayOfWeek":"Thursday","workouts":[{"id":"w9-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2026-12-25","dayOfWeek":"Friday","workouts":[{"id":"w9-fri","sport":"run","type":"tempo","name":"Marathon pace 10k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":79,"distanceMeters":14000,"primaryZone":"MP (Z3)","humanReadable":"2 km easy WU\n10 km @ MP, 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD","completed":false}]},{"date":"2026-12-26","dayOfWeek":"Saturday","workouts":[{"id":"w9-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. No run. Keep it at RPE 8 or below before the long run.","completed":false}]},{"date":"2026-12-27","dayOfWeek":"Sunday","workouts":[{"id":"w9-sun","sport":"run","type":"long","name":"Long run 29k w/ 5k MP","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":181,"distanceMeters":29000,"primaryZone":"Zone 2 + MP","humanReadable":"29 km total. First 22 km easy @ 6:10-6:40/km (HR ≤147) → 5 km @ MP 5:18-5:26/km (HR 150-158 bpm) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nProgressive: last 5 km at MP. Full race kit and breakfast rehearsal (wake 3:30, run 5:15)","completed":false}]}],"summary":{"totalHours":6.7,"bySport":{"run":{"sessions":4,"hours":6.7,"km":66.6}}}},{"weekNumber":10,"startDate":"2026-12-28","endDate":"2027-01-03","phase":"Peak","focus":"Last big week. 32k race rehearsal","targetHours":6.5,"isRecoveryWeek":false,"days":[{"date":"2026-12-28","dayOfWeek":"Monday","workouts":[{"id":"w10-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2026-12-29","dayOfWeek":"Tuesday","workouts":[{"id":"w10-tue","sport":"run","type":"vo2max","name":"Intervals 5x1200m","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":65,"distanceMeters":11500,"primaryZone":"Zone 5b","humanReadable":"2 km easy WU + 4 strides\n5x1200 m @ 4:45-4:55/km (HR 167-174 bpm by end of rep), 2 min easy jog between\n2 km easy CD","completed":false}]},{"date":"2026-12-30","dayOfWeek":"Wednesday","workouts":[{"id":"w10-wed","sport":"run","type":"endurance","name":"Easy 10k + strides","description":"Aerobic volume. Conversational.","durationMinutes":67,"distanceMeters":10000,"primaryZone":"Zone 2","humanReadable":"10 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk","completed":false}]},{"date":"2026-12-31","dayOfWeek":"Thursday","workouts":[{"id":"w10-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2027-01-01","dayOfWeek":"Friday","workouts":[{"id":"w10-fri","sport":"run","type":"tempo","name":"Marathon pace 8k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":69,"distanceMeters":12000,"primaryZone":"MP (Z3)","humanReadable":"2 km easy WU\n8 km @ MP, 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD","completed":false}]},{"date":"2027-01-02","dayOfWeek":"Saturday","workouts":[{"id":"w10-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Deadlift day. Cap at RPE 7, long run tomorrow.","completed":false}]},{"date":"2027-01-03","dayOfWeek":"Sunday","workouts":[{"id":"w10-sun","sport":"run","type":"long","name":"Long run 32k w/ 15k MP","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":190,"distanceMeters":32000,"primaryZone":"Zone 2 + MP","humanReadable":"32 km total. First 15 km easy @ 6:10-6:40/km (HR ≤147) → 15 km @ MP 5:18-5:26/km (HR 150-158 bpm) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nStructure: 12 km easy, then 3x5 km at MP with 1 km easy between (count the floats as easy), then 3 km easy. Exact race fuel.","completed":false}]}],"summary":{"totalHours":6.5,"bySport":{"run":{"sessions":4,"hours":6.5,"km":65.5}}}},{"weekNumber":11,"startDate":"2027-01-04","endDate":"2027-01-10","phase":"Taper","focus":"Volume down about 30%, intensity stays. Light lower-body lifting","targetHours":4.7,"isRecoveryWeek":false,"days":[{"date":"2027-01-04","dayOfWeek":"Monday","workouts":[{"id":"w11-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Press day (shoulders and arms). No run.","completed":false}]},{"date":"2027-01-05","dayOfWeek":"Tuesday","workouts":[{"id":"w11-tue","sport":"run","type":"threshold","name":"Threshold 3x2km","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":61,"distanceMeters":10600,"primaryZone":"Zone 4-5a","humanReadable":"2 km easy WU + 4 strides\n3x2 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD","completed":false}]},{"date":"2027-01-06","dayOfWeek":"Wednesday","workouts":[{"id":"w11-wed","sport":"run","type":"endurance","name":"Easy 7k","description":"Aerobic volume. Conversational.","durationMinutes":45,"distanceMeters":7000,"primaryZone":"Zone 2","humanReadable":"7 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2027-01-07","dayOfWeek":"Thursday","workouts":[{"id":"w11-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Optional 30-45 min easy spin, HR 115-135.","completed":false}]},{"date":"2027-01-08","dayOfWeek":"Friday","workouts":[{"id":"w11-fri","sport":"run","type":"tempo","name":"Marathon pace 8k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":69,"distanceMeters":12000,"primaryZone":"MP (Z3)","humanReadable":"2 km easy WU\n8 km @ MP, 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD","completed":false}]},{"date":"2027-01-09","dayOfWeek":"Saturday","workouts":[{"id":"w11-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Pull day, light. No heavy deadlift.","completed":false}]},{"date":"2027-01-10","dayOfWeek":"Sunday","workouts":[{"id":"w11-sun","sport":"run","type":"long","name":"Long run 18k w/ 6k MP","description":"Key session. Builds endurance + fuelling practice.","durationMinutes":109,"distanceMeters":18000,"primaryZone":"Zone 2 + MP","humanReadable":"18 km total. First 10 km easy @ 6:10-6:40/km (HR ≤147) → 6 km @ MP 5:18-5:26/km (HR 150-158 bpm) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)","completed":false}]}],"summary":{"totalHours":4.7,"bySport":{"run":{"sessions":4,"hours":4.7,"km":47.6}}}},{"weekNumber":12,"startDate":"2027-01-11","endDate":"2027-01-17","phase":"Race","focus":"Race week. No heavy lower-body lifting","targetHours":5.7,"isRecoveryWeek":false,"days":[{"date":"2027-01-11","dayOfWeek":"Monday","workouts":[{"id":"w12-mon","sport":"rest","type":"rest","name":"No run, strength","description":"Upper body only, light.","completed":false}]},{"date":"2027-01-12","dayOfWeek":"Tuesday","workouts":[{"id":"w12-tue","sport":"run","type":"tempo","name":"MP sharpener 3x1.6k","description":"Key quality session. Full 2 km warm-up + 2 km cool-down easy.","durationMinutes":52,"distanceMeters":9000,"primaryZone":"MP","humanReadable":"2 km easy WU\n3x1.6 km @ MP 5:18-5:26/km, 2 min jog between\n2 km easy CD","completed":false}]},{"date":"2027-01-13","dayOfWeek":"Wednesday","workouts":[{"id":"w12-wed","sport":"run","type":"endurance","name":"Easy 5k","description":"Aerobic volume. Conversational.","durationMinutes":32,"distanceMeters":5000,"primaryZone":"Zone 2","humanReadable":"5 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)","completed":false}]},{"date":"2027-01-14","dayOfWeek":"Thursday","workouts":[{"id":"w12-thu","sport":"rest","type":"rest","name":"No run, strength","description":"Full rest. Carb loading starts Friday.","completed":false}]},{"date":"2027-01-15","dayOfWeek":"Friday","workouts":[{"id":"w12-fri","sport":"run","type":"endurance","name":"Easy 5k + strides","description":"Aerobic volume. Conversational.","durationMinutes":35,"distanceMeters":5000,"primaryZone":"Zone 2","humanReadable":"5 km easy @ 6:10-6:40/km, HR 134-147 bpm (cap 147, slow down in heat, pace is secondary)\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk","completed":false}]},{"date":"2027-01-16","dayOfWeek":"Saturday","workouts":[{"id":"w12-sat","sport":"rest","type":"rest","name":"No run, strength","description":"Rest. Carb load (8-10 g per kg). Bib pickup, kit laid out, sleep early. No deadlift.","completed":false}]},{"date":"2027-01-17","dayOfWeek":"Sunday","workouts":[{"id":"w12-sun-race","sport":"run","type":"race","name":"TATA MUMBAI MARATHON","description":"Race day.","durationMinutes":225,"distanceMeters":42195,"primaryZone":"MP","humanReadable":"Goal 3:45 (5:20/km). Km 0-5: 5:25-5:28. Km 5-30: 5:18-5:22, HR 158 or below. Km 30+: hold or push if HR allows. Gel every 30 min.","completed":false}]}],"summary":{"totalHours":5.7,"bySport":{"run":{"sessions":4,"hours":5.7,"km":61.2}}}}],"raceStrategy":{"event":{"name":"Tata Mumbai Marathon","date":"2027-01-17","type":"marathon","distances":{"run":42.2}},"pacing":{"run":{"targetPace":"5:18-5:22/km (goal 3:45); 5:13/km if wk-8 LT test ≤5:05/km (3:40)","targetHR":"≤158 to km 30, then free","notes":"Km 0-5 at 5:25-5:28 (crowded, dark, humid). Don't chase pace on Bandra-Worli Sea Link incline, hold effort. Bank nothing. Expect late-race rise toward Peddar Road / Marine Drive and rising heat after ~7 am: if temp >24°C / very humid, add 5-10 s/km and race HR, not pace. Halfway target ~1:53."}},"nutrition":{"preRace":"Wake 3:00-3:15. 2.5-3 h before: 100-150 g carbs low-fibre (white bread/jam/banana/rice) + 500 ml fluid w/ electrolytes. Gel 15 min pre-start.","during":{"carbsPerHour":60,"fluidPerHour":"400-700 ml w/ electrolytes (humid, salt matters)","products":["Gel every 30 min (same brand as long runs)","Sip water/electrolyte at most stations"]},"notes":"Rehearse exact fuel on wk 7, 9, 10 long runs. Carb load Fri-Sat (8-10 g/kg/day). Nothing new on race day."},"taper":{"startDate":"2027-01-04","volumeReduction":35,"notes":"Wk 11 ~-30%, wk 12 ~-55% excl race. Keep MP touches. Lower-body lifting light wk 11, none wk 12."}}}</script>
+<script id="plan-open320" type="application/json">{"version":"1.0","meta":{"id":"tmm-2027-open-320","athlete":"Anyone","event":"Tata Mumbai Marathon 2027","eventDate":"2027-01-17","planStartDate":"2026-10-26","planEndDate":"2027-01-17","totalWeeks":12,"generatedBy":"Claude Coach (coros-coach)"},"phases":[{"name":"Base","startWeek":1,"endWeek":4,"focus":"Aerobic volume and threshold"},{"name":"Build","startWeek":5,"endWeek":8,"focus":"Marathon pace volume"},{"name":"Peak","startWeek":9,"endWeek":10,"focus":"Highest volume and race rehearsal"},{"name":"Taper","startWeek":11,"endWeek":12,"focus":"Shed fatigue"}],"weeks":[{"weekNumber":1,"startDate":"2026-10-26","endDate":"2026-11-01","phase":"Base","focus":"Settle into four runs a week","targetHours":4.7,"isRecoveryWeek":false,"days":[{"date":"2026-10-26","dayOfWeek":"Monday","workouts":[{"id":"o320-w1-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-10-27","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w1-tue","sport":"run","type":"threshold","name":"Threshold 3x8 min","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":56,"distanceMeters":10400,"primaryZone":"Threshold","humanReadable":"2.5 km easy warm-up + 4 strides\n3x8 min @ 4:25-4:32/km (86-90% of max HR), 90 s easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-10-28","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w1-wed","sport":"run","type":"endurance","name":"Easy 10k","description":"Aerobic volume.","durationMinutes":58,"distanceMeters":10000,"primaryZone":"Zone 2","humanReadable":"10 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.","completed":false}]},{"date":"2026-10-29","dayOfWeek":"Thursday","workouts":[{"id":"o320-w1-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-10-30","dayOfWeek":"Friday","workouts":[{"id":"o320-w1-fri","sport":"run","type":"tempo","name":"Marathon pace 6k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":51,"distanceMeters":10000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n6 km @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2026-10-31","dayOfWeek":"Saturday","workouts":[{"id":"o320-w1-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2026-11-01","dayOfWeek":"Sunday","workouts":[{"id":"o320-w1-sun","sport":"run","type":"long","name":"Long run 20k","description":"Key session.","durationMinutes":115,"distanceMeters":20000,"primaryZone":"Zone 2","humanReadable":"20 km. Steady easy @ 5:30-6:00/km (65-78% of max HR)\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes","completed":false}]}],"summary":{"totalHours":4.7,"bySport":{"run":{"sessions":4,"hours":4.7,"km":50.4}}}},{"weekNumber":2,"startDate":"2026-11-02","endDate":"2026-11-08","phase":"Base","focus":"Aerobic volume, first VO2 session","targetHours":5.2,"isRecoveryWeek":false,"days":[{"date":"2026-11-02","dayOfWeek":"Monday","workouts":[{"id":"o320-w2-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-11-03","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w2-tue","sport":"run","type":"vo2max","name":"Intervals 6x800 m","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":61,"distanceMeters":11600,"primaryZone":"VO2max","humanReadable":"2.5 km easy warm-up + 4 strides\n6x800 m @ 4:05-4:12/km (92-95% of max HR), 2 min easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-11-04","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w2-wed","sport":"run","type":"endurance","name":"Easy 11k + strides","description":"Aerobic volume.","durationMinutes":66,"distanceMeters":11000,"primaryZone":"Zone 2","humanReadable":"11 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.\nThen 6x20 s strides, fast and relaxed, 40 s walk between","completed":false}]},{"date":"2026-11-05","dayOfWeek":"Thursday","workouts":[{"id":"o320-w2-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-11-06","dayOfWeek":"Friday","workouts":[{"id":"o320-w2-fri","sport":"run","type":"tempo","name":"Marathon pace 8k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":61,"distanceMeters":12000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n8 km @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2026-11-07","dayOfWeek":"Saturday","workouts":[{"id":"o320-w2-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2026-11-08","dayOfWeek":"Sunday","workouts":[{"id":"o320-w2-sun","sport":"run","type":"long","name":"Long run 22k","description":"Key session.","durationMinutes":126,"distanceMeters":22000,"primaryZone":"Zone 2","humanReadable":"22 km. Steady easy @ 5:30-6:00/km (65-78% of max HR)\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes","completed":false}]}],"summary":{"totalHours":5.2,"bySport":{"run":{"sessions":4,"hours":5.2,"km":56.6}}}},{"weekNumber":3,"startDate":"2026-11-09","endDate":"2026-11-15","phase":"Base","focus":"Longer threshold, steady long run","targetHours":5.7,"isRecoveryWeek":false,"days":[{"date":"2026-11-09","dayOfWeek":"Monday","workouts":[{"id":"o320-w3-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-11-10","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w3-tue","sport":"run","type":"threshold","name":"Threshold 3x10 min","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":62,"distanceMeters":11700,"primaryZone":"Threshold","humanReadable":"2.5 km easy warm-up + 4 strides\n3x10 min @ 4:25-4:32/km (86-90% of max HR), 90 s easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-11-11","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w3-wed","sport":"run","type":"endurance","name":"Easy 12k","description":"Aerobic volume.","durationMinutes":69,"distanceMeters":12000,"primaryZone":"Zone 2","humanReadable":"12 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.","completed":false}]},{"date":"2026-11-12","dayOfWeek":"Thursday","workouts":[{"id":"o320-w3-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-11-13","dayOfWeek":"Friday","workouts":[{"id":"o320-w3-fri","sport":"run","type":"tempo","name":"Marathon pace 10k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":70,"distanceMeters":14000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n10 km @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2026-11-14","dayOfWeek":"Saturday","workouts":[{"id":"o320-w3-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2026-11-15","dayOfWeek":"Sunday","workouts":[{"id":"o320-w3-sun","sport":"run","type":"long","name":"Long run 24k","description":"Key session.","durationMinutes":138,"distanceMeters":24000,"primaryZone":"Zone 2","humanReadable":"24 km. Steady easy @ 5:30-6:00/km (65-78% of max HR)\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes","completed":false}]}],"summary":{"totalHours":5.7,"bySport":{"run":{"sessions":4,"hours":5.7,"km":61.7}}}},{"weekNumber":4,"startDate":"2026-11-16","endDate":"2026-11-22","phase":"Base","focus":"Easier week. Volume down about a quarter","targetHours":4.3,"isRecoveryWeek":true,"days":[{"date":"2026-11-16","dayOfWeek":"Monday","workouts":[{"id":"o320-w4-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-11-17","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w4-tue","sport":"run","type":"threshold","name":"Threshold 2x10 min","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":50,"distanceMeters":9500,"primaryZone":"Threshold","humanReadable":"2.5 km easy warm-up + 4 strides\n2x10 min @ 4:25-4:32/km (86-90% of max HR), 90 s easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-11-18","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w4-wed","sport":"run","type":"endurance","name":"Easy 9k","description":"Aerobic volume.","durationMinutes":52,"distanceMeters":9000,"primaryZone":"Zone 2","humanReadable":"9 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.","completed":false}]},{"date":"2026-11-19","dayOfWeek":"Thursday","workouts":[{"id":"o320-w4-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-11-20","dayOfWeek":"Friday","workouts":[{"id":"o320-w4-fri","sport":"run","type":"endurance","name":"Easy 9k + strides","description":"Aerobic volume.","durationMinutes":55,"distanceMeters":9000,"primaryZone":"Zone 2","humanReadable":"9 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.\nThen 6x20 s strides, fast and relaxed, 40 s walk between","completed":false}]},{"date":"2026-11-21","dayOfWeek":"Saturday","workouts":[{"id":"o320-w4-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2026-11-22","dayOfWeek":"Sunday","workouts":[{"id":"o320-w4-sun","sport":"run","type":"long","name":"Long run 18k","description":"Key session.","durationMinutes":104,"distanceMeters":18000,"primaryZone":"Zone 2","humanReadable":"18 km. Steady easy @ 5:30-6:00/km (65-78% of max HR)","completed":false}]}],"summary":{"totalHours":4.3,"bySport":{"run":{"sessions":4,"hours":4.3,"km":45.5}}}},{"weekNumber":5,"startDate":"2026-11-23","endDate":"2026-11-29","phase":"Build","focus":"Marathon-specific work begins","targetHours":5.9,"isRecoveryWeek":false,"days":[{"date":"2026-11-23","dayOfWeek":"Monday","workouts":[{"id":"o320-w5-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-11-24","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w5-tue","sport":"run","type":"vo2max","name":"Intervals 5x1000 m","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":59,"distanceMeters":11500,"primaryZone":"VO2max","humanReadable":"2.5 km easy warm-up + 4 strides\n5x1000 m @ 4:05-4:12/km (92-95% of max HR), 2 min easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-11-25","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w5-wed","sport":"run","type":"endurance","name":"Easy 12k + strides","description":"Aerobic volume.","durationMinutes":72,"distanceMeters":12000,"primaryZone":"Zone 2","humanReadable":"12 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.\nThen 6x20 s strides, fast and relaxed, 40 s walk between","completed":false}]},{"date":"2026-11-26","dayOfWeek":"Thursday","workouts":[{"id":"o320-w5-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-11-27","dayOfWeek":"Friday","workouts":[{"id":"o320-w5-fri","sport":"run","type":"tempo","name":"Marathon pace 12k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":80,"distanceMeters":16000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n12 km @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2026-11-28","dayOfWeek":"Saturday","workouts":[{"id":"o320-w5-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2026-11-29","dayOfWeek":"Sunday","workouts":[{"id":"o320-w5-sun","sport":"run","type":"long","name":"Long run 26k with 6k at MP","description":"Key session.","durationMinutes":143,"distanceMeters":26000,"primaryZone":"Zone 2 + MP","humanReadable":"26 km. Easy @ 5:30-6:00/km for 18 km, then 6 km @ marathon pace 4:40-4:48/km, then 2 km easy\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes","completed":false}]}],"summary":{"totalHours":5.9,"bySport":{"run":{"sessions":4,"hours":5.9,"km":65.5}}}},{"weekNumber":6,"startDate":"2026-11-30","endDate":"2026-12-06","phase":"Build","focus":"Threshold volume up","targetHours":6.7,"isRecoveryWeek":false,"days":[{"date":"2026-11-30","dayOfWeek":"Monday","workouts":[{"id":"o320-w6-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-12-01","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w6-tue","sport":"run","type":"threshold","name":"Threshold 4x10 min","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":73,"distanceMeters":14000,"primaryZone":"Threshold","humanReadable":"2.5 km easy warm-up + 4 strides\n4x10 min @ 4:25-4:32/km (86-90% of max HR), 90 s easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-12-02","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w6-wed","sport":"run","type":"endurance","name":"Easy 13k","description":"Aerobic volume.","durationMinutes":75,"distanceMeters":13000,"primaryZone":"Zone 2","humanReadable":"13 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.","completed":false}]},{"date":"2026-12-03","dayOfWeek":"Thursday","workouts":[{"id":"o320-w6-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-12-04","dayOfWeek":"Friday","workouts":[{"id":"o320-w6-fri","sport":"run","type":"tempo","name":"Marathon pace 14k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":95,"distanceMeters":19000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n2x7 km with 1 km easy between @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2026-12-05","dayOfWeek":"Saturday","workouts":[{"id":"o320-w6-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2026-12-06","dayOfWeek":"Sunday","workouts":[{"id":"o320-w6-sun","sport":"run","type":"long","name":"Long run 28k","description":"Key session.","durationMinutes":161,"distanceMeters":28000,"primaryZone":"Zone 2","humanReadable":"28 km. Steady easy @ 5:30-6:00/km (65-78% of max HR)\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes","completed":false}]}],"summary":{"totalHours":6.7,"bySport":{"run":{"sessions":4,"hours":6.7,"km":74.0}}}},{"weekNumber":7,"startDate":"2026-12-07","endDate":"2026-12-13","phase":"Build","focus":"Biggest build week","targetHours":6.6,"isRecoveryWeek":false,"days":[{"date":"2026-12-07","dayOfWeek":"Monday","workouts":[{"id":"o320-w7-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-12-08","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w7-tue","sport":"run","type":"vo2max","name":"Intervals 6x1000 m","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":66,"distanceMeters":12800,"primaryZone":"VO2max","humanReadable":"2.5 km easy warm-up + 4 strides\n6x1000 m @ 4:05-4:12/km (92-95% of max HR), 2 min easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-12-09","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w7-wed","sport":"run","type":"endurance","name":"Easy 13k + strides","description":"Aerobic volume.","durationMinutes":78,"distanceMeters":13000,"primaryZone":"Zone 2","humanReadable":"13 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.\nThen 6x20 s strides, fast and relaxed, 40 s walk between","completed":false}]},{"date":"2026-12-10","dayOfWeek":"Thursday","workouts":[{"id":"o320-w7-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-12-11","dayOfWeek":"Friday","workouts":[{"id":"o320-w7-fri","sport":"run","type":"tempo","name":"Marathon pace 14k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":89,"distanceMeters":18000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n14 km @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2026-12-12","dayOfWeek":"Saturday","workouts":[{"id":"o320-w7-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2026-12-13","dayOfWeek":"Sunday","workouts":[{"id":"o320-w7-sun","sport":"run","type":"long","name":"Long run 30k with 10k at MP","description":"Key session.","durationMinutes":162,"distanceMeters":30000,"primaryZone":"Zone 2 + MP","humanReadable":"30 km. Easy @ 5:30-6:00/km for 18 km, then 10 km @ marathon pace 4:40-4:48/km, then 2 km easy\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes","completed":false}]}],"summary":{"totalHours":6.6,"bySport":{"run":{"sessions":4,"hours":6.6,"km":73.8}}}},{"weekNumber":8,"startDate":"2026-12-14","endDate":"2026-12-20","phase":"Build","focus":"Easier week with a half marathon tune-up","targetHours":4.2,"isRecoveryWeek":true,"days":[{"date":"2026-12-14","dayOfWeek":"Monday","workouts":[{"id":"o320-w8-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-12-15","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w8-tue","sport":"run","type":"threshold","name":"Threshold 2x12 min","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":54,"distanceMeters":10400,"primaryZone":"Threshold","humanReadable":"2.5 km easy warm-up + 4 strides\n2x12 min @ 4:25-4:32/km (86-90% of max HR), 90 s easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-12-16","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w8-wed","sport":"run","type":"endurance","name":"Easy 8k","description":"Aerobic volume.","durationMinutes":46,"distanceMeters":8000,"primaryZone":"Zone 2","humanReadable":"8 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.","completed":false}]},{"date":"2026-12-17","dayOfWeek":"Thursday","workouts":[{"id":"o320-w8-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-12-18","dayOfWeek":"Friday","workouts":[{"id":"o320-w8-fri","sport":"run","type":"endurance","name":"Easy 6k + strides","description":"Aerobic volume.","durationMinutes":38,"distanceMeters":6000,"primaryZone":"Zone 2","humanReadable":"6 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.\nThen 6x20 s strides, fast and relaxed, 40 s walk between","completed":false}]},{"date":"2026-12-19","dayOfWeek":"Saturday","workouts":[{"id":"o320-w8-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before Sunday's half marathon.","completed":false}]},{"date":"2026-12-20","dayOfWeek":"Sunday","workouts":[{"id":"o320-w8-sun","sport":"run","type":"test","name":"Half marathon tune-up","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":114,"distanceMeters":24100,"primaryZone":"Race","humanReadable":"1.5 km easy warm-up + strides\n21.1 km race or solo time trial, even effort. Target 1:35-1:37 (4:30-4:35/km)\n1.5 km easy cool-down. Under 1:35 supports 3:20; slower than 1:38 means race at 3:25-3:30","completed":false}]}],"summary":{"totalHours":4.2,"bySport":{"run":{"sessions":4,"hours":4.2,"km":48.5}}}},{"weekNumber":9,"startDate":"2026-12-21","endDate":"2026-12-27","phase":"Peak","focus":"Peak volume","targetHours":7.3,"isRecoveryWeek":false,"days":[{"date":"2026-12-21","dayOfWeek":"Monday","workouts":[{"id":"o320-w9-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-12-22","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w9-tue","sport":"run","type":"threshold","name":"Threshold 3x15 min","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":78,"distanceMeters":15100,"primaryZone":"Threshold","humanReadable":"2.5 km easy warm-up + 4 strides\n3x15 min @ 4:25-4:32/km (86-90% of max HR), 120 s easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-12-23","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w9-wed","sport":"run","type":"endurance","name":"Easy 14k","description":"Aerobic volume.","durationMinutes":80,"distanceMeters":14000,"primaryZone":"Zone 2","humanReadable":"14 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.","completed":false}]},{"date":"2026-12-24","dayOfWeek":"Thursday","workouts":[{"id":"o320-w9-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2026-12-25","dayOfWeek":"Friday","workouts":[{"id":"o320-w9-fri","sport":"run","type":"tempo","name":"Marathon pace 16k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":104,"distanceMeters":21000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n2x8 km with 1 km easy between @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2026-12-26","dayOfWeek":"Saturday","workouts":[{"id":"o320-w9-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2026-12-27","dayOfWeek":"Sunday","workouts":[{"id":"o320-w9-sun","sport":"run","type":"long","name":"Long run 32k with 8k at MP","description":"Key session.","durationMinutes":176,"distanceMeters":32000,"primaryZone":"Zone 2 + MP","humanReadable":"32 km. Easy @ 5:30-6:00/km for 22 km, then 8 km @ marathon pace 4:40-4:48/km, then 2 km easy\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes","completed":false}]}],"summary":{"totalHours":7.3,"bySport":{"run":{"sessions":4,"hours":7.3,"km":82.1}}}},{"weekNumber":10,"startDate":"2026-12-28","endDate":"2027-01-03","phase":"Peak","focus":"Last big week. 34 km race rehearsal","targetHours":6.7,"isRecoveryWeek":false,"days":[{"date":"2026-12-28","dayOfWeek":"Monday","workouts":[{"id":"o320-w10-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2026-12-29","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w10-tue","sport":"run","type":"vo2max","name":"Intervals 5x1200 m","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":64,"distanceMeters":12500,"primaryZone":"VO2max","humanReadable":"2.5 km easy warm-up + 4 strides\n5x1200 m @ 4:05-4:12/km (92-95% of max HR), 2 min easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2026-12-30","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w10-wed","sport":"run","type":"endurance","name":"Easy 13k + strides","description":"Aerobic volume.","durationMinutes":78,"distanceMeters":13000,"primaryZone":"Zone 2","humanReadable":"13 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.\nThen 6x20 s strides, fast and relaxed, 40 s walk between","completed":false}]},{"date":"2026-12-31","dayOfWeek":"Thursday","workouts":[{"id":"o320-w10-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2027-01-01","dayOfWeek":"Friday","workouts":[{"id":"o320-w10-fri","sport":"run","type":"tempo","name":"Marathon pace 12k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":80,"distanceMeters":16000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n12 km @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2027-01-02","dayOfWeek":"Saturday","workouts":[{"id":"o320-w10-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2027-01-03","dayOfWeek":"Sunday","workouts":[{"id":"o320-w10-sun","sport":"run","type":"long","name":"Long run 34k with 16k at MP","description":"Key session.","durationMinutes":179,"distanceMeters":34000,"primaryZone":"Zone 2 + MP","humanReadable":"34 km. Easy @ 5:30-6:00/km for 16 km, then 16 km @ marathon pace 4:40-4:48/km, then 2 km easy\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes\nStructure: 15 km easy, 2x8 km at MP with 1 km easy between, 2 km easy. Race-day breakfast, kit and fuel.","completed":false}]}],"summary":{"totalHours":6.7,"bySport":{"run":{"sessions":4,"hours":6.7,"km":75.5}}}},{"weekNumber":11,"startDate":"2027-01-04","endDate":"2027-01-10","phase":"Taper","focus":"Volume down about 30%, intensity stays","targetHours":4.9,"isRecoveryWeek":false,"days":[{"date":"2027-01-04","dayOfWeek":"Monday","workouts":[{"id":"o320-w11-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2027-01-05","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w11-tue","sport":"run","type":"threshold","name":"Threshold 3x8 min","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":56,"distanceMeters":10400,"primaryZone":"Threshold","humanReadable":"2.5 km easy warm-up + 4 strides\n3x8 min @ 4:25-4:32/km (86-90% of max HR), 90 s easy jog between\n2.5 km easy cool-down","completed":false}]},{"date":"2027-01-06","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w11-wed","sport":"run","type":"endurance","name":"Easy 10k","description":"Aerobic volume.","durationMinutes":58,"distanceMeters":10000,"primaryZone":"Zone 2","humanReadable":"10 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.","completed":false}]},{"date":"2027-01-07","dayOfWeek":"Thursday","workouts":[{"id":"o320-w11-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional 30-40 min easy cross-training (bike, swim).","completed":false}]},{"date":"2027-01-08","dayOfWeek":"Friday","workouts":[{"id":"o320-w11-fri","sport":"run","type":"tempo","name":"Marathon pace 10k","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":70,"distanceMeters":14000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n10 km @ 4:40-4:48/km (80-85% of max HR). Smooth and controlled; practise drinking on the move\n2 km easy cool-down","completed":false}]},{"date":"2027-01-09","dayOfWeek":"Saturday","workouts":[{"id":"o320-w11-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest before the long run. Optional mobility or light strength.","completed":false}]},{"date":"2027-01-10","dayOfWeek":"Sunday","workouts":[{"id":"o320-w11-sun","sport":"run","type":"long","name":"Long run 21k with 8k at MP","description":"Key session.","durationMinutes":113,"distanceMeters":21000,"primaryZone":"Zone 2 + MP","humanReadable":"21 km. Easy @ 5:30-6:00/km for 11 km, then 8 km @ marathon pace 4:40-4:48/km, then 2 km easy\nFuel: 30-40 g carbs every 30 min from 40 min in, plus 400-700 ml fluid per hour with electrolytes","completed":false}]}],"summary":{"totalHours":4.9,"bySport":{"run":{"sessions":4,"hours":4.9,"km":55.4}}}},{"weekNumber":12,"startDate":"2027-01-11","endDate":"2027-01-17","phase":"Taper","focus":"Race week","targetHours":5.5,"isRecoveryWeek":false,"days":[{"date":"2027-01-11","dayOfWeek":"Monday","workouts":[{"id":"o320-w12-mon","sport":"rest","type":"rest","name":"Rest","description":"Rest. Optional strength or 30-40 min easy cross-training.","completed":false}]},{"date":"2027-01-12","dayOfWeek":"Tuesday","workouts":[{"id":"o320-w12-tue","sport":"run","type":"tempo","name":"Marathon pace sharpener","description":"Key session. Warm-up and cool-down are easy running.","durationMinutes":50,"distanceMeters":10000,"primaryZone":"Marathon pace","humanReadable":"2 km easy warm-up\n3x2 km @ 4:40-4:48/km, 2 min jog between\n2 km easy cool-down","completed":false}]},{"date":"2027-01-13","dayOfWeek":"Wednesday","workouts":[{"id":"o320-w12-wed","sport":"run","type":"endurance","name":"Easy 7k","description":"Aerobic volume.","durationMinutes":40,"distanceMeters":7000,"primaryZone":"Zone 2","humanReadable":"7 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.","completed":false}]},{"date":"2027-01-14","dayOfWeek":"Thursday","workouts":[{"id":"o320-w12-thu","sport":"rest","type":"rest","name":"Rest","description":"Rest. Carb load Friday and Saturday: 8-10 g carbs per kg body weight per day.","completed":false}]},{"date":"2027-01-15","dayOfWeek":"Friday","workouts":[{"id":"o320-w12-fri","sport":"run","type":"endurance","name":"Easy 6k + strides","description":"Aerobic volume.","durationMinutes":38,"distanceMeters":6000,"primaryZone":"Zone 2","humanReadable":"6 km easy @ 5:30-6:00/km (65-78% of max HR). Conversational the whole way.\nThen 6x20 s strides, fast and relaxed, 40 s walk between","completed":false}]},{"date":"2027-01-16","dayOfWeek":"Saturday","workouts":[{"id":"o320-w12-sat","sport":"rest","type":"rest","name":"Rest","description":"Rest. Lay out kit, sleep early.","completed":false}]},{"date":"2027-01-17","dayOfWeek":"Sunday","workouts":[{"id":"o320-w12-race","sport":"run","type":"race","name":"TATA MUMBAI MARATHON","description":"Race day.","durationMinutes":200,"distanceMeters":42195,"primaryZone":"Marathon pace","humanReadable":"Goal 3:20 (4:44/km). Km 0-5 at 4:48-4:50. Km 5-30 at 4:42-4:46. Km 30 on: hold, push only if controlled. Gel every 30 min.","completed":false}]}],"summary":{"totalHours":5.5,"bySport":{"run":{"sessions":4,"hours":5.5,"km":65.2}}}}]}</script>
+<script>
+(function () {
+  "use strict";
+  var RACE_KM = 42.2;
+  var KEY_TYPES = { long: 1, threshold: 1, vo2max: 1, tempo: 1, test: 1, race: 1 };
+  var TYPE_LABEL = { endurance: "Easy", recovery: "Recovery", long: "Long run", threshold: "Threshold", vo2max: "Intervals", tempo: "Marathon pace", test: "Test", race: "Race" };
+  var MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  var DOW = { Monday: "Mon", Tuesday: "Tue", Wednesday: "Wed", Thursday: "Thu", Friday: "Fri", Saturday: "Sat", Sunday: "Sun" };
+
+  function data(id) { return JSON.parse(document.getElementById(id).textContent); }
+
+  // Each plan's page content. Only "jayesh" is personal and shows COROS data.
+  var FUEL = { h: "Fuel", list: [
+    ["Race morning:", "wake around 3:00. 100-150 g of low-fibre carbs 2.5 to 3 hours before the start."],
+    ["During:", "a gel every 30 minutes, about 60 g of carbs per hour, and 400-700 ml of fluid with electrolytes per hour."],
+    ["Carb load:", "8-10 g per kg per day on Friday and Saturday."]] };
+  var HEAT = { h: "Heat", p: "Above 24°C with high humidity, add 5-10 s/km and race by heart rate. Mumbai warms up quickly after 7 am." };
+  var PLANS = [
+    {
+      key: "jayesh", tab: "Jayesh 3:45", tabSub: "Personal, from COROS", kind: "personal", kindLabel: "COROS-linked",
+      plan: data("plan-jayesh"), maxKm: 80,
+      goal: "3:45", goalAria: "Goal time 3 hours 45 minutes",
+      goalSub: [["Goal pace ", "5:20/km"], ["Stretch ", "3:40", " if the week 8 test allows"], ["Runs ", "Tue, Wed, Fri, Sun"]],
+      facts: [["Plan length", "12", "weeks"], ["Peak week", "67", "km"], ["Longest run", "32", "km"]],
+      who: {
+        title: "Your COROS snapshot",
+        intro: "This plan was built for Jayesh from his COROS watch data. These are the numbers it is based on.",
+        snap: [["VO2max", "54", ""], ["Threshold heart rate", "166", "bpm"], ["Threshold pace", "5:18", "/km"],
+               ["Fitness (CTI)", "74", ""], ["Night HRV baseline", "84", "ms"], ["Recent running", "12-16", "km/wk"]],
+        note: "Snapshot taken 29 Oct 2026. The plan is adjusted from fresh COROS data at each weekly check-in, and the tests in weeks 4 and 8 reset the paces."
+      },
+      zonesIntro: "From the COROS threshold: 166 bpm and 5:18/km. In Gurgaon heat, the heart rate cap wins over pace.",
+      zones: [["Easy and long", "6:10-6:40", "134-147 bpm", "Most of the running. Full conversation."],
+              ["Marathon pace", "5:18-5:26", "150-158 bpm", "Race rhythm. Practise drinking at this pace."],
+              ["Threshold", "5:05-5:15", "158-166 bpm", "Comfortably hard. Short phrases only."],
+              ["Intervals", "4:45-4:55", "167-174 bpm", "Hard reps of 1 to 1.2 km."]],
+      zoneFoot: "The 30-minute tests in weeks 4 and 8 reset these numbers. If threshold pace drops to 5:05/km or faster, race pace moves to 5:13/km for a 3:40.",
+      segs: [["0-5 km", "5:25-5:28", "Settle in. It is crowded, dark and humid."],
+             ["5-30 km", "5:18-5:22", "Hold heart rate at 158 or below. On the Sea Link incline, keep the effort steady and let the pace drop. Halfway around 1:53."],
+             ["30-42.2 km", "Hold or push", "Let heart rate rise. Speed up only if you still feel controlled."]],
+      cards: [FUEL, HEAT, { h: "Taper and lifting", p: "Week 11 drops about 30% of the volume and race week keeps just three short runs. Keep the marathon pace sessions. Lower body lifting stays light in week 11, with no heavy leg work in race week." }],
+      foot: ["Built from Jayesh's COROS data as of 29 Oct 2026. Four runs a week on Tue, Wed, Fri and Sun, around his lifting on Mon, Wed, Fri and Sat.", "Ticking a session as done saves it in this browser only."]
+    },
+    {
+      key: "open-320", tab: "Open 3:20", tabSub: "For any runner", kind: "open", kindLabel: "For anyone",
+      plan: data("plan-open320"), maxKm: 100,
+      goal: "3:20", goalAria: "Goal time 3 hours 20 minutes",
+      goalSub: [["Goal pace ", "4:44/km"], ["Four runs a week, peak ", "82 km"]],
+      facts: [["Plan length", "12", "weeks"], ["Peak week", "82", "km"], ["Longest run", "34", "km"]],
+      who: {
+        title: "Who this plan is for",
+        intro: "A general plan for any runner. It is not built from anyone's watch data, so check you match these before starting.",
+        reqs: [["45-55 km a week", "for at least the last 8 weeks"], ["Long run of 18-20 km", "done comfortably in the last month"],
+               ["Half marathon under 1:36", "or 10 km under 44:30 recently"], ["Four running days", "Tuesday, Wednesday, Friday and Sunday"]],
+        note: "Coming from lower mileage or slower recent races? Aim for 3:30-3:35 and run every pace in the plan 10-15 s/km slower."
+      },
+      zonesIntro: "Paces assume a threshold pace of about 4:28/km. Heart rate is given as a share of your max, since it varies a lot between runners.",
+      zones: [["Easy and long", "5:30-6:00", "65-78% max HR", "Most of the running. Full conversation."],
+              ["Marathon pace", "4:40-4:48", "80-85% max HR", "Race rhythm. Practise drinking at this pace."],
+              ["Threshold", "4:25-4:32", "86-90% max HR", "Comfortably hard. Short phrases only."],
+              ["Intervals", "4:05-4:12", "92-95% max HR", "Hard reps of 800 m to 1.2 km."]],
+      zoneFoot: "The half marathon in week 8 is the check. Under 1:35 supports 3:20. Slower than 1:38 means racing at 3:25-3:30 and easing every pace by about 10 s/km.",
+      segs: [["0-5 km", "4:48-4:50", "Settle in. It is crowded, dark and humid."],
+             ["5-30 km", "4:42-4:46", "Even effort. On the Sea Link incline, keep the effort steady and let the pace drop. Halfway around 1:40."],
+             ["30-42.2 km", "Hold or push", "Speed up only if you still feel controlled."]],
+      cards: [FUEL, HEAT, { h: "Taper", p: "Week 11 drops about 30% of the volume and race week keeps three short runs. Keep the marathon pace sessions so the rhythm stays sharp." }],
+      foot: ["A general plan for any runner targeting 3:20 at the Tata Mumbai Marathon. It does not use anyone's personal data.", "Ticking a session as done saves it in this browser only."]
+    }
+  ];
+
+  function localISO(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+  function parse(iso) { var p = iso.split("-"); return new Date(+p[0], +p[1] - 1, +p[2]); }
+  var todayISO = localISO(new Date());
+  function el(tag, cls, text) { var n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; }
+  function $(id) { return document.getElementById(id); }
+
+  var STORE_KEY = "tmm27-done";
+  var doneMap = {};
+  try { doneMap = JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; } catch (e) { doneMap = {}; }
+  function isDone(w) { return Object.prototype.hasOwnProperty.call(doneMap, w.id) ? !!doneMap[w.id] : !!w.completed; }
+  function setDone(id, v) { doneMap[id] = v; try { localStorage.setItem(STORE_KEY, JSON.stringify(doneMap)); } catch (e) {} }
+
+  var P, weeks, sel = 0, thisWeek = -1, filter = "all", ready = false, barBtns = [], xSpans = [];
+
+  // ---------- Switcher ----------
+  var tabs = PLANS.map(function (p, i) {
+    var t = el("button", "tab"); t.type = "button"; t.id = "tab-" + p.key;
+    t.setAttribute("role", "tab"); t.setAttribute("aria-controls", "weekPanel");
+    t.appendChild(el("b", null, p.tab)); t.appendChild(el("span", null, p.tabSub));
+    t.addEventListener("click", function () { openPlan(i, true); });
+    t.addEventListener("keydown", function (e) {
+      var j = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : -1;
+      if (j >= 0 && j < PLANS.length) { e.preventDefault(); openPlan(j, true); tabs[j].focus(); }
+    });
+    $("switcher").appendChild(t);
+    return t;
+  });
+
+  function factEl(label, val, unit, cls) {
+    var f = el("div", "fact" + (cls ? " " + cls : ""));
+    f.appendChild(el("dt", null, label));
+    var dd = el("dd", null, val); if (unit) dd.appendChild(el("small", null, unit));
+    f.appendChild(dd); return f;
+  }
+
+  function openPlan(i, fromUser) {
+    P = PLANS[i]; weeks = P.plan.weeks;
+    tabs.forEach(function (t, j) { t.setAttribute("aria-selected", String(j === i)); t.tabIndex = j === i ? 0 : -1; });
+    if (fromUser) { try { history.replaceState(null, "", "#" + P.key); } catch (e) {} }
+    document.title = P.key === "jayesh" ? "Jayesh 3:45 · Mumbai Marathon" : "Open 3:20 · Mumbai Marathon";
+
+    // Hero
+    var g = $("goal"); g.textContent = P.goal; g.setAttribute("aria-label", P.goalAria);
+    var rn = $("raceName"), oldK = rn.querySelector(".kind"); if (oldK) oldK.remove();
+    rn.appendChild(el("span", "kind " + P.kind, P.kindLabel));
+    var gs = $("goalSub"); gs.textContent = "";
+    P.goalSub.forEach(function (s) { var sp = el("span", null, s[0]); sp.appendChild(el("strong", "num", s[1])); if (s[2]) sp.appendChild(document.createTextNode(s[2])); gs.appendChild(sp); });
+    var fx = $("facts"); fx.textContent = "";
+    var days = Math.round((parse(P.plan.meta.eventDate) - parse(todayISO)) / 86400000);
+    fx.appendChild(factEl("Days to race day", days > 0 ? String(days) : (days === 0 ? "Today" : "Done"), "", "countdown"));
+    P.facts.forEach(function (f) { fx.appendChild(factEl(f[0], f[1], f[2])); });
+
+    // Who / snapshot
+    $("whoTitle").textContent = P.who.title; $("whoIntro").textContent = P.who.intro;
+    var wb = $("whoBody"); wb.textContent = "";
+    if (P.who.snap) {
+      var dl = el("dl", "snap"); P.who.snap.forEach(function (s) { dl.appendChild(factEl(s[0], s[1], s[2])); }); wb.appendChild(dl);
+    } else {
+      var ul = el("ul", "reqs"); P.who.reqs.forEach(function (r) { var li = el("li"); li.appendChild(el("b", null, r[0])); li.appendChild(el("span", null, r[1])); ul.appendChild(li); }); wb.appendChild(ul);
+    }
+    wb.appendChild(el("p", "snap-note", P.who.note));
+
+    // Zones
+    $("zonesIntro").textContent = P.zonesIntro;
+    var z = $("zones"); z.textContent = "";
+    P.zones.forEach(function (r, k) {
+      var d = el("div", "zone" + (k === 1 ? " mp" : ""));
+      d.appendChild(el("h3", null, r[0])); d.appendChild(el("span", "pace", r[1])); d.appendChild(el("span", "hr num", r[2])); d.appendChild(el("p", null, r[3]));
+      z.appendChild(d);
+    });
+    $("zoneFoot").textContent = P.zoneFoot;
+
+    // Race
+    var rs = $("raceStrip"); rs.textContent = "";
+    P.segs.forEach(function (s, k) { var d = el("div", "seg s" + (k + 1)); d.appendChild(el("span", "km num", s[0])); d.appendChild(el("span", "pace", s[1])); d.appendChild(el("p", null, s[2])); rs.appendChild(d); });
+    var rg = $("raceGrid"); rg.textContent = "";
+    P.cards.forEach(function (c) {
+      var d = el("div"); d.appendChild(el("h3", null, c.h));
+      if (c.list) { var u = el("ul"); c.list.forEach(function (it) { var li = el("li"); li.appendChild(el("strong", null, it[0] + " ")); li.appendChild(document.createTextNode(it[1])); u.appendChild(li); }); d.appendChild(u); }
+      else d.appendChild(el("p", null, c.p));
+      rg.appendChild(d);
+    });
+    var ft = $("foot"); ft.textContent = ""; P.foot.forEach(function (t) { ft.appendChild(el("p", null, t)); });
+
+    // Week state
+    var cur = 0;
+    weeks.forEach(function (w, k) { if (todayISO >= w.startDate && todayISO <= w.endDate) cur = k; });
+    if (todayISO > weeks[weeks.length - 1].endDate) cur = weeks.length - 1;
+    thisWeek = (todayISO >= weeks[0].startDate && todayISO <= weeks[weeks.length - 1].endDate) ? cur : -1;
+    sel = cur;
+    buildChart();
+    select(sel);
+  }
+
+  function trainKm(w) { var k = w.summary.bySport.run.km; return w.weekNumber === weeks.length ? k - RACE_KM : k; }
+
+  function buildChart() {
+    var axis = $("axis"), plot = $("plot"), barsEl = $("bars"), xEl = $("xlabels"), phEl = $("phases");
+    axis.textContent = ""; xEl.textContent = ""; barsEl.textContent = ""; phEl.textContent = "";
+    Array.prototype.slice.call(plot.querySelectorAll(".grid-line")).forEach(function (n) { n.remove(); });
+    var MAX = P.maxKm, step = MAX / 4;
+    for (var v = 0; v <= MAX; v += step) {
+      var s = el("span", null, String(v)); s.style.bottom = (v / MAX * 100) + "%"; axis.appendChild(s);
+      if (v > 0) { var gl = el("div", "grid-line"); gl.style.bottom = (v / MAX * 100) + "%"; plot.insertBefore(gl, plot.firstChild); }
+    }
+    barBtns = []; xSpans = [];
+    weeks.forEach(function (w, i) {
+      var total = w.summary.bySport.run.km, tk = trainKm(w), isRace = w.weekNumber === weeks.length;
+      var b = el("button", "bar" + (w.isRecoveryWeek ? " recovery" : "")); b.type = "button";
+      b.setAttribute("aria-label", "Week " + w.weekNumber + ", " + w.phase + ", " + Math.round(total) + " km" + (isRace ? " including the race" : "") + (i === thisWeek ? ", this week" : ""));
+      var fill = el("span", "fill");
+      if (isRace) { var r = el("span", "racepart"); r.style.height = (RACE_KM / MAX * 220) + "px"; fill.appendChild(r); }
+      var t = el("span", "train"); t.style.height = (tk / MAX * 220) + "px"; fill.appendChild(t);
+      var kmLab = el("span", "km num", String(Math.round(total))); kmLab.style.bottom = (total / MAX * 100) + "%";
+      b.appendChild(kmLab); b.appendChild(fill);
+      if (i === thisWeek) { var now = el("span", "now-tag", "Now"); now.style.top = "calc(" + (100 - total / MAX * 100) + "% - 40px)"; b.appendChild(now); }
+      b.addEventListener("click", function () { select(i); });
+      b.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowRight" && i < weeks.length - 1) { e.preventDefault(); select(i + 1); barBtns[i + 1].focus(); }
+        if (e.key === "ArrowLeft" && i > 0) { e.preventDefault(); select(i - 1); barBtns[i - 1].focus(); }
+      });
+      barsEl.appendChild(b); barBtns.push(b);
+      var x = el("span", null, "W" + w.weekNumber); xEl.appendChild(x); xSpans.push(x);
+    });
+    P.plan.phases.forEach(function (p) {
+      var d = el("div", "phase", p.name); d.style.gridColumn = p.startWeek + " / " + (p.endWeek + 1); d.title = p.name + ": " + p.focus; phEl.appendChild(d);
+    });
+  }
+
+  var chips = Array.prototype.slice.call(document.querySelectorAll("[data-filter]"));
+  chips.forEach(function (c) { c.addEventListener("click", function () { setFilter(c.getAttribute("data-filter")); }); });
+  function setFilter(f) { filter = f; chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.getAttribute("data-filter") === f)); }); renderWeek(); }
+  $("prevWeek").addEventListener("click", function () { if (sel > 0) select(sel - 1); });
+  $("nextWeek").addEventListener("click", function () { if (sel < weeks.length - 1) select(sel + 1); });
+
+  function select(i) {
+    sel = i;
+    barBtns.forEach(function (b, j) { b.setAttribute("aria-pressed", String(j === i)); });
+    xSpans.forEach(function (s, j) { s.className = j === i ? "sel" : ""; });
+    renderWeek();
+  }
+  function fmtRange(w) {
+    var a = parse(w.startDate), b = parse(w.endDate);
+    return a.getDate() + " " + MONTHS[a.getMonth()] + " to " + b.getDate() + " " + MONTHS[b.getMonth()] + " " + b.getFullYear();
+  }
+  function stat(v, label) { var s = el("div", "stat"); s.appendChild(el("b", null, v)); s.appendChild(el("span", null, label)); return s; }
+
+  function renderWeek() {
+    if (!ready) return;
+    var w = weeks[sel];
+    var title = $("weekTitle"); title.textContent = "Week ";
+    title.appendChild(el("em", null, String(w.weekNumber))); title.appendChild(document.createTextNode(" " + w.phase));
+    $("weekDates").textContent = fmtRange(w) + (sel === thisWeek ? ". This week." : "");
+    $("weekFocus").textContent = w.focus;
+    $("prevWeek").disabled = sel === 0; $("nextWeek").disabled = sel === weeks.length - 1;
+
+    var runs = [];
+    w.days.forEach(function (d) { d.workouts.forEach(function (x) { if (x.sport === "run") runs.push(x); }); });
+    var keyCount = runs.filter(function (x) { return KEY_TYPES[x.type]; }).length;
+    var st = $("weekStats"); st.textContent = "";
+    st.appendChild(stat(String(Math.round(w.summary.bySport.run.km)), "km running"));
+    st.appendChild(stat(String(w.summary.bySport.run.hours).replace(/\.0$/, ""), "hours running"));
+    st.appendChild(stat(String(keyCount), keyCount === 1 ? "key session" : "key sessions"));
+    st.appendChild(stat(runs.filter(isDone).length + "/" + runs.length, "runs done"));
+
+    var body = $("weekBody"); body.textContent = "";
+    var list = el("ol", "days"); list.setAttribute("aria-label", "Days in week " + w.weekNumber);
+    var shown = 0, idx = 0;
+    w.days.forEach(function (d) {
+      var ws = d.workouts.filter(function (x) {
+        if (filter === "all") return true;
+        if (x.sport !== "run" && x.sport !== "bike") return false;
+        if (filter === "key") return !!KEY_TYPES[x.type];
+        return !isDone(x);
+      });
+      if (!ws.length) return;
+      var li = el("li", "day" + (d.date === todayISO ? " today" : ""));
+      var dt = parse(d.date), date = el("div", "date");
+      date.appendChild(el("span", "dow", DOW[d.dayOfWeek] + " " + MONTHS[dt.getMonth()]));
+      date.appendChild(el("span", "dn", String(dt.getDate())));
+      if (d.date === todayISO) date.appendChild(el("span", "today-tag", "Today"));
+      li.appendChild(date);
+      var items = el("div", "items");
+      if (ws.every(function (x) { return x.sport === "rest"; })) {
+        var rn = el("p", "rest-note"); rn.style.setProperty("--i", idx++);
+        rn.appendChild(el("b", null, "No run. ")); rn.appendChild(document.createTextNode(ws[0].description));
+        items.appendChild(rn);
+      }
+      ws.forEach(function (x) { if (x.sport === "rest") return; shown++; items.appendChild(renderWorkout(x, idx++)); });
+      li.appendChild(items); list.appendChild(li);
+    });
+
+    if (!list.children.length || (filter !== "all" && shown === 0)) {
+      var e = el("div", "empty");
+      if (filter === "todo") {
+        e.appendChild(el("h3", null, "Every run this week is done"));
+        e.appendChild(el("p", null, "All " + runs.length + " runs in week " + w.weekNumber + " are ticked off. Check next week or show the full list again."));
+      } else {
+        e.appendChild(el("h3", null, "No key sessions this week"));
+        e.appendChild(el("p", null, "This week is easy running only."));
+      }
+      var b = el("button", "btn", "Show all sessions"); b.type = "button";
+      b.addEventListener("click", function () { setFilter("all"); });
+      e.appendChild(b); body.appendChild(e);
+    } else body.appendChild(list);
+  }
+
+  function renderWorkout(x, i) {
+    var a = el("article", "wo" + (isDone(x) ? " done" : "")); a.style.setProperty("--i", i);
+    var head = el("div", "wo-head");
+    var lab = x.sport === "bike" ? "Optional bike" : (TYPE_LABEL[x.type] || x.type);
+    head.appendChild(el("span", "tag" + (x.type === "race" ? " race" : (KEY_TYPES[x.type] ? " key" : "")), lab));
+    head.appendChild(el("h3", "wo-name", x.name.replace(/^Done: /, "")));
+    a.appendChild(head);
+    var meta = el("div", "wo-meta");
+    if (x.distanceMeters) { var k = el("span"); k.appendChild(el("span", "num", (x.distanceMeters / 1000).toFixed(x.distanceMeters % 1000 ? 1 : 0) + " km")); meta.appendChild(k); }
+    if (x.durationMinutes) { var m = el("span"); m.appendChild(el("span", "num", "~" + x.durationMinutes + " min")); meta.appendChild(m); }
+    if (x.primaryZone) meta.appendChild(el("span", null, x.primaryZone));
+    a.appendChild(meta);
+    var row = el("div", "wo-row");
+    if (x.humanReadable) {
+      var det = el("details"); det.appendChild(el("summary", null, "Session details"));
+      var steps = el("div", "steps"); x.humanReadable.split("\n").forEach(function (line) { steps.appendChild(el("p", null, line)); });
+      det.appendChild(steps); row.appendChild(det);
+    }
+    if (x.sport === "run") {
+      var lbl = el("label", "donebox"), cb = document.createElement("input");
+      cb.type = "checkbox"; cb.id = "done-" + x.id; cb.checked = isDone(x);
+      cb.addEventListener("change", function () { setDone(x.id, cb.checked); a.classList.toggle("done", cb.checked); refreshStats(); });
+      lbl.appendChild(cb); lbl.appendChild(document.createTextNode("Done")); row.appendChild(lbl);
+    }
+    a.appendChild(row);
+    return a;
+  }
+  function refreshStats() {
+    var w = weeks[sel], runs = [];
+    w.days.forEach(function (d) { d.workouts.forEach(function (x) { if (x.sport === "run") runs.push(x); }); });
+    var last = document.querySelector("#weekStats .stat:last-child b");
+    if (last) last.textContent = runs.filter(isDone).length + "/" + runs.length;
+    if (filter === "todo") renderWeek();
+  }
+
+  var start = 0, h = location.hash.replace("#", "");
+  PLANS.forEach(function (p, i) { if (p.key === h) start = i; });
+  openPlan(start, false);
+  $("weekBody").setAttribute("aria-busy", "true");
+  function show() { if (ready) return; ready = true; $("weekBody").removeAttribute("aria-busy"); renderWeek(); }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(show); setTimeout(show, 700); } else show();
+})();
+</script>
+</body>
+</html>
