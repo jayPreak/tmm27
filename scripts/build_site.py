@@ -29,6 +29,8 @@ HEAD = """<!doctype html>
 
 body = read("src", "body.html")
 body = body.replace("__PLAN_JAYESH__", embed("jayesh-345.json")).replace("__PLAN_OPEN320__", embed("open-320.json"))
+snap_path = os.path.join(ROOT, "plans", "jayesh-snapshot.json")
+body = body.replace("__SNAPSHOT__", embed("jayesh-snapshot.json") if os.path.exists(snap_path) else "null")
 page = HEAD + "<style>\n" + read("src", "styles.css") + "</style>\n</head>\n<body>\n" + body + "</body>\n</html>\n"
 assert "—" not in page and "–" not in page and "__PLAN" not in page
 os.makedirs(os.path.join(ROOT, "web"), exist_ok=True)

@@ -19,6 +19,10 @@
 .snap .fact:not(:nth-child(3n+1)) { padding-left: var(--s4); border-left: 1px solid var(--line); }
 .snap .fact dd { font-size: var(--t-xl); }
 .snap-note { margin-top: var(--s4); font-size: var(--t-sm); color: var(--muted); max-width: 70ch; }
+.coach-note { border-left: 3px solid var(--signal); background: var(--surface); padding: var(--s4); margin-bottom: var(--s5); display: grid; gap: var(--s1); max-width: 70ch; }
+.coach-note b { font-family: var(--font-display); font-weight: 800; font-size: var(--t-lg); text-transform: uppercase; }
+.wo-meta .ran { color: var(--cobalt); font-weight: 700; }
+.tag.missed { color: var(--signal); }
 .reqs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 3px solid var(--ink); }
 .reqs li { padding: var(--s4) var(--s4) var(--s4) 0; border-bottom: 1px solid var(--line); display: grid; gap: var(--s1); }
 .reqs li:nth-child(even) { padding-left: var(--s4); border-left: 1px solid var(--line); }
@@ -122,6 +126,7 @@
 
 <script id="plan-jayesh" type="application/json">__PLAN_JAYESH__</script>
 <script id="plan-open320" type="application/json">__PLAN_OPEN320__</script>
+<script id="coros-snapshot" type="application/json">__SNAPSHOT__</script>
 <script>
 (function () {
   "use strict";
@@ -139,6 +144,35 @@
     ["During:", "a gel every 30 minutes, about 60 g of carbs per hour, and 400-700 ml of fluid with electrolytes per hour."],
     ["Carb load:", "8-10 g per kg per day on Friday and Saturday."]] };
   var HEAT = { h: "Heat", p: "Above 24°C with high humidity, add 5-10 s/km and race by heart rate. Mumbai warms up quickly after 7 am." };
+  // Daily COROS pull (scripts/update_from_coros.py). Null until the first run.
+  var SNAP = data("coros-snapshot");
+  function fmtPace(sec) { return Math.floor(sec / 60) + ":" + String(sec % 60).padStart(2, "0"); }
+  function shown(v) { return v == null ? "-" : String(Math.round(v)); }
+  function coachWho() {
+    var m = SNAP && SNAP.metrics;
+    if (!m) {
+      return {
+        title: "Your COROS snapshot",
+        intro: "This plan was built for Jayesh from his COROS watch data. These are the numbers it is based on.",
+        snap: [["VO2max", "54", ""], ["Threshold heart rate", "166", "bpm"], ["Threshold pace", "5:18", "/km"],
+               ["Fitness (CTI)", "74", ""], ["Night HRV baseline", "84", "ms"], ["Recent running", "12-16", "km/wk"]],
+        note: "Snapshot taken 29 Oct 2026. The tests in weeks 4 and 8 reset the paces."
+      };
+    }
+    var when = new Date(SNAP.asOf).toLocaleString("en-GB", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
+    return {
+      title: "Your COROS snapshot",
+      intro: "Pulled from Jayesh's COROS watch every day at 11:00. Last update " + when + ".",
+      snap: [["VO2max", shown(m.vo2max), ""], ["Threshold heart rate", shown(m.lthr), "bpm"],
+             ["Threshold pace", m.ltPaceSec ? fmtPace(m.ltPaceSec) : "-", "/km"], ["Fitness (CTI)", shown(m.cti), ""],
+             ["Night HRV", shown(m.hrv), "ms, baseline " + shown(m.hrvBaseline)], ["Last 7 days", m.last7Km == null ? "-" : String(m.last7Km), "km"]],
+      coachNote: SNAP.note || null,
+      note: "Runs are ticked off automatically when COROS records them. The tests in weeks 4 and 8 reset the paces."
+    };
+  }
+  function actual(id) { return SNAP && SNAP.completed ? SNAP.completed[id] : null; }
+  function wasMissed(id) { return !!(SNAP && SNAP.missed && SNAP.missed.indexOf(id) !== -1); }
+
   var PLANS = [
     {
       key: "jayesh", tab: "Jayesh 3:45", tabSub: "Personal, from COROS", kind: "personal", kindLabel: "COROS-linked",
@@ -146,13 +180,7 @@
       goal: "3:45", goalAria: "Goal time 3 hours 45 minutes",
       goalSub: [["Goal pace ", "5:20/km"], ["Stretch ", "3:40", " if the week 8 test allows"], ["Runs ", "Tue, Wed, Fri, Sun"]],
       facts: [["Plan length", "12", "weeks"], ["Peak week", "67", "km"], ["Longest run", "32", "km"]],
-      who: {
-        title: "Your COROS snapshot",
-        intro: "This plan was built for Jayesh from his COROS watch data. These are the numbers it is based on.",
-        snap: [["VO2max", "54", ""], ["Threshold heart rate", "166", "bpm"], ["Threshold pace", "5:18", "/km"],
-               ["Fitness (CTI)", "74", ""], ["Night HRV baseline", "84", "ms"], ["Recent running", "12-16", "km/wk"]],
-        note: "Snapshot taken 29 Oct 2026. The plan is adjusted from fresh COROS data at each weekly check-in, and the tests in weeks 4 and 8 reset the paces."
-      },
+      who: coachWho(),
       zonesIntro: "From the COROS threshold: 166 bpm and 5:18/km. In Gurgaon heat, the heart rate cap wins over pace.",
       zones: [["Easy and long", "6:10-6:40", "134-147 bpm", "Most of the running. Full conversation."],
               ["Marathon pace", "5:18-5:26", "150-158 bpm", "Race rhythm. Practise drinking at this pace."],
@@ -201,7 +229,7 @@
   var STORE_KEY = "tmm27-done";
   var doneMap = {};
   try { doneMap = JSON.parse(localStorage.getItem(STORE_KEY) || "{}") || {}; } catch (e) { doneMap = {}; }
-  function isDone(w) { return Object.prototype.hasOwnProperty.call(doneMap, w.id) ? !!doneMap[w.id] : !!w.completed; }
+  function isDone(w) { return Object.prototype.hasOwnProperty.call(doneMap, w.id) ? !!doneMap[w.id] : (!!actual(w.id) || !!w.completed); }
   function setDone(id, v) { doneMap[id] = v; try { localStorage.setItem(STORE_KEY, JSON.stringify(doneMap)); } catch (e) {} }
 
   var P, weeks, sel = 0, thisWeek = -1, filter = "all", ready = false, barBtns = [], xSpans = [];
@@ -247,6 +275,12 @@
     // Who / snapshot
     $("whoTitle").textContent = P.who.title; $("whoIntro").textContent = P.who.intro;
     var wb = $("whoBody"); wb.textContent = "";
+    if (P.who.coachNote) {
+      var cn = el("div", "coach-note");
+      cn.appendChild(el("b", null, "Today's call"));
+      cn.appendChild(el("p", null, P.who.coachNote));
+      wb.appendChild(cn);
+    }
     if (P.who.snap) {
       var dl = el("dl", "snap"); P.who.snap.forEach(function (s) { dl.appendChild(factEl(s[0], s[1], s[2])); }); wb.appendChild(dl);
     } else {
@@ -405,11 +439,14 @@
     var lab = x.sport === "bike" ? "Optional bike" : (TYPE_LABEL[x.type] || x.type);
     head.appendChild(el("span", "tag" + (x.type === "race" ? " race" : (KEY_TYPES[x.type] ? " key" : "")), lab));
     head.appendChild(el("h3", "wo-name", x.name.replace(/^Done: /, "")));
+    if (wasMissed(x.id) && !isDone(x)) head.appendChild(el("span", "tag missed", "Missed"));
     a.appendChild(head);
     var meta = el("div", "wo-meta");
     if (x.distanceMeters) { var k = el("span"); k.appendChild(el("span", "num", (x.distanceMeters / 1000).toFixed(x.distanceMeters % 1000 ? 1 : 0) + " km")); meta.appendChild(k); }
     if (x.durationMinutes) { var m = el("span"); m.appendChild(el("span", "num", "~" + x.durationMinutes + " min")); meta.appendChild(m); }
     if (x.primaryZone) meta.appendChild(el("span", null, x.primaryZone));
+    var act = actual(x.id);
+    if (act) meta.appendChild(el("span", "ran", "Ran " + act.km + " km" + (act.avgHr ? ", avg HR " + act.avgHr : "")));
     a.appendChild(meta);
     var row = el("div", "wo-row");
     if (x.humanReadable) {

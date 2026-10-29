@@ -1,0 +1,32 @@
+{
+ "asOf": "2026-10-29T15:23+05:30",
+ "metrics": {
+  "vo2max": 54,
+  "lthr": 166,
+  "ltPaceSec": 321,
+  "cti": 74.0,
+  "ati": 56.0,
+  "loadRatio": 0.75,
+  "hrv": 75.0,
+  "hrvDate": "20261029",
+  "hrvBaseline": 84.0,
+  "restingHr": 51,
+  "last7Km": 13.3
+ },
+ "weeklyKm": {
+  "2026-10-26": 12.7
+ },
+ "completed": {
+  "w1-tue": {
+   "km": 6.6,
+   "avgHr": 148
+  },
+  "w1-wed": {
+   "km": 6.1,
+   "avgHr": 147
+  }
+ },
+ "missed": [],
+ "note": "Rest day today. Night HRV is 75 against a baseline of 84, so recovery is a little behind. Tomorrow's easy 6k: keep heart rate under 147 and let pace drift.",
+ "noteDate": "2026-10-29"
+}
