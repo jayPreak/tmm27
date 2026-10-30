@@ -1,20 +1,20 @@
 {
- "asOf": "2026-10-29T15:27+05:30",
+ "asOf": "2026-10-30T11:14+05:30",
  "metrics": {
   "vo2max": 54,
   "lthr": 166,
-  "ltPaceSec": 321,
-  "cti": 74.0,
-  "ati": 56.0,
-  "loadRatio": 0.75,
+  "ltPaceSec": 320,
+  "cti": 76.0,
+  "ati": 72.0,
+  "loadRatio": 0.94,
   "hrv": 75.0,
   "hrvDate": "20261029",
   "hrvBaseline": 84.0,
-  "restingHr": 51,
-  "last7Km": 13.3
+  "restingHr": 46,
+  "last7Km": 19.6
  },
  "weeklyKm": {
-  "2026-10-26": 12.7
+  "2026-10-26": 19.7
  },
  "completed": {
   "w1-tue": {
@@ -24,9 +24,13 @@
   "w1-wed": {
    "km": 6.1,
    "avgHr": 147
+  },
+  "w1-fri": {
+   "km": 7.0,
+   "avgHr": 161
   }
  },
  "missed": [],
- "note": "Rest day today. Night HRV is 75 against a baseline of 84, so recovery is a little behind. Tomorrow's easy 6k: keep heart rate under 147 and let pace drift.",
- "noteDate": "2026-10-29"
+ "note": "Today's easy 6k is already done, 7.0 km at an average of 161 bpm, well over the 147 cap. With HRV at 75 against a baseline of 84, rest for the rest of today. Tomorrow is strength only, keep deadlifts at RPE 7 or below, and on Sunday hold HR under 147 even if pace slows past 6:40/km.",
+ "noteDate": "2026-10-30"
 }
