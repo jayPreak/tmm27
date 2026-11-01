@@ -1,36 +1,40 @@
 {
- "asOf": "2026-10-30T11:14+05:30",
- "metrics": {
-  "vo2max": 54,
-  "lthr": 166,
-  "ltPaceSec": 320,
-  "cti": 76.0,
-  "ati": 72.0,
-  "loadRatio": 0.94,
-  "hrv": 75.0,
-  "hrvDate": "20261029",
-  "hrvBaseline": 84.0,
-  "restingHr": 46,
-  "last7Km": 19.6
- },
- "weeklyKm": {
-  "2026-10-26": 19.7
- },
- "completed": {
-  "w1-tue": {
-   "km": 6.6,
-   "avgHr": 148
+  "asOf": "2026-11-01T18:55+05:30",
+  "metrics": {
+    "vo2max": 54,
+    "lthr": 166,
+    "ltPaceSec": 320,
+    "cti": 77.0,
+    "ati": 81.0,
+    "loadRatio": 1.05,
+    "hrv": 21.0,
+    "hrvDate": "20261101",
+    "hrvBaseline": 84.0,
+    "restingHr": 66,
+    "last7Km": 33.6
   },
-  "w1-wed": {
-   "km": 6.1,
-   "avgHr": 147
+  "weeklyKm": {
+    "2026-10-26": 33.7
   },
-  "w1-fri": {
-   "km": 7.0,
-   "avgHr": 161
-  }
- },
- "missed": [],
- "note": "Today's easy 6k is already done, 7.0 km at an average of 161 bpm, well over the 147 cap. With HRV at 75 against a baseline of 84, rest for the rest of today. Tomorrow is strength only, keep deadlifts at RPE 7 or below, and on Sunday hold HR under 147 even if pace slows past 6:40/km.",
- "noteDate": "2026-10-30"
+  "completed": {
+    "w1-tue": {
+      "km": 6.6,
+      "avgHr": 148
+    },
+    "w1-wed": {
+      "km": 6.1,
+      "avgHr": 147
+    },
+    "w1-fri": {
+      "km": 7.0,
+      "avgHr": 161
+    },
+    "w1-sun": {
+      "km": 14.0,
+      "avgHr": 154
+    }
+  },
+  "missed": [],
+  "note": "Today's 14 km long run is done, but average HR was 154 against a 147 cap, and HRV is down to 21 against a baseline of 84. Rest for the rest of today and keep tomorrow's press session light, RPE 7 or below. If HRV is still well under 84 on Tuesday morning, replace the fartlek with an easy 5 km at 6:30 to 6:50/km, HR under 147 bpm.",
+  "noteDate": "2026-11-01"
 }
