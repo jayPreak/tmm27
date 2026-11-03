@@ -1,17 +1,17 @@
 {
-  "asOf": "2026-11-01T18:55+05:30",
+  "asOf": "2026-11-03T12:11+05:30",
   "metrics": {
     "vo2max": 54,
     "lthr": 166,
     "ltPaceSec": 320,
-    "cti": 77.0,
-    "ati": 81.0,
-    "loadRatio": 1.05,
-    "hrv": 21.0,
-    "hrvDate": "20261101",
-    "hrvBaseline": 84.0,
-    "restingHr": 66,
-    "last7Km": 33.6
+    "cti": 73.0,
+    "ati": 59.0,
+    "loadRatio": 0.8,
+    "hrv": 95.0,
+    "hrvDate": "20261103",
+    "hrvBaseline": 83.0,
+    "restingHr": 50,
+    "last7Km": 27.1
   },
   "weeklyKm": {
     "2026-10-26": 33.7
@@ -35,6 +35,6 @@
     }
   },
   "missed": [],
-  "note": "Today's 14 km long run is done, but average HR was 154 against a 147 cap, and HRV is down to 21 against a baseline of 84. Rest for the rest of today and keep tomorrow's press session light, RPE 7 or below. If HRV is still well under 84 on Tuesday morning, replace the fartlek with an easy 5 km at 6:30 to 6:50/km, HR under 147 bpm.",
-  "noteDate": "2026-11-01"
+  "note": "HRV is back up to 95 against a baseline of 83 and load ratio is 0.8, so do today's fartlek as planned: 2 km easy, 8x200 m at 4:45 to 4:55/km with 1 min easy jogs, 2 km easy. Keep the warm-up and cool-down under 147 bpm. Tomorrow's easy 6 km stays at 6:10 to 6:40/km with HR capped at 147 bpm.",
+  "noteDate": "2026-11-03"
 }
