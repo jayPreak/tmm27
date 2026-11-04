@@ -1,40 +1,47 @@
 {
-  "asOf": "2026-11-03T12:11+05:30",
-  "metrics": {
-    "vo2max": 54,
-    "lthr": 166,
-    "ltPaceSec": 320,
-    "cti": 73.0,
-    "ati": 59.0,
-    "loadRatio": 0.8,
-    "hrv": 95.0,
-    "hrvDate": "20261103",
-    "hrvBaseline": 83.0,
-    "restingHr": 50,
-    "last7Km": 27.1
+ "asOf": "2026-11-04T11:54+05:30",
+ "metrics": {
+  "vo2max": 54,
+  "lthr": 166,
+  "ltPaceSec": 321,
+  "cti": 76.0,
+  "ati": 76.0,
+  "loadRatio": 1.0,
+  "hrv": 72.0,
+  "hrvDate": "20261104",
+  "hrvBaseline": 83.0,
+  "restingHr": 48,
+  "last7Km": 29.7
+ },
+ "weeklyKm": {
+  "2026-11-02": 8.7,
+  "2026-10-26": 33.7
+ },
+ "completed": {
+  "w1-tue": {
+   "km": 6.6,
+   "avgHr": 148
   },
-  "weeklyKm": {
-    "2026-10-26": 33.7
+  "w1-wed": {
+   "km": 6.1,
+   "avgHr": 147
   },
-  "completed": {
-    "w1-tue": {
-      "km": 6.6,
-      "avgHr": 148
-    },
-    "w1-wed": {
-      "km": 6.1,
-      "avgHr": 147
-    },
-    "w1-fri": {
-      "km": 7.0,
-      "avgHr": 161
-    },
-    "w1-sun": {
-      "km": 14.0,
-      "avgHr": 154
-    }
+  "w1-fri": {
+   "km": 7.0,
+   "avgHr": 161
   },
-  "missed": [],
-  "note": "HRV is back up to 95 against a baseline of 83 and load ratio is 0.8, so do today's fartlek as planned: 2 km easy, 8x200 m at 4:45 to 4:55/km with 1 min easy jogs, 2 km easy. Keep the warm-up and cool-down under 147 bpm. Tomorrow's easy 6 km stays at 6:10 to 6:40/km with HR capped at 147 bpm.",
-  "noteDate": "2026-11-03"
+  "w1-sun": {
+   "km": 14.0,
+   "avgHr": 154
+  },
+  "w2-wed": {
+   "km": 8.7,
+   "avgHr": 142
+  }
+ },
+ "missed": [
+  "w2-tue"
+ ],
+ "note": "Your easy 8.7 km today at 142 bpm is done, so nothing more to run. HRV is 72 against a baseline of 83, about 13% low, and you missed Tuesday's fartlek, so do not make it up. Tomorrow is a no-run day: lift as planned, or keep any spin easy under 135 bpm, and get 7 hours of sleep.",
+ "noteDate": "2026-11-04"
 }
