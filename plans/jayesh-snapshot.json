@@ -1,47 +1,47 @@
 {
- "asOf": "2026-11-04T11:54+05:30",
- "metrics": {
-  "vo2max": 54,
-  "lthr": 166,
-  "ltPaceSec": 321,
-  "cti": 76.0,
-  "ati": 76.0,
-  "loadRatio": 1.0,
-  "hrv": 72.0,
-  "hrvDate": "20261104",
-  "hrvBaseline": 83.0,
-  "restingHr": 48,
-  "last7Km": 29.7
- },
- "weeklyKm": {
-  "2026-11-02": 8.7,
-  "2026-10-26": 33.7
- },
- "completed": {
-  "w1-tue": {
-   "km": 6.6,
-   "avgHr": 148
+  "asOf": "2026-11-05T11:56+05:30",
+  "metrics": {
+    "vo2max": 54,
+    "lthr": 166,
+    "ltPaceSec": 321,
+    "cti": 74.0,
+    "ati": 65.0,
+    "loadRatio": 0.87,
+    "hrv": 72.0,
+    "hrvDate": "20261104",
+    "hrvBaseline": 83.0,
+    "restingHr": 48,
+    "last7Km": 29.7
   },
-  "w1-wed": {
-   "km": 6.1,
-   "avgHr": 147
+  "weeklyKm": {
+    "2026-11-02": 8.7,
+    "2026-10-26": 33.7
   },
-  "w1-fri": {
-   "km": 7.0,
-   "avgHr": 161
+  "completed": {
+    "w1-tue": {
+      "km": 6.6,
+      "avgHr": 148
+    },
+    "w1-wed": {
+      "km": 6.1,
+      "avgHr": 147
+    },
+    "w1-fri": {
+      "km": 7.0,
+      "avgHr": 161
+    },
+    "w1-sun": {
+      "km": 14.0,
+      "avgHr": 154
+    },
+    "w2-wed": {
+      "km": 8.7,
+      "avgHr": 142
+    }
   },
-  "w1-sun": {
-   "km": 14.0,
-   "avgHr": 154
-  },
-  "w2-wed": {
-   "km": 8.7,
-   "avgHr": 142
-  }
- },
- "missed": [
-  "w2-tue"
- ],
- "note": "Your easy 8.7 km today at 142 bpm is done, so nothing more to run. HRV is 72 against a baseline of 83, about 13% low, and you missed Tuesday's fartlek, so do not make it up. Tomorrow is a no-run day: lift as planned, or keep any spin easy under 135 bpm, and get 7 hours of sleep.",
- "noteDate": "2026-11-04"
+  "missed": [
+    "w2-tue"
+  ],
+  "note": "Today is a no-run day, so lift as planned or keep any spin easy at 115 to 135 bpm. HRV is still 72 against a baseline of 83, about 13% low, so sleep 7 hours tonight. If it has not recovered by tomorrow morning, run Friday's 3 km at 5:26 to 5:35/km with HR capped at 154 bpm instead of full marathon pace.",
+  "noteDate": "2026-11-05"
 }
