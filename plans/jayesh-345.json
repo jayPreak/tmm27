@@ -497,7 +497,7 @@
       "startDate": "2026-11-09",
       "endDate": "2026-11-15",
       "phase": "Base",
-      "focus": "Absorb hard 18k; threshold moved to Wed; long run HR discipline",
+      "focus": "Fit runs around gym: easy after deadlift, threshold on bench day, easy before leg day, long run after upper day",
       "targetHours": 4.5,
       "isRecoveryWeek": false,
       "days": [
@@ -509,8 +509,8 @@
               "id": "w3-mon",
               "sport": "rest",
               "type": "rest",
-              "name": "No run — strength",
-              "description": "Press day (shoulders and arms). No run.",
+              "name": "No run, deadlift day",
+              "description": "Deadlift + pull accessories. No run.",
               "completed": false
             }
           ]
@@ -524,7 +524,7 @@
               "sport": "run",
               "type": "recovery",
               "name": "Easy 6k recovery",
-              "description": "Recovery after hard 18k (HR 161). Conversational.",
+              "description": "Recovery after the hard 18k and Monday deadlifts. Conversational.",
               "durationMinutes": 40,
               "distanceMeters": 6000,
               "primaryZone": "Zone 1-2",
@@ -542,7 +542,7 @@
               "sport": "run",
               "type": "threshold",
               "name": "Threshold 3x8min",
-              "description": "Key quality session (moved from Tue).",
+              "description": "Key quality session. Run in the morning, bench in the evening (upper body, does not hurt the run).",
               "durationMinutes": 54,
               "distanceMeters": 9200,
               "primaryZone": "Zone 4-5a",
@@ -559,8 +559,8 @@
               "id": "w3-thu",
               "sport": "rest",
               "type": "rest",
-              "name": "No run — strength",
-              "description": "Full rest. Optional 30-45 min easy spin, HR 115-135.",
+              "name": "Rest day",
+              "description": "Full rest, no gym. Optional 30-45 min easy spin, HR 115-135.",
               "completed": false
             }
           ]
@@ -572,13 +572,13 @@
             {
               "id": "w3-fri",
               "sport": "run",
-              "type": "tempo",
-              "name": "Marathon pace 4k",
-              "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
-              "durationMinutes": 47,
-              "distanceMeters": 8000,
-              "primaryZone": "MP (Z3)",
-              "humanReadable": "2 km easy WU\n4 km @ MP - 5:18-5:26/km, HR 150-158 bpm\n2 km easy CD",
+              "type": "endurance",
+              "name": "Easy 7k + strides",
+              "description": "Leg day. Run easy in the morning, squats later; keep squats at RPE 8 or below, no grinding reps, 2 days before the long run. MP work dropped this week: threshold Wed is the one quality session.",
+              "durationMinutes": 52,
+              "distanceMeters": 7000,
+              "primaryZone": "Zone 2",
+              "humanReadable": "7 km easy @ 6:10-6:40/km, HR 134-147 bpm\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
               "completed": false
             }
           ]
@@ -591,8 +591,8 @@
               "id": "w3-sat",
               "sport": "rest",
               "type": "rest",
-              "name": "No run — strength",
-              "description": "Deadlift day. No run. Keep it at RPE 8 or below before the long run.",
+              "name": "No run, shoulder press + arms",
+              "description": "Upper body only. No leg work before the long run.",
               "completed": false
             }
           ]
@@ -622,7 +622,7 @@
           "run": {
             "sessions": 4,
             "hours": 4.2,
-            "km": 41.2
+            "km": 40.2
           }
         }
       }
