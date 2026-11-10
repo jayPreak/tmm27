@@ -13,17 +13,20 @@ def wo(id,name,km,mins,zone,hr,desc,typ="endurance",sport="run",done=False):
     return {"id":id,"sport":sport,"type":typ,"name":name,"description":desc,"durationMinutes":round(mins),
             "distanceMeters":int(km*1000) if km else None,"primaryZone":zone,"humanReadable":hr,"completed":done}
 
+INTERIM="HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km"
+POST="HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band"
+EASY_RULE=INTERIM
 def easy(id,km,strides=False):
     mins=km*385/60+(3 if strides else 0)
-    h=f"{km} km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150"
+    h=f"{km} km easy. {EASY_RULE}"
     if strides: h+="\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk"
     return wo(id,f"Easy {km}k"+(" + strides" if strides else ""),km,mins,"Zone 2",h,"Aerobic volume. Conversational.","endurance" if not strides else "endurance")
 def long(id,km,mp_km=0,note=""):
     e_km=km-mp_km
     mins=e_km*385/60+mp_km*322/60
     h=f"{km} km total. "
-    if mp_km: h+=f"First {e_km-2 if mp_km else e_km} km easy by HR (≤147, ignore pace) → {mp_km} km @ MP {pr(MP)} (by pace) → 2 km easy"
-    else: h+="Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150"
+    if mp_km: h+=f"First {e_km-2 if mp_km else e_km} km easy ({EASY_RULE}) → {mp_km} km @ MP {pr(MP)} (by pace) → 2 km easy"
+    else: h+="Easy. "+EASY_RULE
     if km>=18: h+="\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)"
     if note: h+="\n"+note
     return wo(id,f"Long run {km}k"+(f" w/ {mp_km}k MP" if mp_km else ""),km,mins,"Zone 2" if not mp_km else "Zone 2 + MP",h,
@@ -57,7 +60,7 @@ def prog(id,e_km,s_km,m_km):
     km=e_km+s_km+m_km+1
     mins=(e_km+1)*385/60+s_km*350/60+m_km*322/60
     return wo(id,f"Progression {km}k",km,mins,"Z2 → MP",
-      f"{e_km} km easy by HR (≤147, ignore pace)\n{s_km} km steady @ 5:45-5:55/km (HR ≤155)\n{m_km} km @ MP {pr(MP)} (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+      f"{e_km} km easy (cap per new LTHR, never faster than easy band)\n{s_km} km steady @ 5:45-5:55/km (HR ≤155)\n{m_km} km @ MP {pr(MP)} (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
       "Key session (replaces the MP session this week). Finish at marathon pace, not faster.","tempo")
 def tt(id):
     return q(id,"30-min threshold test",9,70,"Test",
@@ -95,6 +98,7 @@ W4(2,"Rebuild","Four runs a week, first light quality",False,{
 W4(3,"Base","Progression done Tue. Rest of the week easy so Sunday's 18k is truly aerobic",False,{
  1:[done(wo("w3-tue","Done: progression 7k with partner",7.0,47,"Z2 → T","Done (Nov 10). Finished 5:29/km at HR 175, harder than intended. Counts as this week's quality session.","tempo"))],
  3:[easy("w3-thu",7)],4:[easy("w3-fri",7,True)],6:[long("w3-sun",18)]})
+EASY_RULE=POST
 W4(4,"Base","Down week + 30-min threshold test. Fifth run day starts (Wed easy)",True,{
  1:[tt("w4-tue")],2:[easy("w4-wed",5)],3:[easy("w4-thu",6)],4:[easy("w4-fri",6,True)],6:[long("w4-sun",14)]})
 W4(5,"Build","Threshold + first scheduled progression",False,{
@@ -148,7 +152,7 @@ for n in range(1,13):
 L=166
 zones=[(1,"Recovery",0,81),(2,"Aerobic",81,89),(3,"Tempo",90,93),(4,"Sub-threshold",94,99),(5,"Threshold (5a)",100,102),(6,"VO2max (5b)",103,106)]
 plan={"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata Mumbai Marathon 2027","eventDate":"2027-01-17",
- "planStartDate":"2026-10-26","planEndDate":"2027-01-17","createdAt":"2026-10-29T00:00:00Z","updatedAt":"2026-11-10T00:00:00Z",
+ "planStartDate":"2026-10-26","planEndDate":"2027-01-17","createdAt":"2026-10-29T00:00:00Z","updatedAt":"2026-11-11T00:00:00Z",
  "totalWeeks":12,"generatedBy":"Claude Coach (coros-coach)"},
  "preferences":{"swim":"meters","bike":"kilometers","run":"kilometers","firstDayOfWeek":"monday"},
  "assessment":{"foundation":{"raceHistory":["Leh/Ladakh marathon Sep 2026 (42.5 km, 6:01, altitude)","Gurgaon triathlon Oct 2026"],
@@ -158,10 +162,10 @@ plan={"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata M
                {"sport":"strength","evidence":"4-5 lifting sessions/wk consistently"}],
   "limiters":[{"sport":"run","evidence":"Last 3 wks only 12-16 km/wk; LT pace 5:18/km is slower than sub-3:30 MP (4:58)"}],
   "constraints":["5 runs/wk from wk 4: Tue quality, Wed easy, Thu MP or progression (alternating), Fri easy + strides, Sun long","Heavy lifting Mon (deadlift) / Wed (bench) / Fri (squat) / Sat (shoulder press); lower body RPE 7-8 max from wk 5","Plan only changes on red flags: HRV <60 two mornings running, RHR 7+ above baseline, pain, illness",
-    "Pool access ending — no swim","Gurgaon heat/pollution: HR caps over pace","Goal revised: sub-3:30 → 3:45 (stretch 3:40)"]},
+    "Pool access ending — no swim","Gurgaon heat/pollution: HR caps over pace","COROS LTHR 166 is stale (held 175 on 10 Nov). 17 Nov 30-min test sets real LTHR + LT pace; easy runs then pace band + HR ceiling","Non-negotiable: easy = easy, no unplanned runs, no skipped key sessions, run your session not your partner's, gels on every long run 18k+, pain = stop","Goal revised: sub-3:30 → 3:45 (stretch 3:40)"]},
  "zones":{"run":{"hr":{"lthr":L,"zones":[{"zone":z,"name":nm,"percentLow":lo,"percentHigh":hi,
    "hrLow":round(L*lo/100),"hrHigh":round(L*hi/100)} for z,nm,lo,hi in zones]},
-   "pace":{"thresholdPace":"5:18/km","easy":"by HR only, 147 max","marathon":pr(MP),"threshold":pr(T),"interval":pr(I)}}},
+   "pace":{"thresholdPace":"5:18/km","easy":"interim: HR ≤150, never faster than 6:40/km; reset by 17 Nov test (pace band + HR cap 88% new LTHR)","marathon":pr(MP),"threshold":pr(T),"interval":pr(I)}}},
  "phases":[
   {"name":"Rebuild","startWeek":1,"endWeek":2,"focus":"Restore 5 runs/wk after 3 low weeks","weeklyHoursRange":{"low":2.5,"high":4},
    "keyWorkouts":["Long run 14-16k"],"physiologicalGoals":["Re-establish frequency","Tendon/joint re-loading"]},

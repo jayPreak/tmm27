@@ -8,7 +8,7 @@
   "planStartDate": "2026-10-26",
   "planEndDate": "2027-01-17",
   "createdAt": "2026-10-29T00:00:00Z",
-  "updatedAt": "2026-11-10T00:00:00Z",
+  "updatedAt": "2026-11-11T00:00:00Z",
   "totalWeeks": 12,
   "generatedBy": "Claude Coach (coros-coach)"
  },
@@ -63,6 +63,8 @@
    "Plan only changes on red flags: HRV <60 two mornings running, RHR 7+ above baseline, pain, illness",
    "Pool access ending — no swim",
    "Gurgaon heat/pollution: HR caps over pace",
+   "COROS LTHR 166 is stale (held 175 on 10 Nov). 17 Nov 30-min test sets real LTHR + LT pace; easy runs then pace band + HR ceiling",
+   "Non-negotiable: easy = easy, no unplanned runs, no skipped key sessions, run your session not your partner's, gels on every long run 18k+, pain = stop",
    "Goal revised: sub-3:30 → 3:45 (stretch 3:40)"
   ]
  },
@@ -123,7 +125,7 @@
    },
    "pace": {
     "thresholdPace": "5:18/km",
-    "easy": "by HR only, 147 max",
+    "easy": "interim: HR ≤150, never faster than 6:40/km; reset by 17 Nov test (pace band + HR cap 88% new LTHR)",
     "marathon": "5:18-5:26/km",
     "threshold": "5:05-5:15/km",
     "interval": "4:45-4:55/km"
@@ -309,7 +311,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "6 km easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -341,7 +343,7 @@
        "durationMinutes": 90,
        "distanceMeters": 14000,
        "primaryZone": "Zone 2",
-       "humanReadable": "14 km total. Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150",
+       "humanReadable": "14 km total. Easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -412,7 +414,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "6 km easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -476,7 +478,7 @@
        "durationMinutes": 103,
        "distanceMeters": 16000,
        "primaryZone": "Zone 2",
-       "humanReadable": "16 km total. Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150",
+       "humanReadable": "16 km total. Easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -561,7 +563,7 @@
        "durationMinutes": 45,
        "distanceMeters": 7000,
        "primaryZone": "Zone 2",
-       "humanReadable": "7 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "7 km easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -579,7 +581,7 @@
        "durationMinutes": 48,
        "distanceMeters": 7000,
        "primaryZone": "Zone 2",
-       "humanReadable": "7 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "7 km easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -611,7 +613,7 @@
        "durationMinutes": 116,
        "distanceMeters": 18000,
        "primaryZone": "Zone 2",
-       "humanReadable": "18 km total. Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "18 km total. Easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
        "completed": false
       }
      ]
@@ -682,7 +684,7 @@
        "durationMinutes": 32,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -700,7 +702,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -718,7 +720,7 @@
        "durationMinutes": 42,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -750,7 +752,7 @@
        "durationMinutes": 90,
        "distanceMeters": 14000,
        "primaryZone": "Zone 2",
-       "humanReadable": "14 km total. Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150",
+       "humanReadable": "14 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -821,7 +823,7 @@
        "durationMinutes": 26,
        "distanceMeters": 4000,
        "primaryZone": "Zone 2",
-       "humanReadable": "4 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "4 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -839,7 +841,7 @@
        "durationMinutes": 54,
        "distanceMeters": 9000,
        "primaryZone": "Z2 → MP",
-       "humanReadable": "4 km easy by HR (≤147, ignore pace)\n2 km steady @ 5:45-5:55/km (HR ≤155)\n2 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+       "humanReadable": "4 km easy (cap per new LTHR, never faster than easy band)\n2 km steady @ 5:45-5:55/km (HR ≤155)\n2 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
        "completed": false
       }
      ]
@@ -857,7 +859,7 @@
        "durationMinutes": 35,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -889,7 +891,7 @@
        "durationMinutes": 116,
        "distanceMeters": 18000,
        "primaryZone": "Zone 2",
-       "humanReadable": "18 km total. Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "18 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
        "completed": false
       }
      ]
@@ -960,7 +962,7 @@
        "durationMinutes": 32,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -996,7 +998,7 @@
        "durationMinutes": 42,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1028,7 +1030,7 @@
        "durationMinutes": 141,
        "distanceMeters": 22000,
        "primaryZone": "Zone 2",
-       "humanReadable": "22 km total. Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "22 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
        "completed": false
       }
      ]
@@ -1099,7 +1101,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1117,7 +1119,7 @@
        "durationMinutes": 66,
        "distanceMeters": 11000,
        "primaryZone": "Z2 → MP",
-       "humanReadable": "4 km easy by HR (≤147, ignore pace)\n3 km steady @ 5:45-5:55/km (HR ≤155)\n3 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+       "humanReadable": "4 km easy (cap per new LTHR, never faster than easy band)\n3 km steady @ 5:45-5:55/km (HR ≤155)\n3 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
        "completed": false
       }
      ]
@@ -1135,7 +1137,7 @@
        "durationMinutes": 42,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1167,7 +1169,7 @@
        "durationMinutes": 154,
        "distanceMeters": 24000,
        "primaryZone": "Zone 2",
-       "humanReadable": "24 km total. Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "24 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
        "completed": false
       }
      ]
@@ -1238,7 +1240,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1256,7 +1258,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1274,7 +1276,7 @@
        "durationMinutes": 42,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1306,7 +1308,7 @@
        "durationMinutes": 110,
        "distanceMeters": 18000,
        "primaryZone": "Zone 2 + MP",
-       "humanReadable": "18 km total. First 11 km easy by HR (≤147, ignore pace) → 5 km @ MP 5:18-5:26/km (by pace) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "18 km total. First 11 km easy (HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 5 km @ MP 5:18-5:26/km (by pace) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
        "completed": false
       }
      ]
@@ -1377,7 +1379,7 @@
        "durationMinutes": 32,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1395,7 +1397,7 @@
        "durationMinutes": 77,
        "distanceMeters": 13000,
        "primaryZone": "Z2 → MP",
-       "humanReadable": "5 km easy by HR (≤147, ignore pace)\n3 km steady @ 5:45-5:55/km (HR ≤155)\n4 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+       "humanReadable": "5 km easy (cap per new LTHR, never faster than easy band)\n3 km steady @ 5:45-5:55/km (HR ≤155)\n4 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
        "completed": false
       }
      ]
@@ -1413,7 +1415,7 @@
        "durationMinutes": 35,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1445,7 +1447,7 @@
        "durationMinutes": 173,
        "distanceMeters": 27000,
        "primaryZone": "Zone 2",
-       "humanReadable": "27 km total. Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nFull race kit and breakfast rehearsal (wake 3:30, run 5:15)",
+       "humanReadable": "27 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nFull race kit and breakfast rehearsal (wake 3:30, run 5:15)",
        "completed": false
       }
      ]
@@ -1516,7 +1518,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1534,7 +1536,7 @@
        "durationMinutes": 45,
        "distanceMeters": 7000,
        "primaryZone": "Zone 2",
-       "humanReadable": "7 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "7 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1552,7 +1554,7 @@
        "durationMinutes": 35,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1584,7 +1586,7 @@
        "durationMinutes": 193,
        "distanceMeters": 32000,
        "primaryZone": "Zone 2 + MP",
-       "humanReadable": "32 km total. First 18 km easy by HR (≤147, ignore pace) → 12 km @ MP 5:18-5:26/km (by pace) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nStructure: 18 km easy, then 3x4 km at MP with 1 km easy float between, then 2 km easy. Exact race fuel.",
+       "humanReadable": "32 km total. First 18 km easy (HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 12 km @ MP 5:18-5:26/km (by pace) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nStructure: 18 km easy, then 3x4 km at MP with 1 km easy float between, then 2 km easy. Exact race fuel.",
        "completed": false
       }
      ]
@@ -1655,7 +1657,7 @@
        "durationMinutes": 32,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1673,7 +1675,7 @@
        "durationMinutes": 48,
        "distanceMeters": 8000,
        "primaryZone": "Z2 → MP",
-       "humanReadable": "3 km easy by HR (≤147, ignore pace)\n2 km steady @ 5:45-5:55/km (HR ≤155)\n2 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+       "humanReadable": "3 km easy (cap per new LTHR, never faster than easy band)\n2 km steady @ 5:45-5:55/km (HR ≤155)\n2 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
        "completed": false
       }
      ]
@@ -1691,7 +1693,7 @@
        "durationMinutes": 35,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1723,7 +1725,7 @@
        "durationMinutes": 97,
        "distanceMeters": 16000,
        "primaryZone": "Zone 2 + MP",
-       "humanReadable": "16 km total. First 9 km easy by HR (≤147, ignore pace) → 5 km @ MP 5:18-5:26/km (by pace) → 2 km easy",
+       "humanReadable": "16 km total. First 9 km easy (HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 5 km @ MP 5:18-5:26/km (by pace) → 2 km easy",
        "completed": false
       }
      ]
@@ -1794,7 +1796,7 @@
        "durationMinutes": 32,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1812,7 +1814,7 @@
        "durationMinutes": 29,
        "distanceMeters": 4000,
        "primaryZone": "Zone 2",
-       "humanReadable": "4 km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "4 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
