@@ -539,14 +539,10 @@
           "workouts": [
             {
               "id": "w3-wed",
-              "sport": "run",
-              "type": "threshold",
-              "name": "Threshold 3x8min",
-              "description": "Key quality session. Run in the morning, bench in the evening (upper body, does not hurt the run).",
-              "durationMinutes": 54,
-              "distanceMeters": 9200,
-              "primaryZone": "Zone 4-5a",
-              "humanReadable": "2 km easy WU + 4 strides\n3x8 min @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD",
+              "sport": "rest",
+              "type": "rest",
+              "name": "No run, bench day",
+              "description": "Bench + push accessories. No run this week.",
               "completed": false
             }
           ]
@@ -557,10 +553,14 @@
           "workouts": [
             {
               "id": "w3-thu",
-              "sport": "rest",
-              "type": "rest",
-              "name": "Rest day",
-              "description": "Full rest, no gym. Optional 30-45 min easy spin, HR 115-135.",
+              "sport": "run",
+              "type": "threshold",
+              "name": "Threshold 3x8min",
+              "description": "Key quality session (moved from Wed). No gym today, so legs are fresh.",
+              "durationMinutes": 54,
+              "distanceMeters": 9200,
+              "primaryZone": "Zone 4-5a",
+              "humanReadable": "2 km easy WU + 4 strides\n3x8 min @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD",
               "completed": false
             }
           ]
@@ -574,7 +574,7 @@
               "sport": "run",
               "type": "endurance",
               "name": "Easy 7k + strides",
-              "description": "Leg day. Run easy in the morning, squats later; keep squats at RPE 8 or below, no grinding reps, 2 days before the long run. MP work dropped this week: threshold Wed is the one quality session.",
+              "description": "Day after threshold and leg day. Run easy in the morning, squats later at RPE 8 or below, no grinding reps, 2 days before the long run.",
               "durationMinutes": 52,
               "distanceMeters": 7000,
               "primaryZone": "Zone 2",
