@@ -1,19 +1,20 @@
 {
- "asOf": "2026-11-09T21:55+05:30",
+ "asOf": "2026-11-10T09:33+05:30",
  "metrics": {
   "vo2max": 54,
   "lthr": 166,
   "ltPaceSec": 320,
-  "cti": 79.0,
-  "ati": 94.0,
-  "loadRatio": 1.18,
+  "cti": 81.0,
+  "ati": 101.0,
+  "loadRatio": 1.24,
   "hrv": 75.0,
   "hrvDate": "20261109",
   "hrvBaseline": 84.0,
   "restingHr": 52,
-  "last7Km": 35.5
+  "last7Km": 42.5
  },
  "weeklyKm": {
+  "2026-11-09": 7.0,
   "2026-11-02": 35.5,
   "2026-10-26": 33.7
  },
@@ -41,12 +42,16 @@
   "w2-sun": {
    "km": 18.0,
    "avgHr": 161
+  },
+  "w3-tue": {
+   "km": 7.0,
+   "avgHr": 162
   }
  },
  "missed": [
   "w2-tue",
   "w2-fri"
  ],
- "note": "Tomorrow is an easy 6 km recovery run, HR capped at 145 bpm, about 6:20 to 6:50/km. Sunday's 18 km at 161 bpm left you tired (load ratio 1.18, resting HR 52 vs 48), so keep it truly easy. Wednesday's threshold goes ahead only if HRV is 70 or higher and resting HR is under 54.",
- "noteDate": "2026-11-09"
+ "note": "New plan from today: 5 runs a week, and it no longer changes for heart rate, only for red flags. Today's progression counts as this week's hard run, so Thursday is now an easy 7 km at HR 147 or below, about 6:20 to 6:40/km.",
+ "noteDate": "2026-11-10"
 }
