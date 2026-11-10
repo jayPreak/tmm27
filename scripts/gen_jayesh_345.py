@@ -15,15 +15,15 @@ def wo(id,name,km,mins,zone,hr,desc,typ="endurance",sport="run",done=False):
 
 def easy(id,km,strides=False):
     mins=km*385/60+(3 if strides else 0)
-    h=f"{km} km easy @ {pr(E)}, HR {HR_E} (cap 147 — slow down in heat, pace is secondary)"
+    h=f"{km} km easy, HR 147 max. Ignore pace: 6:40-7:30/km is normal now, walk briefly if HR goes over 150"
     if strides: h+="\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk"
     return wo(id,f"Easy {km}k"+(" + strides" if strides else ""),km,mins,"Zone 2",h,"Aerobic volume. Conversational.","endurance" if not strides else "endurance")
 def long(id,km,mp_km=0,note=""):
     e_km=km-mp_km
     mins=e_km*385/60+mp_km*322/60
     h=f"{km} km total. "
-    if mp_km: h+=f"First {e_km-2 if mp_km else e_km} km easy @ {pr(E)} (HR ≤147) → {mp_km} km @ MP {pr(MP)} (HR {HR_MP}) → 2 km easy"
-    else: h+=f"Steady easy @ {pr(E)}, HR {HR_E}"
+    if mp_km: h+=f"First {e_km-2 if mp_km else e_km} km easy by HR (≤147, ignore pace) → {mp_km} km @ MP {pr(MP)} (by pace) → 2 km easy"
+    else: h+="Easy by HR only: 147 max, ignore pace. Walk 30-60s if HR goes over 150"
     if km>=18: h+="\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)"
     if note: h+="\n"+note
     return wo(id,f"Long run {km}k"+(f" w/ {mp_km}k MP" if mp_km else ""),km,mins,"Zone 2" if not mp_km else "Zone 2 + MP",h,
@@ -57,7 +57,7 @@ def prog(id,e_km,s_km,m_km):
     km=e_km+s_km+m_km+1
     mins=(e_km+1)*385/60+s_km*350/60+m_km*322/60
     return wo(id,f"Progression {km}k",km,mins,"Z2 → MP",
-      f"{e_km} km easy @ {pr(E)} (HR ≤147)\n{s_km} km steady @ 5:45-5:55/km (HR ≤155)\n{m_km} km @ MP {pr(MP)} (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+      f"{e_km} km easy by HR (≤147, ignore pace)\n{s_km} km steady @ 5:45-5:55/km (HR ≤155)\n{m_km} km @ MP {pr(MP)} (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
       "Key session (replaces the MP session this week). Finish at marathon pace, not faster.","tempo")
 def tt(id):
     return q(id,"30-min threshold test",9,70,"Test",
@@ -161,7 +161,7 @@ plan={"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata M
     "Pool access ending — no swim","Gurgaon heat/pollution: HR caps over pace","Goal revised: sub-3:30 → 3:45 (stretch 3:40)"]},
  "zones":{"run":{"hr":{"lthr":L,"zones":[{"zone":z,"name":nm,"percentLow":lo,"percentHigh":hi,
    "hrLow":round(L*lo/100),"hrHigh":round(L*hi/100)} for z,nm,lo,hi in zones]},
-   "pace":{"thresholdPace":"5:18/km","easy":pr(E),"marathon":pr(MP),"threshold":pr(T),"interval":pr(I)}}},
+   "pace":{"thresholdPace":"5:18/km","easy":"by HR only, 147 max","marathon":pr(MP),"threshold":pr(T),"interval":pr(I)}}},
  "phases":[
   {"name":"Rebuild","startWeek":1,"endWeek":2,"focus":"Restore 5 runs/wk after 3 low weeks","weeklyHoursRange":{"low":2.5,"high":4},
    "keyWorkouts":["Long run 14-16k"],"physiologicalGoals":["Re-establish frequency","Tendon/joint re-loading"]},
