@@ -21,7 +21,9 @@ def easy(id,km,strides=False):
     h=f"{km} km easy. {EASY_RULE}"
     if strides: h+="\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk"
     return wo(id,f"Easy {km}k"+(" + strides" if strides else ""),km,mins,"Zone 2",h,"Aerobic volume. Conversational.","endurance" if not strides else "endurance")
-def long(id,km,mp_km=0,note=""):
+LONG_W3="Long-run rule (wk 3 only, until 17 Nov test): HR avg 150-156, hard ceiling 160 on hills/late. Pace 6:30-6:50/km, NEVER faster than 6:30. First 3 km HR <=150 as warm-up, then settle into the band. HR past 160 = slow down"
+def long(id,km,mp_km=0,note="",rule=None):
+    EASY_RULE=rule or globals()["EASY_RULE"]
     e_km=km-mp_km
     mins=e_km*385/60+mp_km*322/60
     h=f"{km} km total. "
@@ -97,7 +99,7 @@ W4(2,"Rebuild","Four runs a week, first light quality",False,{
  2:[easy("w2-wed",6)],4:[mp("w2-fri",3)],6:[long("w2-sun",16)]})
 W4(3,"Base","Progression done Tue. Rest of the week easy so Sunday's 18k is truly aerobic",False,{
  1:[done(wo("w3-tue","Done: progression 7k with partner",7.0,47,"Z2 → T","Done (Nov 10). Finished 5:29/km at HR 175, harder than intended. Counts as this week's quality session.","tempo"))],
- 3:[easy("w3-thu",7)],4:[easy("w3-fri",7,True)],6:[long("w3-sun",18)]})
+ 3:[easy("w3-thu",7)],4:[easy("w3-fri",7,True)],6:[long("w3-sun",18,0,"",LONG_W3)]})
 EASY_RULE=POST
 W4(4,"Base","Down week + 30-min threshold test. Fifth run day starts (Wed easy)",True,{
  1:[tt("w4-tue")],2:[easy("w4-wed",5)],3:[easy("w4-thu",6)],4:[easy("w4-fri",6,True)],6:[long("w4-sun",14)]})

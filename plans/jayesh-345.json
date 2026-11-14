@@ -613,7 +613,7 @@
        "durationMinutes": 116,
        "distanceMeters": 18000,
        "primaryZone": "Zone 2",
-       "humanReadable": "18 km total. Easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "18 km total. Easy. Long-run rule (wk 3 only, until 17 Nov test): HR avg 150-156, hard ceiling 160 on hills/late. Pace 6:30-6:50/km, NEVER faster than 6:30. First 3 km HR <=150 as warm-up, then settle into the band. HR past 160 = slow down\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
        "completed": false
       }
      ]
