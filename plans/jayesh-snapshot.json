@@ -1,20 +1,20 @@
 {
- "asOf": "2026-11-12T11:18+05:30",
+ "asOf": "2026-11-14T15:04+05:30",
  "metrics": {
   "vo2max": 54,
   "lthr": 166,
   "ltPaceSec": 320,
-  "cti": 79.0,
-  "ati": 83.0,
-  "loadRatio": 1.05,
-  "hrv": 75.0,
-  "hrvDate": "20261109",
-  "hrvBaseline": 84.0,
+  "cti": 80.0,
+  "ati": 85.0,
+  "loadRatio": 1.06,
+  "hrv": 80.0,
+  "hrvDate": "20261113",
+  "hrvBaseline": 82.0,
   "restingHr": 52,
-  "last7Km": 30.1
+  "last7Km": 40.2
  },
  "weeklyKm": {
-  "2026-11-09": 7.0,
+  "2026-11-09": 22.1,
   "2026-11-02": 35.5,
   "2026-10-26": 33.7
  },
@@ -46,12 +46,20 @@
   "w3-tue": {
    "km": 7.0,
    "avgHr": 162
+  },
+  "w3-thu": {
+   "km": 7.0,
+   "avgHr": 149
+  },
+  "w3-fri": {
+   "km": 8.1,
+   "avgHr": 148
   }
  },
  "missed": [
   "w2-tue",
   "w2-fri"
  ],
- "note": "No red flags, so run today's easy 7 km as planned: HR 150 max and never faster than 6:40/km. If holding 150 pushes you slower than 7:00/km, run 6:40 to 6:55/km instead. Tomorrow is another easy 7 km plus 6 x 20 s strides, so keep today relaxed.",
- "noteDate": "2026-11-12"
+ "note": "No run today. Do the shoulder press and arms session, upper body only, and keep your legs fresh. Tomorrow is the 18 km long run: HR 150 max and never faster than 6:40/km, and if 150 forces you slower than 7:00/km, run 6:40 to 6:55/km instead. Take a gel or about 30 g carbs every 30 to 35 min from 40 min in.",
+ "noteDate": "2026-11-14"
 }
