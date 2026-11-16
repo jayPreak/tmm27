@@ -85,7 +85,7 @@ def R(n,i):
     return {0:rest(f"w{n}-mon","Deadlift + pull day. No run. Cap deadlift at RPE 7-8, quality run tomorrow." if n<=3 else "Upper pull (rows, pull-ups, biceps) + core. No legs. Quality run tomorrow."),
             2:rest(f"w{n}-wed","Bench + push day. No run."),
             3:rest(f"w{n}-thu","Full rest, no gym."),
-            5:rest(f"w{n}-sat","Shoulder press + arms. Upper body only, long run tomorrow.")}[i]
+            5:rest(f"w{n}-sat","Shoulder press + arms. Upper body only, long run tomorrow." if n<=4 else "Shoulder press + arms. Upper body only, 45 min max, done by early afternoon. Long run tomorrow.")}[i]
 def W4(n,phase,focus,rec,d):
     for i in ((0,3,5) if n<=2 else (0,2,3,5)):
         d.setdefault(i,[R(n,i)])
@@ -114,21 +114,21 @@ W4(4,"Base","Sick week (fever 14-15 Nov). Rest, then three short easy runs. Thre
  5:[easy("w4-sat",6,False,"Only if Thursday's run felt normal. Light upper-body gym is fine from today.")],
  6:[easy("w4-sun",10,False,"No long run this week. Stop at 8 km if it feels like work.")]})
 EASY_RULE=POST
-W4(5,"Build","Back to five runs. Threshold test Tue, everything else easy. Long run 18k",False,{
+W4(5,"Build","Back to five runs. Threshold test Tue, everything else easy. Long run 16k",False,{
  0:[rest("w5-mon","Upper pull + core at about 70% load. First full gym day back. No legs.")],
  1:[tt("w5-tue","Test only if: 5+ days fever-free, the 3 easy runs felt normal, morning HRV back over 60 and resting HR within 5 of normal. If not, run easy 6k today and test Thu 26 Nov.")],
- 2:[easy("w5-wed",4)],3:[easy("w5-thu",7)],4:[easy("w5-fri",5,True)],6:[long("w5-sun",18,0,"If you are not fully recovered from the fever (HRV still low, easy runs felt hard), cut this to 14-16 km.")]})
-W4(6,"Build","VO2 intervals + marathon pace. Long run 24k",False,{
- 1:[ints("w6-tue",5,1.0,120)],2:[easy("w6-wed",5)],3:[mp("w6-thu",6)],4:[easy("w6-fri",6,True)],6:[long("w6-sun",24)]})
-W4(7,"Build","Longer threshold + progression. Long run 28k",False,{
- 1:[thr_km("w7-tue",4,1.6,90)],2:[easy("w7-wed",6)],3:[prog("w7-thu",4,3,3)],4:[easy("w7-fri",6,True)],
- 6:[long("w7-sun",28,0,"Full race kit and breakfast rehearsal (wake 3:30, run 5:15)")]})
-W4(8,"Peak","Biggest week, moved ahead of the trip. Race rehearsal: 32k with 8k at marathon pace",False,{
- 1:[thr_km("w8-tue",3,2.5,120)],2:[easy("w8-wed",6)],3:[easy("w8-thu",7)],4:[easy("w8-fri",5,True)],
- 5:[rest("w8-sat","Shoulder press + arms, light. Long run tomorrow.")],
- 6:[long("w8-sun",32,8,"Structure: 21 km easy, 4 km at MP, 1 km easy float, 4 km at MP, 2 km easy. Exact race fuel and kit. This is the last 30k+ run.")]})
-W4(9,"Peak","Last full week before the trip. Recover from the 32k, one MP session, 20k on Saturday",False,{
- 1:[easy("w9-tue",6,False,"Recovery from Sunday's 32k. No quality before Thursday.")],2:[easy("w9-wed",5)],3:[mp("w9-thu",8)],4:[easy("w9-fri",5,True)],
+ 2:[easy("w5-wed",4)],3:[easy("w5-thu",7)],4:[easy("w5-fri",5,True)],6:[long("w5-sun",16,0,"First long run to be run at the prescribed effort. HR over the cap = slow down or walk, do not push through.")]})
+W4(6,"Build","VO2 intervals + marathon pace. Long run 20k",False,{
+ 1:[ints("w6-tue",5,1.0,120)],2:[easy("w6-wed",4)],3:[mp("w6-thu",6)],4:[easy("w6-fri",5,True)],6:[long("w6-sun",20)]})
+W4(7,"Build","Longer threshold + progression. Long run 24k",False,{
+ 1:[thr_km("w7-tue",4,1.6,90)],2:[easy("w7-wed",5)],3:[prog("w7-thu",4,2,3)],4:[easy("w7-fri",5,True)],
+ 6:[long("w7-sun",24,0,"Full race kit and breakfast rehearsal (wake 3:30, run 5:15)")]})
+W4(8,"Peak","Biggest week, moved ahead of the trip. Race rehearsal: 28k (about 3 hours) with 6k at marathon pace",False,{
+ 1:[thr_km("w8-tue",3,2.5,120)],2:[easy("w8-wed",5)],3:[easy("w8-thu",7)],4:[easy("w8-fri",5,True)],
+ 5:[rest("w8-sat","Shoulder press + arms, light, 45 min max, done by early afternoon. Long run tomorrow.")],
+ 6:[long("w8-sun",28,6,"About 3 hours on your feet. Exact race fuel and kit. This is the longest run of the block; nothing longer before race day.")]})
+W4(9,"Peak","Last full week before the trip. Recover from the 28k, one MP session, 20k on Saturday",False,{
+ 1:[easy("w9-tue",6,False,"Recovery from Sunday's 28k. No quality before Thursday.")],2:[easy("w9-wed",5)],3:[mp("w9-thu",8)],4:[easy("w9-fri",5,True)],
  5:[long("w9-sat",20,0,"Run it Saturday before you leave. If that fails, run 15-20 km on the trip on Sun 27 Dec.")],
  6:[rest("w9-sun","Trip starts. Travel day.",TRIP)]})
 W4(10,"Peak","Trip week (27 Dec to 3 Jan) = the down week. Only the weekend long run matters",True,{
@@ -142,7 +142,7 @@ W4(10,"Peak","Trip week (27 Dec to 3 Jan) = the down week. Only the weekend long
 W4(11,"Taper","Back from the trip. Volume down, intensity stays. One light leg session Tue",False,{
  0:[rest("w11-mon","Upper pull + core, light. No legs.")],
  1:[thr_km("w11-tue",3,2,120)],2:[easy("w11-wed",6)],3:[mp("w11-thu",8)],4:[easy("w11-fri",5,True)],
- 6:[long("w11-sun",16,5)]})
+ 6:[long("w11-sun",14,5)]})
 W4(12,"Race","Race week. No heavy lower-body lifting",False,{
  0:[rest("w12-mon","Upper body only, light. No deadlift.")],
  1:[q("w12-tue","MP sharpener 3x1.6k",9,52,"MP","2 km easy WU\n3x1.6 km @ MP 5:18-5:26/km, 2 min jog between\n2 km easy CD","tempo")],
@@ -204,8 +204,8 @@ plan={"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata M
   "strengths":[{"sport":"run","evidence":"Marathon finished Sep 2026; 50-60 km weeks in Aug/Sep; VO2max 54"},
                {"sport":"strength","evidence":"4-5 lifting sessions/wk consistently"}],
   "limiters":[{"sport":"run","evidence":"Last 3 wks only 12-16 km/wk; LT pace 5:18/km is slower than sub-3:30 MP (4:58)"}],
-  "constraints":["5 runs/wk from wk 4: Tue quality, Wed easy, Thu MP or progression (alternating), Fri easy + strides, Sun long","Gym from wk 5: Mon upper pull + core, Tue legs after the quality run (the only heavy lower session; squat and deadlift alternate weekly, RPE 6-7), Wed bench/push, Fri optional light single-leg work, Sat shoulders + arms. Legs drop to 2 light sets in wk 8, 9 and 11; none in race week","Plan only changes on red flags: HRV <60 two mornings running, RHR 7+ above baseline, pain, illness",
-    "Illness 14-16 Nov (fever): wk 3 long run missed, wk 4 rest + easy return","Trip 27 Dec - 3 Jan: 32k moved to 20 Dec, trip week is the down week with one 18k long run","Pool access ending — no swim","Gurgaon heat/pollution: HR caps over pace","COROS LTHR 166 is stale (held 175 on 10 Nov). 24 Nov 30-min test (moved from 17 Nov, illness) sets real LTHR + LT pace; easy runs then pace band + HR ceiling","Non-negotiable: easy = easy, no unplanned runs, no skipped key sessions, run your session not your partner's, gels on every long run 18k+, pain = stop","Goal revised: sub-3:30 → 3:45 (stretch 3:40)"]},
+  "constraints":["5 runs/wk from wk 4: Tue quality, Wed easy, Thu MP or progression (alternating), Fri easy + strides, Sun long","Gym from wk 5: Mon upper pull + core, Tue legs after the quality run (the only heavy lower session; squat and deadlift alternate weekly, RPE 6-7), Wed bench/push, Fri optional light single-leg work, Sat shoulders + arms. Legs drop to 2 light sets in wk 8, 9 and 11; none in race week","Gym limits: 4 sessions a week, 60 min max each; Saturday 45 min upper body, done by early afternoon; no gym on a morning with HRV under 60 or resting HR 7+ above normal","Long runs capped at 28 km / about 3 hours: 8-week average was 25 km/wk, and every long run so far was run 7-16 bpm over the cap","Plan only changes on red flags: HRV <60 two mornings running, RHR 7+ above baseline, pain, illness",
+    "Illness 14-16 Nov (fever): wk 3 long run missed, wk 4 rest + easy return","Trip 27 Dec - 3 Jan: peak long run (28k, about 3 h) on 20 Dec, trip week is the down week with one 18k long run","Pool access ending — no swim","Gurgaon heat/pollution: HR caps over pace","COROS LTHR 166 is stale (held 175 on 10 Nov). 24 Nov 30-min test (moved from 17 Nov, illness) sets real LTHR + LT pace; easy runs then pace band + HR ceiling","Non-negotiable: easy = easy, no unplanned runs, no skipped key sessions, run your session not your partner's, gels on every long run 18k+, pain = stop","Goal revised: sub-3:30 → 3:45 (stretch 3:40)"]},
  "zones":{"run":{"hr":{"lthr":L,"zones":[{"zone":z,"name":nm,"percentLow":lo,"percentHigh":hi,
    "hrLow":round(L*lo/100),"hrHigh":round(L*hi/100)} for z,nm,lo,hi in zones]},
    "pace":{"thresholdPace":"5:18/km","easy":"interim: HR ≤150, never faster than 6:40/km; reset by 24 Nov test (pace band + HR cap 88% new LTHR)","marathon":pr(MP),"threshold":pr(T),"interval":pr(I)}}},
@@ -215,9 +215,9 @@ plan={"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata M
   {"name":"Base","startWeek":3,"endWeek":4,"focus":"Aerobic volume, then illness recovery","weeklyHoursRange":{"low":2,"high":4.5},
    "keyWorkouts":["Progression 7k","Easy return runs"],"physiologicalGoals":["Raise LT pace","Aerobic base"]},
   {"name":"Build","startWeek":5,"endWeek":7,"focus":"LT test, then marathon-specific: MP volume, intervals, long-run fuelling","weeklyHoursRange":{"low":4.5,"high":6.5},
-   "keyWorkouts":["30-min LT test 24 Nov","MP 6k","Long 18-28k"],"physiologicalGoals":["MP economy","Glycogen sparing","Gut training"]},
+   "keyWorkouts":["30-min LT test 24 Nov","MP 6k","Long 16-24k"],"physiologicalGoals":["MP economy","Glycogen sparing","Gut training"]},
   {"name":"Peak","startWeek":8,"endWeek":10,"focus":"Highest volume + race simulation before the trip, then trip down week","weeklyHoursRange":{"low":3.5,"high":7},
-   "keyWorkouts":["32k w/ 2x4k MP (20 Dec)","MP 8k","Trip long run 18k w/ 6k MP"],"physiologicalGoals":["Fatigue resistance at MP"]},
+   "keyWorkouts":["28k w/ 6k MP (20 Dec)","MP 8k","Trip long run 18k w/ 6k MP"],"physiologicalGoals":["Fatigue resistance at MP"]},
   {"name":"Taper","startWeek":11,"endWeek":12,"focus":"Shed fatigue, keep sharpness","weeklyHoursRange":{"low":3,"high":5},
    "keyWorkouts":["MP 8k","MP sharpener"],"physiologicalGoals":["Supercompensation"]}],
  "weeks":weeks,
