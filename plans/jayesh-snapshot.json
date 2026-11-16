@@ -1,66 +1,66 @@
 {
-  "asOf": "2026-11-16T10:27+05:30",
-  "metrics": {
-    "vo2max": 54,
-    "lthr": 166,
-    "ltPaceSec": 320,
-    "cti": 76.0,
-    "ati": 63.0,
-    "loadRatio": 0.82,
-    "hrv": 30.0,
-    "hrvDate": "20261116",
-    "hrvBaseline": 79.0,
-    "restingHr": 65,
-    "last7Km": 22.1
+ "asOf": "2026-11-16T10:27+05:30",
+ "metrics": {
+  "vo2max": 54,
+  "lthr": 166,
+  "ltPaceSec": 320,
+  "cti": 76.0,
+  "ati": 63.0,
+  "loadRatio": 0.82,
+  "hrv": 30.0,
+  "hrvDate": "20261116",
+  "hrvBaseline": 79.0,
+  "restingHr": 65,
+  "last7Km": 22.1
+ },
+ "weeklyKm": {
+  "2026-11-09": 22.1,
+  "2026-11-02": 35.5,
+  "2026-10-26": 33.7
+ },
+ "completed": {
+  "w1-tue": {
+   "km": 6.6,
+   "avgHr": 148
   },
-  "weeklyKm": {
-    "2026-11-09": 22.1,
-    "2026-11-02": 35.5,
-    "2026-10-26": 33.7
+  "w1-wed": {
+   "km": 6.1,
+   "avgHr": 147
   },
-  "completed": {
-    "w1-tue": {
-      "km": 6.6,
-      "avgHr": 148
-    },
-    "w1-wed": {
-      "km": 6.1,
-      "avgHr": 147
-    },
-    "w1-fri": {
-      "km": 7.0,
-      "avgHr": 161
-    },
-    "w1-sun": {
-      "km": 14.0,
-      "avgHr": 154
-    },
-    "w2-wed": {
-      "km": 8.7,
-      "avgHr": 142
-    },
-    "w2-sun": {
-      "km": 18.0,
-      "avgHr": 161
-    },
-    "w3-tue": {
-      "km": 7.0,
-      "avgHr": 162
-    },
-    "w3-thu": {
-      "km": 7.0,
-      "avgHr": 149
-    },
-    "w3-fri": {
-      "km": 8.1,
-      "avgHr": 148
-    }
+  "w1-fri": {
+   "km": 7.0,
+   "avgHr": 161
   },
-  "missed": [
-    "w2-tue",
-    "w2-fri",
-    "w3-sun"
-  ],
-  "note": "Your HRV is 30 against a baseline of 79 and resting HR is 65, about 13 bpm above normal, so treat today as a rest day: skip the deadlift, and only do light mobility or a walk. Do not make up Sunday's missed 18 km long run. If tomorrow morning your HRV is still under 60 or resting HR is still above 59, or you feel ill or sore, push the 30-minute threshold test back a few days and run an easy 5 km at HR 150 max, no faster than 6:40/km, instead.",
-  "noteDate": "2026-11-16"
+  "w1-sun": {
+   "km": 14.0,
+   "avgHr": 154
+  },
+  "w2-wed": {
+   "km": 8.7,
+   "avgHr": 142
+  },
+  "w2-sun": {
+   "km": 18.0,
+   "avgHr": 161
+  },
+  "w3-tue": {
+   "km": 7.0,
+   "avgHr": 162
+  },
+  "w3-thu": {
+   "km": 7.0,
+   "avgHr": 149
+  },
+  "w3-fri": {
+   "km": 8.1,
+   "avgHr": 148
+  }
+ },
+ "missed": [
+  "w2-tue",
+  "w2-fri",
+  "w3-sun"
+ ],
+ "note": "Your HRV is 30 against a baseline of 79 and resting HR is 65, about 13 bpm above normal, so rest today and tomorrow: no run, no gym. Do not make up the missed 18 km long run. The threshold test has moved to Tue 24 Nov. First run back is an easy 4 km on Thursday at HR 145 max, 6:50/km or slower, and only if you have had 24 hours with no fever and no body aches.",
+ "noteDate": "2026-11-16"
 }

@@ -8,7 +8,7 @@
   "planStartDate": "2026-10-26",
   "planEndDate": "2027-01-17",
   "createdAt": "2026-10-29T00:00:00Z",
-  "updatedAt": "2026-11-11T00:00:00Z",
+  "updatedAt": "2026-11-16T00:00:00Z",
   "totalWeeks": 12,
   "generatedBy": "Claude Coach (coros-coach)"
  },
@@ -61,9 +61,11 @@
    "5 runs/wk from wk 4: Tue quality, Wed easy, Thu MP or progression (alternating), Fri easy + strides, Sun long",
    "Heavy lifting Mon (deadlift) / Wed (bench) / Fri (squat) / Sat (shoulder press); lower body RPE 7-8 max from wk 5",
    "Plan only changes on red flags: HRV <60 two mornings running, RHR 7+ above baseline, pain, illness",
+   "Illness 14-16 Nov (fever): wk 3 long run missed, wk 4 rest + easy return",
+   "Trip 27 Dec - 3 Jan: 32k moved to 20 Dec, trip week is the down week with one 18k long run",
    "Pool access ending — no swim",
    "Gurgaon heat/pollution: HR caps over pace",
-   "COROS LTHR 166 is stale (held 175 on 10 Nov). 17 Nov 30-min test sets real LTHR + LT pace; easy runs then pace band + HR ceiling",
+   "COROS LTHR 166 is stale (held 175 on 10 Nov). 24 Nov 30-min test (moved from 17 Nov, illness) sets real LTHR + LT pace; easy runs then pace band + HR ceiling",
    "Non-negotiable: easy = easy, no unplanned runs, no skipped key sessions, run your session not your partner's, gels on every long run 18k+, pain = stop",
    "Goal revised: sub-3:30 → 3:45 (stretch 3:40)"
   ]
@@ -125,7 +127,7 @@
    },
    "pace": {
     "thresholdPace": "5:18/km",
-    "easy": "interim: HR ≤150, never faster than 6:40/km; reset by 17 Nov test (pace band + HR cap 88% new LTHR)",
+    "easy": "interim: HR ≤150, never faster than 6:40/km; reset by 24 Nov test (pace band + HR cap 88% new LTHR)",
     "marathon": "5:18-5:26/km",
     "threshold": "5:05-5:15/km",
     "interval": "4:45-4:55/km"
@@ -154,15 +156,14 @@
    "name": "Base",
    "startWeek": 3,
    "endWeek": 4,
-   "focus": "Aerobic volume + threshold",
+   "focus": "Aerobic volume, then illness recovery",
    "weeklyHoursRange": {
-    "low": 4,
-    "high": 5
+    "low": 2,
+    "high": 4.5
    },
    "keyWorkouts": [
-    "3x8min T",
-    "Long 18k",
-    "30-min LT test"
+    "Progression 7k",
+    "Easy return runs"
    ],
    "physiologicalGoals": [
     "Raise LT pace",
@@ -172,16 +173,16 @@
   {
    "name": "Build",
    "startWeek": 5,
-   "endWeek": 8,
-   "focus": "Marathon-specific: MP volume, intervals, long-run fuelling",
+   "endWeek": 7,
+   "focus": "LT test, then marathon-specific: MP volume, intervals, long-run fuelling",
    "weeklyHoursRange": {
     "low": 4.5,
     "high": 6.5
    },
    "keyWorkouts": [
-    "MP 6-8k",
-    "Long 20-25k w/ MP",
-    "LT retest wk 8"
+    "30-min LT test 24 Nov",
+    "MP 6k",
+    "Long 16-26k"
    ],
    "physiologicalGoals": [
     "MP economy",
@@ -191,16 +192,17 @@
   },
   {
    "name": "Peak",
-   "startWeek": 9,
+   "startWeek": 8,
    "endWeek": 10,
-   "focus": "Highest volume + race simulation",
+   "focus": "Highest volume + race simulation before the trip, then trip down week",
    "weeklyHoursRange": {
-    "low": 7,
-    "high": 7.5
+    "low": 3.5,
+    "high": 7
    },
    "keyWorkouts": [
-    "MP 10k",
-    "32k w/ 3x5k MP"
+    "32k w/ 2x4k MP (20 Dec)",
+    "MP 8k",
+    "Trip long run 18k w/ 6k MP"
    ],
    "physiologicalGoals": [
     "Fatigue resistance at MP"
@@ -311,7 +313,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
+       "humanReadable": "6 km easy. HR 150 max (interim until 24 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -343,7 +345,7 @@
        "durationMinutes": 90,
        "distanceMeters": 14000,
        "primaryZone": "Zone 2",
-       "humanReadable": "14 km total. Easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
+       "humanReadable": "14 km total. Easy. HR 150 max (interim until 24 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -414,7 +416,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
+       "humanReadable": "6 km easy. HR 150 max (interim until 24 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -478,7 +480,7 @@
        "durationMinutes": 103,
        "distanceMeters": 16000,
        "primaryZone": "Zone 2",
-       "humanReadable": "16 km total. Easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
+       "humanReadable": "16 km total. Easy. HR 150 max (interim until 24 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -563,7 +565,7 @@
        "durationMinutes": 45,
        "distanceMeters": 7000,
        "primaryZone": "Zone 2",
-       "humanReadable": "7 km easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
+       "humanReadable": "7 km easy. HR 150 max (interim until 24 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km",
        "completed": false
       }
      ]
@@ -581,7 +583,7 @@
        "durationMinutes": 48,
        "distanceMeters": 7000,
        "primaryZone": "Zone 2",
-       "humanReadable": "7 km easy. HR 150 max (interim until 17 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "7 km easy. HR 150 max (interim until 24 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -635,8 +637,8 @@
    "startDate": "2026-11-16",
    "endDate": "2026-11-22",
    "phase": "Base",
-   "focus": "Down week + 30-min threshold test. Fifth run day starts (Wed easy)",
-   "targetHours": 4.5,
+   "focus": "Sick week (fever 14-15 Nov). Rest, then three short easy runs. Threshold test moved to 24 Nov",
+   "targetHours": 2.1,
    "isRecoveryWeek": true,
    "days": [
     {
@@ -647,8 +649,8 @@
        "id": "w4-mon",
        "sport": "rest",
        "type": "rest",
-       "name": "No run — strength",
-       "description": "Deadlift + pull day. No run. Cap deadlift at RPE 7-8, quality run tomorrow.",
+       "name": "No run — sick",
+       "description": "Sick. Full rest, no gym.",
        "completed": false
       }
      ]
@@ -659,14 +661,10 @@
      "workouts": [
       {
        "id": "w4-tue",
-       "sport": "run",
-       "type": "test",
-       "name": "30-min threshold test",
-       "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
-       "durationMinutes": 70,
-       "distanceMeters": 9000,
-       "primaryZone": "Test",
-       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD",
+       "sport": "rest",
+       "type": "rest",
+       "name": "No run — sick",
+       "description": "Sick. Full rest, no gym. Threshold test moved to Tue 24 Nov.",
        "completed": false
       }
      ]
@@ -677,14 +675,10 @@
      "workouts": [
       {
        "id": "w4-wed",
-       "sport": "run",
-       "type": "endurance",
-       "name": "Easy 5k",
-       "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 32,
-       "distanceMeters": 5000,
-       "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "sport": "rest",
+       "type": "rest",
+       "name": "No run — sick",
+       "description": "Rest. 20-30 min walk if the aches are gone.",
        "completed": false
       }
      ]
@@ -697,12 +691,12 @@
        "id": "w4-thu",
        "sport": "run",
        "type": "endurance",
-       "name": "Easy 6k",
+       "name": "Easy 4k",
        "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 38,
-       "distanceMeters": 6000,
+       "durationMinutes": 26,
+       "distanceMeters": 4000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "4 km easy. Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home\nOnly run if you have had 24h+ with no fever (without paracetamol) and no body aches. If not, rest and slide this run a day",
        "completed": false
       }
      ]
@@ -713,14 +707,10 @@
      "workouts": [
       {
        "id": "w4-fri",
-       "sport": "run",
-       "type": "endurance",
-       "name": "Easy 6k + strides",
-       "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 42,
-       "distanceMeters": 6000,
-       "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "sport": "rest",
+       "type": "rest",
+       "name": "No run — rest",
+       "description": "Rest. No squats this week.",
        "completed": false
       }
      ]
@@ -731,10 +721,14 @@
      "workouts": [
       {
        "id": "w4-sat",
-       "sport": "rest",
-       "type": "rest",
-       "name": "No run — strength",
-       "description": "Shoulder press + arms. Upper body only, long run tomorrow.",
+       "sport": "run",
+       "type": "endurance",
+       "name": "Easy 6k",
+       "description": "Aerobic volume. Conversational.",
+       "durationMinutes": 38,
+       "distanceMeters": 6000,
+       "primaryZone": "Zone 2",
+       "humanReadable": "6 km easy. Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home\nOnly if Thursday's run felt normal. Light upper-body gym is fine from today.",
        "completed": false
       }
      ]
@@ -746,25 +740,25 @@
       {
        "id": "w4-sun",
        "sport": "run",
-       "type": "long",
-       "name": "Long run 14k",
-       "description": "Key session. Builds endurance + fuelling practice.",
-       "durationMinutes": 90,
-       "distanceMeters": 14000,
+       "type": "endurance",
+       "name": "Easy 10k",
+       "description": "Aerobic volume. Conversational.",
+       "durationMinutes": 64,
+       "distanceMeters": 10000,
        "primaryZone": "Zone 2",
-       "humanReadable": "14 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "10 km easy. Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home\nNo long run this week. Stop at 8 km if it feels like work.",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 4.5,
+    "totalHours": 2.1,
     "bySport": {
      "run": {
-      "sessions": 5,
-      "hours": 4.5,
-      "km": 40.0
+      "sessions": 3,
+      "hours": 2.1,
+      "km": 20.0
      }
     }
    }
@@ -774,8 +768,8 @@
    "startDate": "2026-11-23",
    "endDate": "2026-11-29",
    "phase": "Build",
-   "focus": "Threshold + first scheduled progression",
-   "targetHours": 4.9,
+   "focus": "Back to five runs. Threshold test Tue, everything else easy. Long run 16k",
+   "targetHours": 4.7,
    "isRecoveryWeek": false,
    "days": [
     {
@@ -787,7 +781,7 @@
        "sport": "rest",
        "type": "rest",
        "name": "No run — strength",
-       "description": "Deadlift + pull day. No run. Cap deadlift at RPE 7-8, quality run tomorrow.",
+       "description": "Deadlift + pull at about 70% load. First full gym day back.",
        "completed": false
       }
      ]
@@ -799,13 +793,13 @@
       {
        "id": "w5-tue",
        "sport": "run",
-       "type": "threshold",
-       "name": "Threshold 3x2km",
+       "type": "test",
+       "name": "30-min threshold test",
        "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
-       "durationMinutes": 61,
-       "distanceMeters": 10600,
-       "primaryZone": "Zone 4-5a",
-       "humanReadable": "2 km easy WU + 4 strides\n3x2 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD",
+       "durationMinutes": 70,
+       "distanceMeters": 9000,
+       "primaryZone": "Test",
+       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD\nTest only if: 5+ days fever-free, the 3 easy runs felt normal, morning HRV back over 60 and resting HR within 5 of normal. If not, run easy 6k today and test Thu 26 Nov.",
        "completed": false
       }
      ]
@@ -823,7 +817,7 @@
        "durationMinutes": 26,
        "distanceMeters": 4000,
        "primaryZone": "Zone 2",
-       "humanReadable": "4 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "4 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -835,13 +829,13 @@
       {
        "id": "w5-thu",
        "sport": "run",
-       "type": "tempo",
-       "name": "Progression 9k",
-       "description": "Key session (replaces the MP session this week). Finish at marathon pace, not faster.",
-       "durationMinutes": 54,
-       "distanceMeters": 9000,
-       "primaryZone": "Z2 → MP",
-       "humanReadable": "4 km easy (cap per new LTHR, never faster than easy band)\n2 km steady @ 5:45-5:55/km (HR ≤155)\n2 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+       "type": "endurance",
+       "name": "Easy 7k",
+       "description": "Aerobic volume. Conversational.",
+       "durationMinutes": 45,
+       "distanceMeters": 7000,
+       "primaryZone": "Zone 2",
+       "humanReadable": "7 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -859,7 +853,7 @@
        "durationMinutes": 35,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -886,24 +880,24 @@
        "id": "w5-sun",
        "sport": "run",
        "type": "long",
-       "name": "Long run 18k",
+       "name": "Long run 16k",
        "description": "Key session. Builds endurance + fuelling practice.",
-       "durationMinutes": 116,
-       "distanceMeters": 18000,
+       "durationMinutes": 103,
+       "distanceMeters": 16000,
        "primaryZone": "Zone 2",
-       "humanReadable": "18 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "16 km total. Easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 4.9,
+    "totalHours": 4.7,
     "bySport": {
      "run": {
       "sessions": 5,
-      "hours": 4.9,
-      "km": 46.6
+      "hours": 4.7,
+      "km": 41.0
      }
     }
    }
@@ -913,8 +907,8 @@
    "startDate": "2026-11-30",
    "endDate": "2026-12-06",
    "phase": "Build",
-   "focus": "VO2 intervals + marathon pace",
-   "targetHours": 5.6,
+   "focus": "VO2 intervals + marathon pace. Long run 21k",
+   "targetHours": 5.5,
    "isRecoveryWeek": false,
    "days": [
     {
@@ -962,7 +956,7 @@
        "durationMinutes": 32,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -998,7 +992,7 @@
        "durationMinutes": 42,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1025,24 +1019,24 @@
        "id": "w6-sun",
        "sport": "run",
        "type": "long",
-       "name": "Long run 22k",
+       "name": "Long run 21k",
        "description": "Key session. Builds endurance + fuelling practice.",
-       "durationMinutes": 141,
-       "distanceMeters": 22000,
+       "durationMinutes": 135,
+       "distanceMeters": 21000,
        "primaryZone": "Zone 2",
-       "humanReadable": "22 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "21 km total. Easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 5.6,
+    "totalHours": 5.5,
     "bySport": {
      "run": {
       "sessions": 5,
-      "hours": 5.6,
-      "km": 53.5
+      "hours": 5.5,
+      "km": 52.5
      }
     }
    }
@@ -1052,8 +1046,8 @@
    "startDate": "2026-12-07",
    "endDate": "2026-12-13",
    "phase": "Build",
-   "focus": "Longer threshold + progression. Long run 24k",
-   "targetHours": 6.1,
+   "focus": "Longer threshold + progression. Long run 26k",
+   "targetHours": 6.3,
    "isRecoveryWeek": false,
    "days": [
     {
@@ -1101,7 +1095,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1137,7 +1131,7 @@
        "durationMinutes": 42,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1164,24 +1158,24 @@
        "id": "w7-sun",
        "sport": "run",
        "type": "long",
-       "name": "Long run 24k",
+       "name": "Long run 26k",
        "description": "Key session. Builds endurance + fuelling practice.",
-       "durationMinutes": 154,
-       "distanceMeters": 24000,
+       "durationMinutes": 167,
+       "distanceMeters": 26000,
        "primaryZone": "Zone 2",
-       "humanReadable": "24 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "26 km total. Easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nFull race kit and breakfast rehearsal (wake 3:30, run 5:15)",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 6.1,
+    "totalHours": 6.3,
     "bySport": {
      "run": {
       "sessions": 5,
-      "hours": 6.1,
-      "km": 58.3
+      "hours": 6.3,
+      "km": 60.3
      }
     }
    }
@@ -1190,10 +1184,10 @@
    "weekNumber": 8,
    "startDate": "2026-12-14",
    "endDate": "2026-12-20",
-   "phase": "Build",
-   "focus": "Down week + retest. The test sets the race pace (3:45 or adjust)",
-   "targetHours": 5.0,
-   "isRecoveryWeek": true,
+   "phase": "Peak",
+   "focus": "Biggest week, moved ahead of the trip. Race rehearsal: 32k with 8k at marathon pace",
+   "targetHours": 6.4,
+   "isRecoveryWeek": false,
    "days": [
     {
      "date": "2026-12-14",
@@ -1216,13 +1210,13 @@
       {
        "id": "w8-tue",
        "sport": "run",
-       "type": "test",
-       "name": "30-min threshold test",
+       "type": "threshold",
+       "name": "Threshold 3x2.5km",
        "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
-       "durationMinutes": 70,
-       "distanceMeters": 9000,
-       "primaryZone": "Test",
-       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD",
+       "durationMinutes": 68,
+       "distanceMeters": 12100,
+       "primaryZone": "Zone 4-5a",
+       "humanReadable": "2 km easy WU + 4 strides\n3x2.5 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD",
        "completed": false
       }
      ]
@@ -1240,7 +1234,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1253,12 +1247,12 @@
        "id": "w8-thu",
        "sport": "run",
        "type": "endurance",
-       "name": "Easy 6k",
+       "name": "Easy 7k",
        "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 38,
-       "distanceMeters": 6000,
+       "durationMinutes": 45,
+       "distanceMeters": 7000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "7 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1271,12 +1265,12 @@
        "id": "w8-fri",
        "sport": "run",
        "type": "endurance",
-       "name": "Easy 6k + strides",
+       "name": "Easy 5k + strides",
        "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 42,
-       "distanceMeters": 6000,
+       "durationMinutes": 35,
+       "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1290,7 +1284,7 @@
        "sport": "rest",
        "type": "rest",
        "name": "No run — strength",
-       "description": "Shoulder press + arms. Upper body only, long run tomorrow.",
+       "description": "Shoulder press + arms, light. Long run tomorrow.",
        "completed": false
       }
      ]
@@ -1303,24 +1297,24 @@
        "id": "w8-sun",
        "sport": "run",
        "type": "long",
-       "name": "Long run 18k w/ 5k MP",
+       "name": "Long run 32k w/ 8k MP",
        "description": "Key session. Builds endurance + fuelling practice.",
-       "durationMinutes": 110,
-       "distanceMeters": 18000,
+       "durationMinutes": 197,
+       "distanceMeters": 32000,
        "primaryZone": "Zone 2 + MP",
-       "humanReadable": "18 km total. First 11 km easy (HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 5 km @ MP 5:18-5:26/km (by pace) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)",
+       "humanReadable": "32 km total. First 22 km easy (HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 8 km @ MP 5:18-5:26/km (by pace) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nStructure: 21 km easy, 4 km at MP, 1 km easy float, 4 km at MP, 2 km easy. Exact race fuel and kit. This is the last 30k+ run.",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 5.0,
+    "totalHours": 6.4,
     "bySport": {
      "run": {
       "sessions": 5,
-      "hours": 5.0,
-      "km": 45.0
+      "hours": 6.4,
+      "km": 62.1
      }
     }
    }
@@ -1330,8 +1324,8 @@
    "startDate": "2026-12-21",
    "endDate": "2026-12-27",
    "phase": "Peak",
-   "focus": "Biggest volume. 27k long run",
-   "targetHours": 6.4,
+   "focus": "Last full week before the trip. Recover from the 32k, one MP session, 20k on Saturday",
+   "targetHours": 5.0,
    "isRecoveryWeek": false,
    "days": [
     {
@@ -1355,13 +1349,13 @@
       {
        "id": "w9-tue",
        "sport": "run",
-       "type": "threshold",
-       "name": "Threshold 3x2.5km",
-       "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
-       "durationMinutes": 68,
-       "distanceMeters": 12100,
-       "primaryZone": "Zone 4-5a",
-       "humanReadable": "2 km easy WU + 4 strides\n3x2.5 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD",
+       "type": "endurance",
+       "name": "Easy 6k",
+       "description": "Aerobic volume. Conversational.",
+       "durationMinutes": 38,
+       "distanceMeters": 6000,
+       "primaryZone": "Zone 2",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nRecovery from Sunday's 32k. No quality before Thursday.",
        "completed": false
       }
      ]
@@ -1379,7 +1373,7 @@
        "durationMinutes": 32,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1392,12 +1386,12 @@
        "id": "w9-thu",
        "sport": "run",
        "type": "tempo",
-       "name": "Progression 13k",
-       "description": "Key session (replaces the MP session this week). Finish at marathon pace, not faster.",
-       "durationMinutes": 77,
-       "distanceMeters": 13000,
-       "primaryZone": "Z2 → MP",
-       "humanReadable": "5 km easy (cap per new LTHR, never faster than easy band)\n3 km steady @ 5:45-5:55/km (HR ≤155)\n4 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+       "name": "Marathon pace 8k",
+       "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
+       "durationMinutes": 69,
+       "distanceMeters": 12000,
+       "primaryZone": "MP (Z3)",
+       "humanReadable": "2 km easy WU\n8 km @ MP — 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD",
        "completed": false
       }
      ]
@@ -1415,7 +1409,7 @@
        "durationMinutes": 35,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1426,10 +1420,14 @@
      "workouts": [
       {
        "id": "w9-sat",
-       "sport": "rest",
-       "type": "rest",
-       "name": "No run — strength",
-       "description": "Shoulder press + arms. Upper body only, long run tomorrow.",
+       "sport": "run",
+       "type": "long",
+       "name": "Long run 20k",
+       "description": "Key session. Builds endurance + fuelling practice.",
+       "durationMinutes": 128,
+       "distanceMeters": 20000,
+       "primaryZone": "Zone 2",
+       "humanReadable": "20 km total. Easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nRun it Saturday before you leave. If that fails, run 15-20 km on the trip on Sun 27 Dec.",
        "completed": false
       }
      ]
@@ -1440,26 +1438,22 @@
      "workouts": [
       {
        "id": "w9-sun",
-       "sport": "run",
-       "type": "long",
-       "name": "Long run 27k",
-       "description": "Key session. Builds endurance + fuelling practice.",
-       "durationMinutes": 173,
-       "distanceMeters": 27000,
-       "primaryZone": "Zone 2",
-       "humanReadable": "27 km total. Easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nFull race kit and breakfast rehearsal (wake 3:30, run 5:15)",
+       "sport": "rest",
+       "type": "rest",
+       "name": "No run — trip",
+       "description": "Trip starts. Travel day.",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 6.4,
+    "totalHours": 5.0,
     "bySport": {
      "run": {
       "sessions": 5,
-      "hours": 6.4,
-      "km": 62.1
+      "hours": 5.0,
+      "km": 48.0
      }
     }
    }
@@ -1469,9 +1463,9 @@
    "startDate": "2026-12-28",
    "endDate": "2027-01-03",
    "phase": "Peak",
-   "focus": "Race rehearsal: 32k with 12k at marathon pace",
-   "targetHours": 6.3,
-   "isRecoveryWeek": false,
+   "focus": "Trip week (27 Dec to 3 Jan) = the down week. Only the weekend long run matters",
+   "targetHours": 3.4,
+   "isRecoveryWeek": true,
    "days": [
     {
      "date": "2026-12-28",
@@ -1481,8 +1475,8 @@
        "id": "w10-mon",
        "sport": "rest",
        "type": "rest",
-       "name": "No run — strength",
-       "description": "Deadlift + pull day. No run. Cap deadlift at RPE 7-8, quality run tomorrow.",
+       "name": "No run — trip",
+       "description": "Trip. No run.",
        "completed": false
       }
      ]
@@ -1494,13 +1488,13 @@
       {
        "id": "w10-tue",
        "sport": "run",
-       "type": "vo2max",
-       "name": "Intervals 5x1200m",
-       "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
-       "durationMinutes": 65,
-       "distanceMeters": 11500,
-       "primaryZone": "Zone 5b",
-       "humanReadable": "2 km easy WU + 4 strides\n5x1200 m @ 4:45-4:55/km (HR 167-174 bpm by end of rep), 2 min easy jog between\n2 km easy CD",
+       "type": "endurance",
+       "name": "Optional easy 6k + strides",
+       "description": "Aerobic volume. Conversational.",
+       "durationMinutes": 42,
+       "distanceMeters": 6000,
+       "primaryZone": "Zone 2",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk\nOptional. Skipping it costs nothing this week.",
        "completed": false
       }
      ]
@@ -1511,14 +1505,10 @@
      "workouts": [
       {
        "id": "w10-wed",
-       "sport": "run",
-       "type": "endurance",
-       "name": "Easy 6k",
-       "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 38,
-       "distanceMeters": 6000,
-       "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "sport": "rest",
+       "type": "rest",
+       "name": "No run — trip",
+       "description": "Trip. No run.",
        "completed": false
       }
      ]
@@ -1531,12 +1521,12 @@
        "id": "w10-thu",
        "sport": "run",
        "type": "endurance",
-       "name": "Easy 7k",
+       "name": "Optional easy 8k",
        "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 45,
-       "distanceMeters": 7000,
+       "durationMinutes": 51,
+       "distanceMeters": 8000,
        "primaryZone": "Zone 2",
-       "humanReadable": "7 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "8 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nOptional. Run it if you get 50 minutes.",
        "completed": false
       }
      ]
@@ -1547,14 +1537,10 @@
      "workouts": [
       {
        "id": "w10-fri",
-       "sport": "run",
-       "type": "endurance",
-       "name": "Easy 5k + strides",
-       "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 35,
-       "distanceMeters": 5000,
-       "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "sport": "rest",
+       "type": "rest",
+       "name": "No run — trip",
+       "description": "Trip. No run.",
        "completed": false
       }
      ]
@@ -1565,10 +1551,14 @@
      "workouts": [
       {
        "id": "w10-sat",
-       "sport": "rest",
-       "type": "rest",
-       "name": "No run — strength",
-       "description": "Shoulder press + arms, light. Long run tomorrow.",
+       "sport": "run",
+       "type": "long",
+       "name": "Long run 18k w/ 6k MP",
+       "description": "Key session. Builds endurance + fuelling practice.",
+       "durationMinutes": 109,
+       "distanceMeters": 18000,
+       "primaryZone": "Zone 2 + MP",
+       "humanReadable": "18 km total. First 10 km easy (HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 6 km @ MP 5:18-5:26/km (by pace) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nThe one run that matters this week. Sat 2 Jan or Sun 3 Jan, whichever fits travel. 15 km minimum if time is short, keep the MP block.",
        "completed": false
       }
      ]
@@ -1579,26 +1569,22 @@
      "workouts": [
       {
        "id": "w10-sun",
-       "sport": "run",
-       "type": "long",
-       "name": "Long run 32k w/ 12k MP",
-       "description": "Key session. Builds endurance + fuelling practice.",
-       "durationMinutes": 193,
-       "distanceMeters": 32000,
-       "primaryZone": "Zone 2 + MP",
-       "humanReadable": "32 km total. First 18 km easy (HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 12 km @ MP 5:18-5:26/km (by pace) → 2 km easy\nFuel: gel/~30g carbs every 30-35 min from 40 min in + 400-600 ml fluid/h w/ electrolytes (rehearse race-day fuel)\nStructure: 18 km easy, then 3x4 km at MP with 1 km easy float between, then 2 km easy. Exact race fuel.",
+       "sport": "rest",
+       "type": "rest",
+       "name": "No run — trip",
+       "description": "Travel home. Do the long run today if you skipped it yesterday.",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 6.3,
+    "totalHours": 3.4,
     "bySport": {
      "run": {
-      "sessions": 5,
-      "hours": 6.3,
-      "km": 61.5
+      "sessions": 3,
+      "hours": 3.4,
+      "km": 32.0
      }
     }
    }
@@ -1608,8 +1594,8 @@
    "startDate": "2027-01-04",
    "endDate": "2027-01-10",
    "phase": "Taper",
-   "focus": "Volume down ~30%, intensity stays. Lower-body lifting light",
-   "targetHours": 4.5,
+   "focus": "Back from the trip. Volume down, intensity stays. Lower-body lifting light",
+   "targetHours": 5.0,
    "isRecoveryWeek": false,
    "days": [
     {
@@ -1652,12 +1638,12 @@
        "id": "w11-wed",
        "sport": "run",
        "type": "endurance",
-       "name": "Easy 5k",
+       "name": "Easy 6k",
        "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 32,
-       "distanceMeters": 5000,
+       "durationMinutes": 38,
+       "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1670,12 +1656,12 @@
        "id": "w11-thu",
        "sport": "run",
        "type": "tempo",
-       "name": "Progression 8k",
-       "description": "Key session (replaces the MP session this week). Finish at marathon pace, not faster.",
-       "durationMinutes": 48,
-       "distanceMeters": 8000,
-       "primaryZone": "Z2 → MP",
-       "humanReadable": "3 km easy (cap per new LTHR, never faster than easy band)\n2 km steady @ 5:45-5:55/km (HR ≤155)\n2 km @ MP 5:18-5:26/km (HR ≤162). NEVER faster than 5:18, even if your partner pushes\n1 km easy CD",
+       "name": "Marathon pace 8k",
+       "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
+       "durationMinutes": 69,
+       "distanceMeters": 12000,
+       "primaryZone": "MP (Z3)",
+       "humanReadable": "2 km easy WU\n8 km @ MP — 5:18-5:26/km, HR 150-158 bpm. Smooth, not forced; practise drinking on the move\n2 km easy CD",
        "completed": false
       }
      ]
@@ -1693,7 +1679,7 @@
        "durationMinutes": 35,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1725,19 +1711,19 @@
        "durationMinutes": 97,
        "distanceMeters": 16000,
        "primaryZone": "Zone 2 + MP",
-       "humanReadable": "16 km total. First 9 km easy (HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 5 km @ MP 5:18-5:26/km (by pace) → 2 km easy",
+       "humanReadable": "16 km total. First 9 km easy (HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band) → 5 km @ MP 5:18-5:26/km (by pace) → 2 km easy",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 4.5,
+    "totalHours": 5.0,
     "bySport": {
      "run": {
       "sessions": 5,
-      "hours": 4.5,
-      "km": 44.6
+      "hours": 5.0,
+      "km": 49.6
      }
     }
    }
@@ -1796,7 +1782,7 @@
        "durationMinutes": 32,
        "distanceMeters": 5000,
        "primaryZone": "Zone 2",
-       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "humanReadable": "5 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
        "completed": false
       }
      ]
@@ -1814,7 +1800,7 @@
        "durationMinutes": 29,
        "distanceMeters": 4000,
        "primaryZone": "Zone 2",
-       "humanReadable": "4 km easy. HR cap = 88% of NEW LTHR from 17 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
+       "humanReadable": "4 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nThen 6x20s strides (fast, relaxed, ~4:30/km) w/ 40s walk",
        "completed": false
       }
      ]
@@ -1889,7 +1875,7 @@
   },
   "pacing": {
    "run": {
-    "targetPace": "5:18-5:22/km (goal 3:45); 5:13/km if wk-8 LT test ≤5:05/km (3:40)",
+    "targetPace": "5:18-5:22/km (goal 3:45); 5:13/km only if the 24 Nov test gives LT pace ≤5:05/km and the MP blocks on 20 Dec feel controlled (3:40)",
     "targetHR": "≤158 to km 30, then free",
     "notes": "Km 0-5 at 5:25-5:28 (crowded, dark, humid). Don't chase pace on Bandra-Worli Sea Link incline — hold effort. Bank nothing. Expect late-race rise toward Peddar Road / Marine Drive and rising heat after ~7 am: if temp >24°C / very humid, add 5-10 s/km and race HR, not pace. Halfway target ~1:53."
    }
@@ -1904,7 +1890,7 @@
      "Sip water/electrolyte at most stations"
     ]
    },
-   "notes": "Rehearse exact fuel on wk 7, 9, 10 long runs. Carb load Fri-Sat (8-10 g/kg/day). Nothing new on race day."
+   "notes": "Rehearse exact fuel on wk 7, 8, 9 long runs. Carb load Fri-Sat (8-10 g/kg/day). Nothing new on race day."
   },
   "taper": {
    "startDate": "2027-01-04",
