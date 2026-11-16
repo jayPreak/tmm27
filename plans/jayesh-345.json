@@ -801,7 +801,7 @@
        "durationMinutes": 70,
        "distanceMeters": 9000,
        "primaryZone": "Test",
-       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD\nTest only if: 5+ days fever-free, the 3 easy runs felt normal, morning HRV back over 60 and resting HR within 5 of normal. If not, run easy 6k today and test Thu 26 Nov.\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg rdl 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set. Start light this week, RPE 6",
+       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD\nTest only if: 5+ days fever-free, the 3 easy runs felt normal, morning HRV back over 60 and resting HR within 5 of normal. If not, run easy 6k today and test Thu 26 Nov.\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg RDL 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set. Start light this week, RPE 6",
        "completed": false
       }
      ]
@@ -940,7 +940,7 @@
        "durationMinutes": 60,
        "distanceMeters": 10500,
        "primaryZone": "Zone 5b",
-       "humanReadable": "2 km easy WU + 4 strides\n5x1000 m @ 4:45-4:55/km (HR 167-174 bpm by end of rep), 2 min easy jog between\n2 km easy CD\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg rdl 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set",
+       "humanReadable": "2 km easy WU + 4 strides\n5x1000 m @ 4:45-4:55/km (HR 167-174 bpm by end of rep), 2 min easy jog between\n2 km easy CD\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg RDL 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set",
        "completed": false
       }
      ]
@@ -1079,7 +1079,7 @@
        "durationMinutes": 63,
        "distanceMeters": 11300,
        "primaryZone": "Zone 4-5a",
-       "humanReadable": "2 km easy WU + 4 strides\n4x1.6 km @ T 5:05-5:15/km (HR 158-166 bpm), 90s easy jog between\n2 km easy CD\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg rdl 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set",
+       "humanReadable": "2 km easy WU + 4 strides\n4x1.6 km @ T 5:05-5:15/km (HR 158-166 bpm), 90s easy jog between\n2 km easy CD\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg RDL 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set",
        "completed": false
       }
      ]
@@ -1218,7 +1218,7 @@
        "durationMinutes": 68,
        "distanceMeters": 12100,
        "primaryZone": "Zone 4-5a",
-       "humanReadable": "2 km easy WU + 4 strides\n3x2.5 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg rdl 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 6. No barbell squats or deadlifts",
+       "humanReadable": "2 km easy WU + 4 strides\n3x2.5 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg RDL 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 6. No barbell squats or deadlifts",
        "completed": false
       }
      ]
@@ -1357,7 +1357,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nRecovery from Sunday's 28k. No quality before Thursday.\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg rdl 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 6. No barbell squats or deadlifts",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nRecovery from Sunday's 28k. No quality before Thursday.\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg RDL 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 6. No barbell squats or deadlifts",
        "completed": false
       }
      ]
@@ -1627,7 +1627,7 @@
        "durationMinutes": 61,
        "distanceMeters": 10600,
        "primaryZone": "Zone 4-5a",
-       "humanReadable": "2 km easy WU + 4 strides\n3x2 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg rdl 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 5-6. No barbell squats or deadlifts",
+       "humanReadable": "2 km easy WU + 4 strides\n3x2 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg RDL 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 5-6. No barbell squats or deadlifts",
        "completed": false
       }
      ]

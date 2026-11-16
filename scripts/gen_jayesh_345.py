@@ -155,10 +155,11 @@ W4(12,"Race","Race week. No heavy lower-body lifting",False,{
      "humanReadable":"Goal 3:45 (5:20/km). Km 0-5: 5:25-5:28. Km 5-30: 5:18-5:22, HR 158 or below. Km 30+: hold or push if HR allows. Gel every 30 min.","completed":False}]})
 
 # Gym split for marathon prep (from wk 5): one heavy lower session a week, on the quality day after the run.
+cap=lambda t: t[0].upper()+t[1:]
 def legs(light=""):
     ex="split squats or step-ups {n}x6-8 per leg, single-leg RDL {n}x8 per leg, heavy calf raises {n}x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s"
-    if light: return "Gym (PM): legs, light, 25-30 min. "+ex.format(n=2).capitalize()+f", all at {light}. No barbell squats or deadlifts"
-    return "Gym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. "+ex.format(n=3).capitalize()+". RPE 7, 2-3 reps left on every set"
+    if light: return "Gym (PM): legs, light, 25-30 min. "+cap(ex.format(n=2))+f", all at {light}. No barbell squats or deadlifts"
+    return "Gym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. "+cap(ex.format(n=3))+". RPE 7, 2-3 reps left on every set"
 BENCH="Gym: bench + push."
 FRI_LIGHT="Gym (optional, 20-25 min): single-leg RDL, step-ups, calves, core. No barbell on your back."
 FRI_NONE="Gym: no leg work today."
