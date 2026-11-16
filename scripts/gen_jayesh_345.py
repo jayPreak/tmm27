@@ -155,19 +155,19 @@ W4(12,"Race","Race week. No heavy lower-body lifting",False,{
      "humanReadable":"Goal 3:45 (5:20/km). Km 0-5: 5:25-5:28. Km 5-30: 5:18-5:22, HR 158 or below. Km 30+: hold or push if HR allows. Gel every 30 min.","completed":False}]})
 
 # Gym split for marathon prep (from wk 5): one heavy lower session a week, on the quality day after the run.
-def legs(lift,light=""):
-    main={"squat":"Squat","deadlift":"Trap-bar or conventional deadlift"}[lift]
-    if light: return f"Gym (PM): legs, light. {main} 2 sets of 4-5 at {light}, plus calf raises and hamstrings. Nothing to failure"
-    return f"Gym (PM): legs, the only heavy lower session this week. {main} 3x4-5 at RPE 6-7 (3 reps left, no grinding), split squats or step-ups 2x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or RDL 2x6-8"
+def legs(light=""):
+    ex="split squats or step-ups {n}x6-8 per leg, single-leg RDL {n}x8 per leg, heavy calf raises {n}x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s"
+    if light: return "Gym (PM): legs, light, 25-30 min. "+ex.format(n=2).capitalize()+f", all at {light}. No barbell squats or deadlifts"
+    return "Gym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. "+ex.format(n=3).capitalize()+". RPE 7, 2-3 reps left on every set"
 BENCH="Gym: bench + push."
 FRI_LIGHT="Gym (optional, 20-25 min): single-leg RDL, step-ups, calves, core. No barbell on your back."
 FRI_NONE="Gym: no leg work today."
-GYM={5:{1:legs("squat")+". About 70% of your usual load this week",2:BENCH,4:FRI_LIGHT},
-     6:{1:legs("deadlift"),2:BENCH,4:FRI_LIGHT},
-     7:{1:legs("squat"),2:BENCH,4:FRI_LIGHT},
-     8:{1:legs("deadlift","RPE 6"),2:BENCH,4:FRI_NONE},
-     9:{1:legs("squat","RPE 6"),2:BENCH,4:FRI_NONE,5:"Gym: none today."},
-     11:{1:legs("squat","RPE 5-6"),2:BENCH,4:FRI_NONE},
+GYM={5:{1:legs()+". Start light this week, RPE 6",2:BENCH,4:FRI_LIGHT},
+     6:{1:legs(),2:BENCH,4:FRI_LIGHT},
+     7:{1:legs(),2:BENCH,4:FRI_LIGHT},
+     8:{1:legs("RPE 6"),2:BENCH,4:FRI_NONE},
+     9:{1:legs("RPE 6"),2:BENCH,4:FRI_NONE,5:"Gym: none today."},
+     11:{1:legs("RPE 5-6"),2:BENCH,4:FRI_NONE},
      12:{1:"Gym: no lower-body lifting this week.",2:"Gym: upper body light, or skip."}}
 for n,g in GYM.items():
     for i,line in g.items():
@@ -204,7 +204,7 @@ plan={"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata M
   "strengths":[{"sport":"run","evidence":"Marathon finished Sep 2026; 50-60 km weeks in Aug/Sep; VO2max 54"},
                {"sport":"strength","evidence":"4-5 lifting sessions/wk consistently"}],
   "limiters":[{"sport":"run","evidence":"Last 3 wks only 12-16 km/wk; LT pace 5:18/km is slower than sub-3:30 MP (4:58)"}],
-  "constraints":["5 runs/wk from wk 4: Tue quality, Wed easy, Thu MP or progression (alternating), Fri easy + strides, Sun long","Gym from wk 5: Mon upper pull + core, Tue legs after the quality run (the only heavy lower session; squat and deadlift alternate weekly, RPE 6-7), Wed bench/push, Fri optional light single-leg work, Sat shoulders + arms. Legs drop to 2 light sets in wk 8, 9 and 11; none in race week","Gym limits: 4 sessions a week, 60 min max each; Saturday 45 min upper body, done by early afternoon; no gym on a morning with HRV under 60 or resting HR 7+ above normal","Long runs capped at 28 km / about 3 hours: 8-week average was 25 km/wk, and every long run so far was run 7-16 bpm over the cap","Plan only changes on red flags: HRV <60 two mornings running, RHR 7+ above baseline, pain, illness",
+  "constraints":["5 runs/wk from wk 4: Tue quality, Wed easy, Thu MP or progression (alternating), Fri easy + strides, Sun long","Gym from wk 5: Mon upper pull + core, Tue legs after the quality run (the only lower-body session; no barbell squats or deadlifts until after the race: split squats/step-ups, single-leg RDL, heavy calf raises, Nordics/hamstring curls, RPE 7), Wed bench/push, Fri optional light single-leg work, Sat shoulders + arms. Legs drop to 2 light sets in wk 8, 9 and 11; none in race week","Gym limits: 4 sessions a week, 60 min max each; Saturday 45 min upper body, done by early afternoon; no gym on a morning with HRV under 60 or resting HR 7+ above normal","Long runs capped at 28 km / about 3 hours: 8-week average was 25 km/wk, and every long run so far was run 7-16 bpm over the cap","Plan only changes on red flags: HRV <60 two mornings running, RHR 7+ above baseline, pain, illness",
     "Illness 14-16 Nov (fever): wk 3 long run missed, wk 4 rest + easy return","Trip 27 Dec - 3 Jan: peak long run (28k, about 3 h) on 20 Dec, trip week is the down week with one 18k long run","Pool access ending — no swim","Gurgaon heat/pollution: HR caps over pace","COROS LTHR 166 is stale (held 175 on 10 Nov). 24 Nov 30-min test (moved from 17 Nov, illness) sets real LTHR + LT pace; easy runs then pace band + HR ceiling","Non-negotiable: easy = easy, no unplanned runs, no skipped key sessions, run your session not your partner's, gels on every long run 18k+, pain = stop","Goal revised: sub-3:30 → 3:45 (stretch 3:40)"]},
  "zones":{"run":{"hr":{"lthr":L,"zones":[{"zone":z,"name":nm,"percentLow":lo,"percentHigh":hi,
    "hrLow":round(L*lo/100),"hrHigh":round(L*hi/100)} for z,nm,lo,hi in zones]},

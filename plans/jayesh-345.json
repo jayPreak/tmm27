@@ -59,7 +59,7 @@
   ],
   "constraints": [
    "5 runs/wk from wk 4: Tue quality, Wed easy, Thu MP or progression (alternating), Fri easy + strides, Sun long",
-   "Gym from wk 5: Mon upper pull + core, Tue legs after the quality run (the only heavy lower session; squat and deadlift alternate weekly, RPE 6-7), Wed bench/push, Fri optional light single-leg work, Sat shoulders + arms. Legs drop to 2 light sets in wk 8, 9 and 11; none in race week",
+   "Gym from wk 5: Mon upper pull + core, Tue legs after the quality run (the only lower-body session; no barbell squats or deadlifts until after the race: split squats/step-ups, single-leg RDL, heavy calf raises, Nordics/hamstring curls, RPE 7), Wed bench/push, Fri optional light single-leg work, Sat shoulders + arms. Legs drop to 2 light sets in wk 8, 9 and 11; none in race week",
    "Gym limits: 4 sessions a week, 60 min max each; Saturday 45 min upper body, done by early afternoon; no gym on a morning with HRV under 60 or resting HR 7+ above normal",
    "Long runs capped at 28 km / about 3 hours: 8-week average was 25 km/wk, and every long run so far was run 7-16 bpm over the cap",
    "Plan only changes on red flags: HRV <60 two mornings running, RHR 7+ above baseline, pain, illness",
@@ -801,7 +801,7 @@
        "durationMinutes": 70,
        "distanceMeters": 9000,
        "primaryZone": "Test",
-       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD\nTest only if: 5+ days fever-free, the 3 easy runs felt normal, morning HRV back over 60 and resting HR within 5 of normal. If not, run easy 6k today and test Thu 26 Nov.\nGym (PM): legs, the only heavy lower session this week. Squat 3x4-5 at RPE 6-7 (3 reps left, no grinding), split squats or step-ups 2x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or RDL 2x6-8. About 70% of your usual load this week",
+       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD\nTest only if: 5+ days fever-free, the 3 easy runs felt normal, morning HRV back over 60 and resting HR within 5 of normal. If not, run easy 6k today and test Thu 26 Nov.\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg rdl 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set. Start light this week, RPE 6",
        "completed": false
       }
      ]
@@ -940,7 +940,7 @@
        "durationMinutes": 60,
        "distanceMeters": 10500,
        "primaryZone": "Zone 5b",
-       "humanReadable": "2 km easy WU + 4 strides\n5x1000 m @ 4:45-4:55/km (HR 167-174 bpm by end of rep), 2 min easy jog between\n2 km easy CD\nGym (PM): legs, the only heavy lower session this week. Trap-bar or conventional deadlift 3x4-5 at RPE 6-7 (3 reps left, no grinding), split squats or step-ups 2x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or RDL 2x6-8",
+       "humanReadable": "2 km easy WU + 4 strides\n5x1000 m @ 4:45-4:55/km (HR 167-174 bpm by end of rep), 2 min easy jog between\n2 km easy CD\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg rdl 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set",
        "completed": false
       }
      ]
@@ -1079,7 +1079,7 @@
        "durationMinutes": 63,
        "distanceMeters": 11300,
        "primaryZone": "Zone 4-5a",
-       "humanReadable": "2 km easy WU + 4 strides\n4x1.6 km @ T 5:05-5:15/km (HR 158-166 bpm), 90s easy jog between\n2 km easy CD\nGym (PM): legs, the only heavy lower session this week. Squat 3x4-5 at RPE 6-7 (3 reps left, no grinding), split squats or step-ups 2x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or RDL 2x6-8",
+       "humanReadable": "2 km easy WU + 4 strides\n4x1.6 km @ T 5:05-5:15/km (HR 158-166 bpm), 90s easy jog between\n2 km easy CD\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg rdl 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set",
        "completed": false
       }
      ]
@@ -1218,7 +1218,7 @@
        "durationMinutes": 68,
        "distanceMeters": 12100,
        "primaryZone": "Zone 4-5a",
-       "humanReadable": "2 km easy WU + 4 strides\n3x2.5 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD\nGym (PM): legs, light. Trap-bar or conventional deadlift 2 sets of 4-5 at RPE 6, plus calf raises and hamstrings. Nothing to failure",
+       "humanReadable": "2 km easy WU + 4 strides\n3x2.5 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg rdl 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 6. No barbell squats or deadlifts",
        "completed": false
       }
      ]
@@ -1357,7 +1357,7 @@
        "durationMinutes": 38,
        "distanceMeters": 6000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nRecovery from Sunday's 28k. No quality before Thursday.\nGym (PM): legs, light. Squat 2 sets of 4-5 at RPE 6, plus calf raises and hamstrings. Nothing to failure",
+       "humanReadable": "6 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nRecovery from Sunday's 28k. No quality before Thursday.\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg rdl 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 6. No barbell squats or deadlifts",
        "completed": false
       }
      ]
@@ -1627,7 +1627,7 @@
        "durationMinutes": 61,
        "distanceMeters": 10600,
        "primaryZone": "Zone 4-5a",
-       "humanReadable": "2 km easy WU + 4 strides\n3x2 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD\nGym (PM): legs, light. Squat 2 sets of 4-5 at RPE 5-6, plus calf raises and hamstrings. Nothing to failure",
+       "humanReadable": "2 km easy WU + 4 strides\n3x2 km @ T 5:05-5:15/km (HR 158-166 bpm), 120s easy jog between\n2 km easy CD\nGym (PM): legs, light, 25-30 min. Split squats or step-ups 2x6-8 per leg, single-leg rdl 2x8 per leg, heavy calf raises 2x10 straight-knee + 2x12 bent-knee, nordics or hamstring curls 2x6-8, side plank 2x30s, all at RPE 5-6. No barbell squats or deadlifts",
        "completed": false
       }
      ]
