@@ -1,66 +1,66 @@
 {
- "asOf": "2026-11-17T11:09+05:30",
- "metrics": {
-  "vo2max": 54,
-  "lthr": 166,
-  "ltPaceSec": 320,
-  "cti": 74.0,
-  "ati": 54.0,
-  "loadRatio": 0.72,
-  "hrv": 40.0,
-  "hrvDate": "20261117",
-  "hrvBaseline": 79.0,
-  "restingHr": 61,
-  "last7Km": 15.1
- },
- "weeklyKm": {
-  "2026-11-09": 22.1,
-  "2026-11-02": 35.5,
-  "2026-10-26": 33.7
- },
- "completed": {
-  "w1-tue": {
-   "km": 6.6,
-   "avgHr": 148
+  "asOf": "2026-11-18T11:39+05:30",
+  "metrics": {
+    "vo2max": 54,
+    "lthr": 166,
+    "ltPaceSec": 320,
+    "cti": 73.0,
+    "ati": 46.0,
+    "loadRatio": 0.63,
+    "hrv": 67.0,
+    "hrvDate": "20261118",
+    "hrvBaseline": 77.0,
+    "restingHr": 54,
+    "last7Km": 15.1
   },
-  "w1-wed": {
-   "km": 6.1,
-   "avgHr": 147
+  "weeklyKm": {
+    "2026-11-09": 22.1,
+    "2026-11-02": 35.5,
+    "2026-10-26": 33.7
   },
-  "w1-fri": {
-   "km": 7.0,
-   "avgHr": 161
+  "completed": {
+    "w1-tue": {
+      "km": 6.6,
+      "avgHr": 148
+    },
+    "w1-wed": {
+      "km": 6.1,
+      "avgHr": 147
+    },
+    "w1-fri": {
+      "km": 7.0,
+      "avgHr": 161
+    },
+    "w1-sun": {
+      "km": 14.0,
+      "avgHr": 154
+    },
+    "w2-wed": {
+      "km": 8.7,
+      "avgHr": 142
+    },
+    "w2-sun": {
+      "km": 18.0,
+      "avgHr": 161
+    },
+    "w3-tue": {
+      "km": 7.0,
+      "avgHr": 162
+    },
+    "w3-thu": {
+      "km": 7.0,
+      "avgHr": 149
+    },
+    "w3-fri": {
+      "km": 8.1,
+      "avgHr": 148
+    }
   },
-  "w1-sun": {
-   "km": 14.0,
-   "avgHr": 154
-  },
-  "w2-wed": {
-   "km": 8.7,
-   "avgHr": 142
-  },
-  "w2-sun": {
-   "km": 18.0,
-   "avgHr": 161
-  },
-  "w3-tue": {
-   "km": 7.0,
-   "avgHr": 162
-  },
-  "w3-thu": {
-   "km": 7.0,
-   "avgHr": 149
-  },
-  "w3-fri": {
-   "km": 8.1,
-   "avgHr": 148
-  }
- },
- "missed": [
-  "w2-tue",
-  "w2-fri",
-  "w3-sun"
- ],
- "note": "HRV is 40 against a baseline of 79 and resting HR is 61, about 9 bpm above normal. Both are better than yesterday (30 and 65) but still red, so rest again today: no run, no gym. Tomorrow is rest too, with a 20 to 30 minute walk if the aches are gone, and the easy 4 km on Thursday (HR 145 max, 6:50/km or slower) only happens after 24 hours with no fever and no body aches.",
- "noteDate": "2026-11-17"
+  "missed": [
+    "w2-tue",
+    "w2-fri",
+    "w3-sun"
+  ],
+  "note": "HRV is back to 67 against a baseline of 77 and resting HR is 54, about 2 bpm above normal, so the illness numbers have recovered. Today stays a rest day: no run, no gym, and a 20 to 30 minute easy walk is fine if the aches are gone. Tomorrow's easy 4 km (HR 145 max, 6:50/km or slower) goes ahead only after 24 hours with no fever and no body aches; if not, rest and slide it a day.",
+  "noteDate": "2026-11-18"
 }
