@@ -1,17 +1,17 @@
 {
-  "asOf": "2026-11-18T11:39+05:30",
+  "asOf": "2026-11-19T11:09+05:30",
   "metrics": {
     "vo2max": 54,
     "lthr": 166,
     "ltPaceSec": 320,
-    "cti": 73.0,
-    "ati": 46.0,
-    "loadRatio": 0.63,
-    "hrv": 67.0,
-    "hrvDate": "20261118",
-    "hrvBaseline": 77.0,
-    "restingHr": 54,
-    "last7Km": 15.1
+    "cti": 71.0,
+    "ati": 40.0,
+    "loadRatio": 0.56,
+    "hrv": 47.0,
+    "hrvDate": "20261119",
+    "hrvBaseline": 75.0,
+    "restingHr": 53,
+    "last7Km": 8.1
   },
   "weeklyKm": {
     "2026-11-09": 22.1,
@@ -61,6 +61,6 @@
     "w2-fri",
     "w3-sun"
   ],
-  "note": "HRV is back to 67 against a baseline of 77 and resting HR is 54, about 2 bpm above normal, so the illness numbers have recovered. Today stays a rest day: no run, no gym, and a 20 to 30 minute easy walk is fine if the aches are gone. Tomorrow's easy 4 km (HR 145 max, 6:50/km or slower) goes ahead only after 24 hours with no fever and no body aches; if not, rest and slide it a day.",
-  "noteDate": "2026-11-18"
+  "note": "HRV dropped to 47 against a baseline of 75 while resting HR is normal at 53, so your body is still recovering. Run today's easy 4 km only if you have had 24 hours with no fever and no aches, at HR 145 max and 6:50/km or slower, and stop at 4 km even if it feels easy; otherwise rest and slide it to tomorrow. No gym today.",
+  "noteDate": "2026-11-19"
 }
