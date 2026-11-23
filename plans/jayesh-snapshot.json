@@ -1,19 +1,20 @@
 {
- "asOf": "2026-11-20T11:09+05:30",
+ "asOf": "2026-11-23T23:53+05:30",
  "metrics": {
   "vo2max": 54,
   "lthr": 166,
-  "ltPaceSec": 320,
-  "cti": 69.0,
-  "ati": 34.0,
-  "loadRatio": 0.49,
-  "hrv": 47.0,
-  "hrvDate": "20261119",
-  "hrvBaseline": 75.0,
-  "restingHr": 53,
-  "last7Km": 0
+  "ltPaceSec": 323,
+  "cti": 67.0,
+  "ati": 32.0,
+  "loadRatio": 0.47,
+  "hrv": 102.0,
+  "hrvDate": "20261123",
+  "hrvBaseline": 74.0,
+  "restingHr": 49,
+  "last7Km": 10.1
  },
  "weeklyKm": {
+  "2026-11-16": 10.1,
   "2026-11-09": 22.1,
   "2026-11-02": 35.5,
   "2026-10-26": 33.7
@@ -54,13 +55,20 @@
   "w3-fri": {
    "km": 8.1,
    "avgHr": 148
+  },
+  "w4-sat": {
+   "km": 4.0,
+   "avgHr": 123
+  },
+  "w4-sun": {
+   "km": 6.1,
+   "avgHr": 145
   }
  },
  "missed": [
   "w2-tue",
   "w2-fri",
-  "w3-sun",
-  "w4-thu"
+  "w3-sun"
  ],
  "note": "Today is a rest day: no run and no gym, since the last HRV reading is still 47 against a baseline of 75 (resting HR 53 is normal). Do not make up yesterday's missed 4 km. Tomorrow's easy 6 km goes ahead only if you are fever-free and ache-free and HRV is back over 60; run it at HR 145 max and 6:50/km or slower, otherwise rest again.",
  "noteDate": "2026-11-20"
