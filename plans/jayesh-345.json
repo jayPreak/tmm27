@@ -8,7 +8,7 @@
   "planStartDate": "2026-10-26",
   "planEndDate": "2027-01-17",
   "createdAt": "2026-10-29T00:00:00Z",
-  "updatedAt": "2026-11-16T00:00:00Z",
+  "updatedAt": "2026-11-23T00:00:00Z",
   "totalWeeks": 12,
   "generatedBy": "Claude Coach (coros-coach)"
  },
@@ -640,7 +640,7 @@
    "endDate": "2026-11-22",
    "phase": "Base",
    "focus": "Sick week (fever 14-15 Nov). Rest, then three short easy runs. Threshold test moved to 24 Nov",
-   "targetHours": 2.1,
+   "targetHours": 1.2,
    "isRecoveryWeek": true,
    "days": [
     {
@@ -691,14 +691,10 @@
      "workouts": [
       {
        "id": "w4-thu",
-       "sport": "run",
-       "type": "endurance",
-       "name": "Easy 4k",
-       "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 26,
-       "distanceMeters": 4000,
-       "primaryZone": "Zone 2",
-       "humanReadable": "4 km easy. Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home\nOnly run if you have had 24h+ with no fever (without paracetamol) and no body aches. If not, rest and slide this run a day",
+       "sport": "rest",
+       "type": "rest",
+       "name": "No run — sick",
+       "description": "Still sick (fever). No run.",
        "completed": false
       }
      ]
@@ -712,7 +708,7 @@
        "sport": "rest",
        "type": "rest",
        "name": "No run — rest",
-       "description": "Rest. No squats this week.",
+       "description": "Felt fine in the morning. Rest, no gym. Fever-free 24h without paracetamol = cleared to run Saturday.",
        "completed": false
       }
      ]
@@ -725,12 +721,12 @@
        "id": "w4-sat",
        "sport": "run",
        "type": "endurance",
-       "name": "Easy 6k",
+       "name": "Easy 4k",
        "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 38,
-       "distanceMeters": 6000,
+       "durationMinutes": 26,
+       "distanceMeters": 4000,
        "primaryZone": "Zone 2",
-       "humanReadable": "6 km easy. Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home\nOnly if Thursday's run felt normal. Light upper-body gym is fine from today.",
+       "humanReadable": "4 km easy. Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home\nFirst run back. Watch shows 6k: stop at 4k. If fever or aches are back, skip and try Sunday.",
        "completed": false
       }
      ]
@@ -743,24 +739,24 @@
        "id": "w4-sun",
        "sport": "run",
        "type": "endurance",
-       "name": "Easy 10k",
+       "name": "Easy 7k",
        "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 64,
-       "distanceMeters": 10000,
+       "durationMinutes": 45,
+       "distanceMeters": 7000,
        "primaryZone": "Zone 2",
-       "humanReadable": "10 km easy. Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home\nNo long run this week. Stop at 8 km if it feels like work.",
+       "humanReadable": "7 km easy. Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home\nOnly if Saturday felt normal. Watch shows 10k: stop at 7k. If Saturday felt off, rest.",
        "completed": false
       }
      ]
     }
    ],
    "summary": {
-    "totalHours": 2.1,
+    "totalHours": 1.2,
     "bySport": {
      "run": {
-      "sessions": 3,
-      "hours": 2.1,
-      "km": 20.0
+      "sessions": 2,
+      "hours": 1.2,
+      "km": 11.0
      }
     }
    }
@@ -770,7 +766,7 @@
    "startDate": "2026-11-23",
    "endDate": "2026-11-29",
    "phase": "Build",
-   "focus": "Back to five runs. Threshold test Tue, everything else easy. Long run 16k",
+   "focus": "Back to five runs. Threshold test Thu (moved from Tue), everything else easy. Long run 16k",
    "targetHours": 4.7,
    "isRecoveryWeek": false,
    "days": [
@@ -795,13 +791,13 @@
       {
        "id": "w5-tue",
        "sport": "run",
-       "type": "test",
-       "name": "30-min threshold test",
-       "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
-       "durationMinutes": 70,
-       "distanceMeters": 9000,
-       "primaryZone": "Test",
-       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD\nTest only if: 5+ days fever-free, the 3 easy runs felt normal, morning HRV back over 60 and resting HR within 5 of normal. If not, run easy 6k today and test Thu 26 Nov.\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg RDL 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set. Start light this week, RPE 6",
+       "type": "endurance",
+       "name": "Easy 7k",
+       "description": "Aerobic volume. Conversational.",
+       "durationMinutes": 45,
+       "distanceMeters": 7000,
+       "primaryZone": "Zone 2",
+       "humanReadable": "7 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band\nSwapped with Thursday: too soon after illness to test. Run the 'Easy 7k' your watch shows for Thursday.\nGym (PM): legs, the only lower-body session this week, 35-40 min. No barbell squats or deadlifts. Split squats or step-ups 3x6-8 per leg, single-leg RDL 3x8 per leg, heavy calf raises 3x10 straight-knee + 2x12 bent-knee, Nordics or hamstring curls 2x6-8, side plank 2x30s. RPE 7, 2-3 reps left on every set. Start light this week, RPE 6",
        "completed": false
       }
      ]
@@ -831,13 +827,13 @@
       {
        "id": "w5-thu",
        "sport": "run",
-       "type": "endurance",
-       "name": "Easy 7k",
-       "description": "Aerobic volume. Conversational.",
-       "durationMinutes": 45,
-       "distanceMeters": 7000,
-       "primaryZone": "Zone 2",
-       "humanReadable": "7 km easy. HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band",
+       "type": "test",
+       "name": "30-min threshold test",
+       "description": "Key quality session. Full 2 km warm-up + 2 km cool-down easy.",
+       "durationMinutes": 70,
+       "distanceMeters": 9000,
+       "primaryZone": "Test",
+       "humanReadable": "2 km easy WU + 4 strides\n30 min solo all-out-but-even (flat route, early AM)\nRecord: avg pace + avg HR of LAST 20 min = new LT pace / LTHR → I re-set MP\n2 km easy CD\nMoved from Tue (illness). Run the 'threshold test' your watch shows for Tuesday. Test only if morning HRV is 60+ and resting HR within 5 of normal; otherwise easy 7k and test Tue 1 Dec.",
        "completed": false
       }
      ]

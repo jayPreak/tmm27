@@ -109,15 +109,15 @@ W4(4,"Base","Sick week (fever 14-15 Nov). Rest, then three short easy runs. Thre
  0:[rest("w4-mon","Sick. Full rest, no gym.",SICK)],
  1:[rest("w4-tue","Sick. Full rest, no gym. Threshold test moved to Tue 24 Nov.",SICK)],
  2:[rest("w4-wed","Rest. 20-30 min walk if the aches are gone.",SICK)],
- 3:[easy("w4-thu",4,False,GATE)],
- 4:[rest("w4-fri","Rest. No squats this week.","No run — rest")],
- 5:[easy("w4-sat",6,False,"Only if Thursday's run felt normal. Light upper-body gym is fine from today.")],
- 6:[easy("w4-sun",10,False,"No long run this week. Stop at 8 km if it feels like work.")]})
+ 3:[rest("w4-thu","Still sick (fever). No run.",SICK)],
+ 4:[rest("w4-fri","Felt fine in the morning. Rest, no gym. Fever-free 24h without paracetamol = cleared to run Saturday.","No run — rest")],
+ 5:[easy("w4-sat",4,False,"First run back. Watch shows 6k: stop at 4k. If fever or aches are back, skip and try Sunday.")],
+ 6:[easy("w4-sun",7,False,"Only if Saturday felt normal. Watch shows 10k: stop at 7k. If Saturday felt off, rest.")]})
 EASY_RULE=POST
-W4(5,"Build","Back to five runs. Threshold test Tue, everything else easy. Long run 16k",False,{
+W4(5,"Build","Back to five runs. Threshold test Thu (moved from Tue), everything else easy. Long run 16k",False,{
  0:[rest("w5-mon","Upper pull + core at about 70% load. First full gym day back. No legs.")],
- 1:[tt("w5-tue","Test only if: 5+ days fever-free, the 3 easy runs felt normal, morning HRV back over 60 and resting HR within 5 of normal. If not, run easy 6k today and test Thu 26 Nov.")],
- 2:[easy("w5-wed",4)],3:[easy("w5-thu",7)],4:[easy("w5-fri",5,True)],6:[long("w5-sun",16,0,"First long run to be run at the prescribed effort. HR over the cap = slow down or walk, do not push through.")]})
+ 1:[easy("w5-tue",7,False,"Swapped with Thursday: too soon after illness to test. Run the 'Easy 7k' your watch shows for Thursday.")],
+ 2:[easy("w5-wed",4)],3:[tt("w5-thu","Moved from Tue (illness). Run the 'threshold test' your watch shows for Tuesday. Test only if morning HRV is 60+ and resting HR within 5 of normal; otherwise easy 7k and test Tue 1 Dec.")],4:[easy("w5-fri",5,True)],6:[long("w5-sun",16,0,"First long run to be run at the prescribed effort. HR over the cap = slow down or walk, do not push through.")]})
 W4(6,"Build","VO2 intervals + marathon pace. Long run 24k",False,{
  1:[ints("w6-tue",5,1.0,120)],2:[easy("w6-wed",6)],3:[mp("w6-thu",6)],4:[easy("w6-fri",6,True)],
  6:[long("w6-sun",24,0,"Easy the whole way. Exact race fuel from 40 min.")]})
@@ -197,7 +197,7 @@ for n in range(1,13):
 L=166
 zones=[(1,"Recovery",0,81),(2,"Aerobic",81,89),(3,"Tempo",90,93),(4,"Sub-threshold",94,99),(5,"Threshold (5a)",100,102),(6,"VO2max (5b)",103,106)]
 plan={"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata Mumbai Marathon 2027","eventDate":"2027-01-17",
- "planStartDate":"2026-10-26","planEndDate":"2027-01-17","createdAt":"2026-10-29T00:00:00Z","updatedAt":"2026-11-16T00:00:00Z",
+ "planStartDate":"2026-10-26","planEndDate":"2027-01-17","createdAt":"2026-10-29T00:00:00Z","updatedAt":"2026-11-23T00:00:00Z",
  "totalWeeks":12,"generatedBy":"Claude Coach (coros-coach)"},
  "preferences":{"swim":"meters","bike":"kilometers","run":"kilometers","firstDayOfWeek":"monday"},
  "assessment":{"foundation":{"raceHistory":["Leh/Ladakh marathon Sep 2026 (42.5 km, 6:01, altitude)","Gurgaon triathlon Oct 2026"],
