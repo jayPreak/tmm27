@@ -14,7 +14,7 @@ def wo(id,name,km,mins,zone,hr,desc,typ="endurance",sport="run",done=False):
             "distanceMeters":int(km*1000) if km else None,"primaryZone":zone,"humanReadable":hr,"completed":done}
 
 INTERIM="HR 150 max (interim until 24 Nov test; old LTHR 166 likely stale). If 150 forces you slower than 7:00/km, run 6:40-6:55/km instead. NEVER faster than 6:40/km"
-POST="HR cap = 88% of NEW LTHR from 24 Nov test (150 until reset) + pace band set from new LT pace. Run in the band; HR over cap = slow down. NEVER faster than the band"
+POST="HR 140-150 bpm, cap 150. Pace 6:45-7:15/km, NEVER faster than 6:45 even if HR is low. Heat makes you slower than 7:15 at 150 = fine, HR wins"
 RETURN="Return from illness: HR 145 max, 6:50/km or slower. Fever, aches, chest tightness or dizziness = stop and walk home"
 EASY_RULE=INTERIM
 def easy(id,km,strides=False,note="",opt=False):
@@ -36,7 +36,7 @@ def long(id,km,mp_km=0,note="",rule=None):
     return wo(id,f"Long run {km}k"+(f" w/ {mp_km}k MP" if mp_km else ""),km,mins,"Zone 2" if not mp_km else "Zone 2 + MP",h,
               "Key session. Builds endurance + fuelling practice.","long")
 def q(id,name,km,mins,zone,h,typ="threshold"):
-    return wo(id,name,km,mins,zone,h,"Key quality session. Full 2 km warm-up + 2 km cool-down easy.",typ)
+    return wo(id,name,km,mins,zone,h,"Key quality session. Full 2 km warm-up + 2 km cool-down easy. Run the written pace. If you physically cannot hold it, stop the hard part and jog home easy; never grind reps at 175 bpm.",typ)
 def thr(id,reps,rep,rec):
     km=4+reps*rep*0+0
     work=reps*rep
@@ -117,7 +117,7 @@ EASY_RULE=POST
 W4(5,"Build","Back to five runs. Threshold test Thu (moved from Tue), everything else easy. Long run 16k",False,{
  0:[rest("w5-mon","Upper pull + core at about 70% load. First full gym day back. No legs.")],
  1:[easy("w5-tue",7,False,"Swapped with Thursday: too soon after illness to test. Run the 'Easy 7k' your watch shows for Thursday.")],
- 2:[easy("w5-wed",4)],3:[tt("w5-thu","Moved from Tue (illness). Run the 'threshold test' your watch shows for Tuesday. Test only if morning HRV is 60+ and resting HR within 5 of normal; otherwise easy 7k and test Tue 1 Dec.")],4:[easy("w5-fri",5,True)],6:[long("w5-sun",16,0,"First long run to be run at the prescribed effort. HR over the cap = slow down or walk, do not push through.")]})
+ 2:[easy("w5-wed",4)],3:[done(wo("w5-thu","Done: 30-min threshold test",9.0,60,"Test","Done (26 Nov). 5.35 km in 30 min at 5:37/km, avg HR 159 (last 20 min ~5:39 at 160-162). Stopped 6 times: legs gave out, 10 days after the fever. Treated as a post-illness number, not real fitness. Retest Tue 15 Dec decides marathon pace.","test"))],4:[easy("w5-fri",5,True)],6:[long("w5-sun",16,0,"First long run to be run at the prescribed effort. HR over the cap = slow down or walk, do not push through.")]})
 W4(6,"Build","VO2 intervals + marathon pace. Long run 24k",False,{
  1:[ints("w6-tue",5,1.0,120)],2:[easy("w6-wed",6)],3:[mp("w6-thu",6)],4:[easy("w6-fri",6,True)],
  6:[long("w6-sun",24,0,"Easy the whole way. Exact race fuel from 40 min.")]})
@@ -125,7 +125,7 @@ W4(7,"Build","Longer threshold + progression. Long run 28k",False,{
  1:[thr_km("w7-tue",4,1.6,90)],2:[easy("w7-wed",6)],3:[prog("w7-thu",4,2,3)],4:[easy("w7-fri",6,True)],
  6:[long("w7-sun",28,4,"Full race kit and breakfast rehearsal (wake 3:30, run 5:15). Last 4 km before the cool-down at MP.")]})
 W4(8,"Peak","Biggest week, before the trip. 32k with 10k at marathon pace",False,{
- 1:[thr_km("w8-tue",3,2.5,120)],2:[easy("w8-wed",6)],3:[easy("w8-thu",8)],4:[easy("w8-fri",6,True)],
+ 1:[tt("w8-tue","Retest. No stops: pick a flat loop with no traffic lights. Last 20 min avg pace sets marathon pace: 5:15 or faster = MP 5:18-5:26 (3:45 on), about 5:30 = MP 5:30-5:35 (3:50-3:55).")],2:[easy("w8-wed",6)],3:[easy("w8-thu",8)],4:[easy("w8-fri",6,True)],
  5:[rest("w8-sat","Shoulder press + arms, light, 45 min max, done by early afternoon. Long run tomorrow.")],
  6:[long("w8-sun",32,10,"The key run of the block. Start 5:15 am. MP block at 5:18-5:26, not faster. Gel every 30 min. Last year's 30k runs were run without a pace plan; this one has one, so follow it.")]})
 W4(9,"Peak","Recover from the 32k, one MP session, 24k on Saturday before the trip",False,{
@@ -197,7 +197,7 @@ for n in range(1,13):
 L=166
 zones=[(1,"Recovery",0,81),(2,"Aerobic",81,89),(3,"Tempo",90,93),(4,"Sub-threshold",94,99),(5,"Threshold (5a)",100,102),(6,"VO2max (5b)",103,106)]
 plan={"version":"1.0","meta":{"id":"tmm-2027","athlete":"Jayesh","event":"Tata Mumbai Marathon 2027","eventDate":"2027-01-17",
- "planStartDate":"2026-10-26","planEndDate":"2027-01-17","createdAt":"2026-10-29T00:00:00Z","updatedAt":"2026-11-23T00:00:00Z",
+ "planStartDate":"2026-10-26","planEndDate":"2027-01-17","createdAt":"2026-10-29T00:00:00Z","updatedAt":"2026-11-26T00:00:00Z",
  "totalWeeks":12,"generatedBy":"Claude Coach (coros-coach)"},
  "preferences":{"swim":"meters","bike":"kilometers","run":"kilometers","firstDayOfWeek":"monday"},
  "assessment":{"foundation":{"raceHistory":["Leh/Ladakh marathon Sep 2026 (42.5 km, 6:01, altitude)","Gurgaon triathlon Oct 2026"],
