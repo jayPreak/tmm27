@@ -1,20 +1,20 @@
 {
-  "asOf": "2026-11-26T12:12+05:30",
+  "asOf": "2026-11-28T19:11+05:30",
   "metrics": {
     "vo2max": 51,
     "lthr": 166,
     "ltPaceSec": 322,
     "cti": 70.0,
-    "ati": 55.0,
-    "loadRatio": 0.78,
-    "hrv": 97.0,
-    "hrvDate": "20261126",
-    "hrvBaseline": 75.0,
-    "restingHr": 49,
-    "last7Km": 30.1
+    "ati": 59.0,
+    "loadRatio": 0.84,
+    "hrv": 25.0,
+    "hrvDate": "20261128",
+    "hrvBaseline": 74.0,
+    "restingHr": 67,
+    "last7Km": 32.1
   },
   "weeklyKm": {
-    "2026-11-23": 20.0,
+    "2026-11-23": 26.0,
     "2026-11-16": 10.1,
     "2026-11-09": 22.1,
     "2026-11-02": 35.5,
@@ -76,6 +76,10 @@
     "w5-thu": {
       "km": 9.0,
       "avgHr": 152
+    },
+    "w5-fri": {
+      "km": 6.0,
+      "avgHr": 145
     }
   },
   "missed": [
@@ -83,6 +87,6 @@
     "w2-fri",
     "w3-sun"
   ],
-  "note": "Today's threshold test is already logged (9 km, avg HR 152), so nothing more to run and no gym today. HRV is 97 against a baseline of 75 and resting HR is 49, all green. Tomorrow is easy 5 km plus 6x20s strides: keep HR at 150 max and never faster than 6:40/km until the test result resets your zones.",
-  "noteDate": "2026-11-26"
+  "note": "HRV is 25 this morning against a baseline of 74, so skip today's shoulder and arms session and rest, resting HR 67 noted. Yesterday's easy 6 km at avg HR 145 was right on target. If tomorrow's HRV is still under 60, cut the long run to an easy 8 km at HR 145 max and 6:50/km or slower; if it is back over 60, run the 16 km at HR 150 max, never faster than 6:45/km.",
+  "noteDate": "2026-11-28"
 }
